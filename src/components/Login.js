@@ -1,17 +1,13 @@
-import React from 'react';
-import { BrowserRouter, Link } from "react-router-dom";
-
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Login = () => {
-    return (
-        <div>
-            Login
-            <a href='/lists' >Lists</a>
-            {/* <BrowserRouter>
-                <Link to='/lists'>Lists</Link>
-            </BrowserRouter> */}
-        </div>
-    );
+  return (
+    <div>
+      <h1>Login</h1>
+      <Link to='/lists'>Login</Link>
+    </div>
+  )
 }
 
-export default Login;
+export default Login
