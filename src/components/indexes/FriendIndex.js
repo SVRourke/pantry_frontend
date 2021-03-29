@@ -1,5 +1,7 @@
 import React from 'react'
 import FriendList from '../FriendList'
+import FriendRequestContainer from '../FriendRequestContainer'
+
 const FriendIndex = () => {
   const testFriends = [
     {"id": 1, "friend_name": "Sharain", "record_age": "1 days", "friend_id": 2},
@@ -24,7 +26,7 @@ const FriendIndex = () => {
       "record_age": "5 days"
     }
   ]
-  
+
   return (
     <div>
       <FriendList records={testFriends} />
@@ -35,6 +37,7 @@ const FriendIndex = () => {
         Tabbed Requests Component filters rendered requests by 'sent' or 'received'  
       */}
       <h3>Friends Requests component</h3>
+      <FriendRequestContainer requests={testRequests} />
 
       {/* <div>
       <ListCardContainer records={testLists} />
