@@ -1,7 +1,7 @@
-
 // ALERT: ADD LATEST ACTIVITY TIME TO LIST INDEX RESPONSE * BACKEND * 
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import {
   CardBody,
   CardHeading,
@@ -12,7 +12,7 @@ import {
 const ListCard = (props) => {
   const { id, name, contributor_count, item_count } = props.user
   return (
-    <div>
+    <Link to={`/lists/${id}`} >
       <CardBody>
         <CardHeading>{name}</CardHeading>
         <p>Add most recent to response!</p>
@@ -23,8 +23,7 @@ const ListCard = (props) => {
 
         <MemberCount>{contributor_count} members</MemberCount>
       </CardBody>
-
-    </div>
+    </Link>
   )
 }
 
