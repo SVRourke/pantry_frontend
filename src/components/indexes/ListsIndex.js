@@ -11,19 +11,19 @@ const FancyLink = styled.div`
       padding: .5rem 2rem;
       margin: 2rem 0;
     }
-`;
+`
 
 const testLists = [
-  { "id": 3, "name": "Squad", "contributor_count": 5, "item_count": 0 },
-  { "id": 2, "name": "Rain & Sam's List", "contributor_count": 2, "item_count": 5 },
-  { "id": 1, "name": "Sam's List", "contributor_count": 1, "item_count": 0 }
+  { id: 3, name: 'Squad', contributor_count: 5, item_count: 0 },
+  { id: 2, name: "Rain & Sam's List", contributor_count: 2, item_count: 5 },
+  { id: 1, name: "Sam's List", contributor_count: 1, item_count: 0 }
 ]
 
 const testInvites = [
-  {"id": 1, "record_age": "1 days", "requestor_name": "Sam", "requestee_name": "Jake", "contributor_count": 1, "type": "sent"},
-  {"id": 7, "record_age": "5 days", "requestor_name": "Sam", "requestee_name": "Rohan", "contributor_count": 1, "type": "sent"},
-  {"id": 2, "record_age": "5 days", "requestor_name": "Autumn", "requestee_name": "Sam", "contributor_count": 0, "type": "received"},
-  {"id": 3, "record_age": "5 days", "requestor_name": "Autumn", "requestee_name": "Sam", "contributor_count": 0, "type": "received"}
+  { id: 1, record_age: '1 days', requestor_name: 'Sam', requestee_name: 'Jake', contributor_count: 1, type: 'sent' },
+  { id: 7, record_age: '5 days', requestor_name: 'Sam', requestee_name: 'Rohan', contributor_count: 1, type: 'sent' },
+  { id: 2, record_age: '5 days', requestor_name: 'Autumn', requestee_name: 'Sam', contributor_count: 0, type: 'received' },
+  { id: 3, record_age: '5 days', requestor_name: 'Autumn', requestee_name: 'Sam', contributor_count: 0, type: 'received' }
 ]
 
 const ListIndex = () => {
@@ -32,7 +32,7 @@ const ListIndex = () => {
       <ListCardContainer records={testLists} />
 
       <FancyLink>
-        <Link to={'lists/new'}>New List Button</Link>
+        <Link to="lists/new">New List Button</Link>
       </FancyLink>
 
       <ListInvitesContainer invites={testInvites} />
