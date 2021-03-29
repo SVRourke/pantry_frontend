@@ -5,8 +5,10 @@ import { Link } from 'react-router-dom'
 
 import styled from 'styled-components'
 const FancyLink = styled.div`
-  display: block;   
+  display: block;
+  margin: 1rem 0;   
     a {
+      text-decoration: none;
       border: solid black 2px;
       padding: .5rem 2rem;
       margin: 2rem 0;
@@ -21,9 +23,9 @@ const testLists = [
 
 const testInvites = [
   { id: 1, record_age: '1 days', requestor_name: 'Sam', requestee_name: 'Jake', contributor_count: 1, type: 'sent' },
-  { id: 7, record_age: '5 days', requestor_name: 'Sam', requestee_name: 'Rohan', contributor_count: 1, type: 'sent' },
-  { id: 2, record_age: '5 days', requestor_name: 'Autumn', requestee_name: 'Sam', contributor_count: 0, type: 'received' },
-  { id: 3, record_age: '5 days', requestor_name: 'Autumn', requestee_name: 'Sam', contributor_count: 0, type: 'received' }
+  { id: 7, record_age: '5 days', requestor_name: 'Sam', requestee_name: 'Rohan', contributor_count: 3, type: 'sent' },
+  { id: 2, record_age: '5 days', requestor_name: 'Autumn', requestee_name: 'Sam', contributor_count: 10, type: 'received' },
+  { id: 3, record_age: '5 days', requestor_name: 'Autumn', requestee_name: 'Sam', contributor_count: 4, type: 'received' }
 ]
 
 const ListIndex = () => {
