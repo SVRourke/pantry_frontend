@@ -8,10 +8,13 @@ const Block = styled.div`
     background-color: #CACACA;
 `; 
 
-const ListCardContainer = () => {
+const ListCardContainer = ({records}) => {
+    const cards = records.map(r => <p>{r.name}</p>)
+    
     return (
         <Block>
             <h3>Lists List Component </h3>
+            {cards}
         </Block>
     );
 }
