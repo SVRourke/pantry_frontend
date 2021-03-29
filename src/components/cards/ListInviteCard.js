@@ -24,10 +24,10 @@ const ListInviteCard = ({ record }) => {
         <InvitedDisplay style={style}>
           {type === 'sent' ? requestee_name : requestor_name}
         </InvitedDisplay>
-        
-        <RequestCancel displayType={type} >
+
+        <RequestCancel displayType={type}>
           cancel?
-        </RequestCancel>
+          </RequestCancel>
       </Row>
 
       <TimeDisplay displayType={type}>{record_age} ago</TimeDisplay>
@@ -43,4 +43,3 @@ const ListInviteCard = ({ record }) => {
 }
 
 export default ListInviteCard
-
