@@ -17,6 +17,16 @@ const FriendIndex = () => {
         Tabbed Requests Component filters rendered requests by 'sent' or 'received'  
       */}
       <h3>Friends Requests component</h3>
+
+      {/* <div>
+      <ListCardContainer records={testLists} />
+
+      <FancyLink>
+        <Link to="lists/new">New List Button</Link>
+      </FancyLink>
+
+      <ListInvitesContainer invites={testInvites} />
+    </div> */}
     </div>
   )
 }
