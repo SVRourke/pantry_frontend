@@ -5,7 +5,7 @@ const Login = () => {
   return (
     <div>
       <h1>Login</h1>
-      <Link to='/lists'>Login</Link>
+      <Link to={`/users/6`}>Login</Link>
     </div>
   )
 }
