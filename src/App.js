@@ -6,7 +6,7 @@ import Friends from './components/indexes/FriendIndex'
 import Welcome from './components/pages/Welcome'
 import Login from './components/pages/Login'
 import UserRouter from './Routers/UserRouter'
-
+import List from './components/pages/List'
 function App () {
   return (
     <div id="app-container">
@@ -15,6 +15,7 @@ function App () {
         <Route path='/login' component={Login} />
         {/* <Route path='/about' component={About} /> */}
         <Route path={`/users/:id`} component={UserRouter} />
+        <Route path={`/lists/:id`} component={List} />
       </Switch>
     </div>
   )
