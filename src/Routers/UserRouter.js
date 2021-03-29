@@ -18,7 +18,6 @@ const UserRouter = () => {
 
   return (
     <div>
-      {console.log(url)}
       <Link to={`${url}/lists`}>lists</Link>
       <Link to={`${url}/friends`}>friends</Link>
       <Link to={`${url}/account`}>account</Link>
