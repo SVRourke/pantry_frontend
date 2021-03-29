@@ -1,11 +1,11 @@
 import React from 'react'
 import { Switch, Route, Link, useRouteMatch } from 'react-router-dom'
 
-import Lists from './components/Lists'
-import Friends from './components/Friends'
-import Welcome from './components/Welcome'
-import Login from './components/Login'
-import ProtectedContainer from './Routers/ProtectedContainer'
+import Lists from './components/indexes/ListsIndex'
+import Friends from './components/indexes/FriendIndex'
+import Welcome from './components/pages/Welcome'
+import Login from './components/pages/Login'
+import UserRouter from './Routers/UserRouter'
 
 function App () {
   return (
@@ -14,7 +14,7 @@ function App () {
         <Route exact path='/' component={Welcome} />
         <Route path='/login' component={Login} />
         {/* <Route path='/about' component={About} /> */}
-        <Route path={`/users/:id`} component={ProtectedContainer} />
+        <Route path={`/users/:id`} component={UserRouter} />
       </Switch>
     </div>
   )
