@@ -16,7 +16,6 @@ const ListCardContainer = ({ records }) => {
 
   return (
     <Block>
-      <h3>Lists List Component </h3>
       {cards}
     </Block>
   )
