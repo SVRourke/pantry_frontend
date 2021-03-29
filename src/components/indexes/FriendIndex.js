@@ -5,6 +5,26 @@ const FriendIndex = () => {
     {"id": 1, "friend_name": "Sharain", "record_age": "1 days", "friend_id": 2},
     {"id": 3, "friend_name": "Maya", "record_age": "1 days", "friend_id": 3}
   ]
+
+  const testRequests = [
+    {
+      "id": 4,
+      "requestor_id": 1,
+      "requestor_name": "Sam",
+      "requestee_name": "Autumn",
+      "type": "sent",
+      "record_age": "5 days"
+    },
+    {
+      "id": 3,
+      "requestor_id": 5,
+      "requestor_name": "Jake",
+      "requestee_name": "Sam",
+      "type": "received",
+      "record_age": "5 days"
+    }
+  ]
+  
   return (
     <div>
       <FriendList records={testFriends} />
