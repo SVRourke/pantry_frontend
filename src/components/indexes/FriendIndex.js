@@ -1,16 +1,14 @@
 import React from 'react'
-
+import FriendList from '../FriendList'
 const FriendIndex = () => {
+  const testFriends = [
+    {"id": 1, "friend_name": "Sharain", "record_age": "1 days", "friend_id": 2},
+    {"id": 3, "friend_name": "Maya", "record_age": "1 days", "friend_id": 3}
+  ]
   return (
     <div>
-      {/* 
-        Component that maps a user's Friends to FriendCard Components and displays them
-      */}
-      <h3>Friends List Component</h3>
-      
-      {/*
-        Button Link To new List Page
-      */}
+      <FriendList records={testFriends} />
+
       <h5>Invite Friends Button</h5>
 
       {/* 
