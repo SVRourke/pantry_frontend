@@ -1,7 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;1,100&display=swap");
+
 * {
-    padding:0;
-    margin:0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins";
+  color: var(--offblack-color);
+}
+
+:root {
+  --green-color: #6bcc8c;
+  --red-color: #ffa6a6;
+  --blue-color: #6ba9cc;
+  --gray-color: #cbcbcb;
+  --offblack-color: #414141;
 }
 #app-container {
     width: 50%;
@@ -9,4 +21,5 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
