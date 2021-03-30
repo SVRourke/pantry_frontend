@@ -1,6 +1,6 @@
 import React from 'react'
-import ListCardContainer from '../ListCardContainer'
-import ListInvitesContainer from '../ListInvitesContainer'
+import ListCardContainer from './ListCardContainer'
+import ListInvitesContainer from './ListInvitesContainer'
 import styled from 'styled-components'
 import NewList from '../pages/NewList'
 import {

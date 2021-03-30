@@ -9,7 +9,7 @@ import {
   DeclineButton,
   Row,
   MemberCount
-} from './elements'
+} from '../common/elements'
 
 
 const ListInviteCard = ({ record }) => {

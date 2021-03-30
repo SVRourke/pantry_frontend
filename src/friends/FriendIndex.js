@@ -1,6 +1,6 @@
 import React from 'react'
-import FriendList from '../FriendList'
-import FriendRequestContainer from '../FriendRequestContainer'
+import FriendList from './FriendList'
+import FriendRequestContainer from '../friends/FriendRequestContainer'
 
 const FriendIndex = () => {
   const testFriends = [

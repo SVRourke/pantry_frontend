@@ -1,7 +1,7 @@
 // Alert: Add List Name to list Invite Serializer * Backend *
 import React, { useState } from 'react'
-import InvitesControls from './InvitesControls'
-import ListInviteCard from './cards/ListInviteCard'
+import InvitesControls from '../common/InvitesControls'
+import ListInviteCard from '../lists/ListInviteCard'
 import styled from 'styled-components'
 
 const Block = styled.div`

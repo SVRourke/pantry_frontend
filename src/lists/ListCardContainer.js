@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ListCard from './cards/ListCard'
+import ListCard from './ListCard'
 
 import styled from 'styled-components'
 

@@ -7,7 +7,7 @@ import {
   TimeDisplay,
   SubHeading,
   Row
-} from "./elements";
+} from "../common/elements";
 
 const FriendCard = (props) => {
   const { friend_id, friend_name, id, record_age } = props.record

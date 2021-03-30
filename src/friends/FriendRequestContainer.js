@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import InvitesControls from './InvitesControls'
-import FriendRequestCard from './cards/FriendRequestCard'
+import InvitesControls from '../common/InvitesControls'
+import FriendRequestCard from '../friends/FriendRequestCard'
 import styled from 'styled-components'
 
 const Block = styled.div`

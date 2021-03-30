@@ -1,5 +1,5 @@
 import React from 'react';
-import FriendCard from './cards/FriendCard'
+import FriendCard from './FriendCard'
 
 const FriendList = ({ records }) => {
   console.log(records)

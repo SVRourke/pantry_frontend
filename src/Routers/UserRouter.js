@@ -8,9 +8,9 @@ import {
   useParams 
 } from 'react-router-dom'
 
-import Lists from '../components/indexes/ListsIndex'
-import Friends from '../components/indexes/FriendIndex'
-import Account from '../components/pages/Account'
+import Lists from '../lists/ListsIndex'
+import Friends from '../friends/FriendIndex'
+import Account from '../pages/Account'
 const UserRouter = () => {
   const user_id = useParams()
   const { path, url } = useRouteMatch()

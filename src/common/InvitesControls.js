@@ -3,7 +3,7 @@ import {
     Container,
     Heading,
     Button
-} from './GlobalElements'
+} from '../common/GlobalElements'
 
 const InvitesControls = ({ cb, filter }) => {
   return (

@@ -1,12 +1,12 @@
 import React from 'react'
 import { Switch, Route, Link, useRouteMatch } from 'react-router-dom'
 
-import Lists from './components/indexes/ListsIndex'
-import Friends from './components/indexes/FriendIndex'
-import Welcome from './components/pages/Welcome'
-import Login from './components/pages/Login'
+import Lists from './lists/ListsIndex'
+import Friends from './friends/FriendIndex'
+import Welcome from './pages/Welcome'
+import Login from './pages/Login'
 import UserRouter from './Routers/UserRouter'
-import List from './components/pages/List'
+import List from './pages/List'
 function App () {
   return (
     <div id="app-container">

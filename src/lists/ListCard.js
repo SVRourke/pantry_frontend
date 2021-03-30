@@ -7,7 +7,7 @@ import {
   CardHeading,
   MemberCount,
   TimeDisplay
-} from './elements'
+} from "../common/elements"
 
 const ListCard = (props) => {
   const { id, name, contributor_count, item_count } = props.user
