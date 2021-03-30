@@ -58,7 +58,12 @@ const DeclineButton = styled.button`
   color: var(--red-color);
   display: ${(props) => (props.displayType === "sent" ? "none" : "block")};
 `;
-
+const UnFriend = styled.button`
+  background: none;
+  border: none;
+  padding-left: 1rem;
+`;
+const SubHeading = styled.p``;
 
 export {
   CardBody,
@@ -70,4 +75,6 @@ export {
   Row,
   AcceptButton,
   DeclineButton,
+  UnFriend,
+  SubHeading
 }
