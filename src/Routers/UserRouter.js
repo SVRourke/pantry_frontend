@@ -11,7 +11,6 @@ import {
 import Lists from '../components/indexes/ListsIndex'
 import Friends from '../components/indexes/FriendIndex'
 import Account from '../components/pages/Account'
-
 const UserRouter = () => {
   const user_id = useParams()
   const { path, url } = useRouteMatch()
