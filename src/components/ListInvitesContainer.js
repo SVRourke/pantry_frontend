@@ -1,6 +1,6 @@
 // Alert: Add List Name to list Invite Serializer * Backend *
 import React, { useState } from 'react'
-import ListInvitesControls from './ListInvitesControls'
+import InvitesControls from './InvitesControls'
 import ListInviteCard from './cards/ListInviteCard'
 import styled from 'styled-components'
 
@@ -21,8 +21,7 @@ const ListInvitesContainer = ({ invites }) => {
 
     return (
       <Block>
-          <h3>Invites Component</h3>
-          <ListInvitesControls filter={filter} cb={filterChange} />
+          <InvitesControls filter={filter} cb={filterChange} />
           {cards}
         </Block>
   )
