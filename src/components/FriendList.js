@@ -1,8 +1,9 @@
 import React from 'react';
+import FriendCard from './cards/FriendCard'
 
-const FriendList = ({records}) => {
+const FriendList = ({ records }) => {
   console.log(records)
-  const cards = records.map(r => <p>{r.friend_name}- {r.record_age}</p>)
+  const cards = records.map(r => <FriendCard record={r} />)
   return (
     <div>
       {cards}
