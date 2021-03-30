@@ -1,9 +1,15 @@
 import React from 'react'
 import ListCardContainer from '../ListCardContainer'
 import ListInvitesContainer from '../ListInvitesContainer'
-import { Link } from 'react-router-dom'
-
 import styled from 'styled-components'
+import NewList from '../pages/NewList'
+import {
+  Route,
+  Switch,
+  Link,
+  useRouteMatch
+} from 'react-router-dom'
+
 const FancyLink = styled.div`
   display: block;
   margin: 1rem 0;   
@@ -29,16 +35,22 @@ const testInvites = [
 ]
 
 const ListIndex = () => {
+  const { path, url } = useRouteMatch()
+
   return (
-    <div>
-      <ListCardContainer records={testLists} />
+      <Switch>
+        <Route exact path={path} >
+          <ListCardContainer records={testLists} />
 
-      <FancyLink>
-        <Link to="lists/new">New List Button</Link>
-      </FancyLink>
+          <FancyLink>
+            <Link to={`${url}/new`}>New List Button</Link>
+          </FancyLink>
 
-      <ListInvitesContainer invites={testInvites} />
-    </div>
+          <ListInvitesContainer invites={testInvites} />
+        </Route>
+
+        <Route path={`${path}/new`} component={NewList} />
+      </Switch>
   )
 }
 
