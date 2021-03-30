@@ -33,21 +33,7 @@ const FriendIndex = () => {
 
       <h5>Invite Friends Button</h5>
 
-      {/* 
-        Tabbed Requests Component filters rendered requests by 'sent' or 'received'  
-      */}
-      <h3>Friends Requests component</h3>
       <FriendRequestContainer requests={testRequests} />
-
-      {/* <div>
-      <ListCardContainer records={testLists} />
-
-      <FancyLink>
-        <Link to="lists/new">New List Button</Link>
-      </FancyLink>
-
-      <ListInvitesContainer invites={testInvites} />
-    </div> */}
     </div>
   )
 }
