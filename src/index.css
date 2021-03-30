@@ -17,10 +17,10 @@
 }
 body {
   width: 100%;
-  hright: 100vh;
+  height: 100vh;
 }
 #app-container {
-    width: 50%;
+    width: 500px;
     margin: 0 auto;
     height: 100vh;
     display: flex;
