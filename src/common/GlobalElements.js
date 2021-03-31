@@ -25,10 +25,22 @@ const Heading = styled.p`
   font-weight: bold;
 `;
 
+const FancyLink = styled.div`
+  display: block;
+  margin: 1rem 0;   
+    a {
+      text-decoration: none;
+      border: solid black 2px;
+      padding: .5rem 2rem;
+      margin: 2rem 0;
+    }
+`;
+
 export {
     Container,
     Button,
-    Heading
+    Heading,
+    FancyLink
 }
 
 
