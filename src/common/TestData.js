@@ -31,19 +31,19 @@ const FriendRequests = [
   }
 ]
 const TestLists = [
-  { 
+  {
     id: 3,
     name: 'Squad',
     contributor_count: 5,
-    item_count: 0 
+    item_count: 0
   },
-  { 
+  {
     id: 2,
     name: "Rain & Sam's List",
     contributor_count: 2,
     item_count: 5
   },
-  { 
+  {
     id: 1,
     name: "Sam's List",
     contributor_count: 1,
@@ -58,7 +58,7 @@ const TestInvites = [
     requestor_name: 'Sam',
     requestee_name: 'Jake',
     contributor_count: 1,
-    type: 'sent' 
+    type: 'sent'
   },
   {
     id: 7,
@@ -66,7 +66,7 @@ const TestInvites = [
     requestor_name: 'Sam',
     requestee_name: 'Rohan',
     contributor_count: 3,
-    type: 'sent' 
+    type: 'sent'
   },
   {
     id: 2,
@@ -74,7 +74,7 @@ const TestInvites = [
     requestor_name: 'Autumn',
     requestee_name: 'Sam',
     contributor_count: 10,
-    type: 'received' 
+    type: 'received'
   },
   {
     id: 3,
@@ -82,13 +82,46 @@ const TestInvites = [
     requestor_name: 'Autumn',
     requestee_name: 'Sam',
     contributor_count: 4,
-    type: 'received' 
+    type: 'received'
+  }
+]
+const TestItems = [
+  {
+      "id": 1,
+      "name": "Garlic",
+      "amount": "3 bulbs",
+      "acquired": null
+  },
+  {
+      "id": 2,
+      "name": "Coffee",
+      "amount": "1 tub",
+      "acquired": null
+  },
+  {
+      "id": 3,
+      "name": "butter",
+      "amount": "1 lb",
+      "acquired": null
+  },
+  {
+      "id": 4,
+      "name": "mangoes",
+      "amount": "3",
+      "acquired": null
+  },
+  {
+      "id": 5,
+      "name": "potatoes",
+      "amount": "1 little bag",
+      "acquired": null
   }
 ]
 
-export { 
+export {
   FriendRequests,
   TestFriends,
   TestLists,
-  TestInvites
+  TestInvites,
+  TestItems
 }
