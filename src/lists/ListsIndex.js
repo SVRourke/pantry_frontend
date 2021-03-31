@@ -19,7 +19,7 @@ const ListIndex = () => {
   const { path, url } = useRouteMatch()
 
   return (
-      <Switch>
+      <div>
         <Route exact path={path} >
           <ListCardContainer records={TestLists} />
 
@@ -31,7 +31,7 @@ const ListIndex = () => {
         </Route>
 
         <Route path={`${path}/new`} component={NewList} />
-      </Switch>
+      </div>
   )
 }
 
