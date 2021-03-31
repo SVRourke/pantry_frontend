@@ -1,8 +1,9 @@
 import React from 'react'
 import ListCardContainer from './ListCardContainer'
 import ListInvitesContainer from './ListInvitesContainer'
-import styled from 'styled-components'
 import NewList from '../pages/NewList'
+import { FancyLink } from '../common/GlobalElements'
+
 import {
   Route,
   Switch,
@@ -12,19 +13,6 @@ import {
 
 // TEST DATA
 import { TestLists, TestInvites } from '../common/TestData'
-
-
-const FancyLink = styled.div`
-  display: block;
-  margin: 1rem 0;   
-    a {
-      text-decoration: none;
-      border: solid black 2px;
-      padding: .5rem 2rem;
-      margin: 2rem 0;
-    }
-`
-
 
 
 const ListIndex = () => {
