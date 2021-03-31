@@ -3,19 +3,19 @@ import {
   CardBody,
   CardHeading,
   TimeDisplay,
-  InvitedDisplay,
+  // InvitedDisplay,
   RequestCancel,
   AcceptButton,
   DeclineButton,
   Row,
-  MemberCount
+  // MemberCount
 } from "../common/elements"
 
 
 
 
 const FriendRequestCard = ({ record }) => {
-  const { id, requestor_id, requestor_name, requestee_name, type, record_age } = record
+  const { /*id, requestor_id,*/ requestor_name, requestee_name, type, record_age } = record
   const style = type === 'sent' ? { color: '#cccccc' } : { color: 'var(--offblack-color)' }
   const heading = type === 'sent' ? requestee_name : requestor_name
 

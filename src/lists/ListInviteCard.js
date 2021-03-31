@@ -13,7 +13,7 @@ import {
 
 
 const ListInviteCard = ({ record }) => {
-  const { id, record_age, requestor_name, requestee_name, contributor_count, type } = record
+  const { /*id,*/ record_age, requestor_name, requestee_name, contributor_count, type } = record
   const style = type === 'sent' ? { color: '#cccccc' } : { color: 'var(--offblack-color)' }
 
   return (

@@ -10,7 +10,7 @@ import {
 } from "../common/elements";
 
 const FriendCard = (props) => {
-  const { friend_id, friend_name, id, record_age } = props.record
+  const { /*friend_id,*/ friend_name, /*id,*/ record_age } = props.record
   
   return (
     <CardBody>

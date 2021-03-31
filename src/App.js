@@ -1,8 +1,6 @@
 import React from 'react'
-import { Switch, Route, Link, useRouteMatch } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
-import Lists from './lists/ListsIndex'
-import Friends from './friends/FriendIndex'
 import Welcome from './pages/Welcome'
 import Login from './pages/Login'
 import UserRouter from './Routers/UserRouter'
