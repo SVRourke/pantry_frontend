@@ -1,7 +1,7 @@
 import React from 'react'
 import FriendList from './FriendList'
 import FriendRequestContainer from '../friends/FriendRequestContainer'
-import NewFriendInvite from '../pages/NewFriendInvite'
+import NewFriendInvite from '../friends/NewFriendInvite'
 import { FancyLink } from '../common/GlobalElements'
 import { Route, Switch, Link, useRouteMatch } from 'react-router-dom'
 

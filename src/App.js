@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 import Welcome from './pages/Welcome'
 import Login from './pages/Login'
 import UserRouter from './Routers/UserRouter'
-import List from './pages/List'
+import List from './lists/List'
 function App () {
   return (
     <div id="app-container">

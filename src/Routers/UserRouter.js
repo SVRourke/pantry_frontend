@@ -10,7 +10,7 @@ import {
 
 import Lists from '../lists/ListsIndex'
 import Friends from '../friends/FriendIndex'
-import Account from '../pages/Account'
+import Account from '../users/Account'
 const UserRouter = () => {
   // const user_id = useParams()
   const { path, url } = useRouteMatch()
