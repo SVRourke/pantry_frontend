@@ -1,6 +1,8 @@
 // ALERT: make items default
 import React from 'react';
 import ListInvitesContainer from './ListInvitesContainer';
+import ItemCard from '../items/ItemCard'
+import EditItem from '../items/EditItem'
 import {
   Redirect,
   Route,
@@ -21,7 +23,7 @@ const List = () => {
   const list = TestLists.find(l => l.id === parseInt(listId))
   
   // CREATE An Item Card
-  const items = TestItems.map(i => <p>{i.name}<br/>{i.amount}<br/><br/></p>)
+  const items = TestItems.map(i => <ItemCard record={i} />)
 
   return (
     <div>
@@ -34,6 +36,9 @@ const List = () => {
         <Redirect to={`${url}/items`}/> 
       </Route >
 
+      <Route path={`${path}/items/:id/edit`} >
+        <EditItem />
+      </Route>
 
       <Route path={`${path}/items`} >
         {items}
