@@ -1,7 +1,7 @@
 import React from 'react'
-import ListCardContainer from './ListCardContainer'
-import ListInvitesContainer from './ListInvitesContainer'
-import NewList from '../lists/NewList'
+import ListCardContainer from './containers/ListCardContainer'
+import ListInvitesContainer from './containers/ListInvitesContainer'
+import NewList from '../lists/pages/NewList'
 import { FancyLink } from '../common/GlobalElements'
 
 import {
