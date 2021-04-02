@@ -1,8 +1,10 @@
 // ALERT: make items default
 import React from 'react';
-import ListInvitesContainer from './ListInvitesContainer';
-import ItemCard from '../items/ItemCard'
-import EditItem from '../items/EditItem'
+import ListInvitesContainer from './containers/ListInvitesContainer';
+import ItemsContainer from '../items/containers/ItemsContainer'
+import ItemCard from '../items/components/ItemCard'
+import EditItem from '../items/pages/EditItem'
+import NewItem from '../items/pages/NewItem'
 import {
   Redirect,
   Route,
@@ -33,15 +35,19 @@ const List = () => {
       <Link to={`/`}>home</Link>
 
       <Route exact path={path} >
-        <Redirect to={`${url}/items`}/> 
+        <Redirect to={`${url}/items`}/>
       </Route >
 
       <Route path={`${path}/items/:id/edit`} >
-        <EditItem />
+        <EditItem  />
       </Route>
 
-      <Route path={`${path}/items`} >
-        {items}
+      <Route path={`${path}/items/new`} >
+        <NewItem />
+      </Route>
+
+      <Route exact path={`${path}/items`} >
+        <ItemsContainer records={TestItems} />
       </Route>
       
       <Route path={`${path}/members`} >
