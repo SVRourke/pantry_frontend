@@ -67,7 +67,7 @@ export default function ItemCard ({ record }) {
   const { path, url } = useRouteMatch()
 
   return (
-    <div>
+    <div style={{margin: '0 0 2rem 0'}}>
       <Route exact path={path}>
         <CardHeading>
           {record.name}

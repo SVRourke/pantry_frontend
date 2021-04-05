@@ -17,8 +17,10 @@ export default function ItemContainer({records}) {
     const { path, url } = useRouteMatch()
     const cards = records.map(r => <ItemCard record={r} />)
     return (
-        <div>
-            {cards}
+        <div style={{height: '100vh', overflow: "hidden"}}>
+            <div style={{height: "80vh", overflowY: 'scroll'}}>
+                {cards}
+            </div>
             <AddLink to={`${url}/new`} >new</AddLink>
         </div>
     )
