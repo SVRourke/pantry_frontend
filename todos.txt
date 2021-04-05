@@ -1,0 +1,30 @@
+TODO:
+
+# Lists page
+    Style List Nav
+    Fix List Nav (passed id as props?)
+    Style List contributor card
+    add button to invite new contributor
+    invite contributor page
+    add invite list
+    style new item button
+
+    # List ItemCard
+        add margin
+
+# Friends Page
+    style add friend button
+    create add friend page
+
+    # FriendCard
+        style unfriend? button
+
+    # friedrequest card
+        add handler functions to mimic redux
+
+# Account page
+    make account page
+
+# API
+    add mutual list count to friendserializer
+    
