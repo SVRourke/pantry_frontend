@@ -6,6 +6,7 @@ import ItemCard from '../items/components/ItemCard'
 import EditItem from '../items/pages/EditItem'
 import NewItem from '../items/pages/NewItem'
 import MembersContainer from '../list_members/MembersContainer'
+import ListNav from './components/ListNav'
 import {
   Redirect,
   Route,
@@ -24,20 +25,24 @@ const List = () => {
   // REPLACED BY REDUX
   const listId = useParams().id
   const list = TestLists.find(l => l.id === parseInt(listId))
+  const userId = 3;
 
 
   return (
     <div>
-      <h1>{list.name}</h1>
-      <Link to={`${url}/items`}>items</Link>
-      <Link to={`${url}/members`}>users</Link>
-      {/* ALERT: Make Dynamic Call to Store? */}
-      <Link to={'/users/3'}>home</Link>
+      <h1 style={{
+        fontSize: '3rem',
+        textDecoration: 'underline',
+        textDecorationThickness: '4px',
+        fontWeight: '600'
+      }}>{list.name}</h1>
+      
+      <ListNav id={userId} url={url} />
 
 
       <Route exact path={path} >
         <Redirect to={`${url}/items`} />
-      </Route >
+      </Route>
 
       <Route path={`${path}/items/:id/edit`} >
         <EditItem />
