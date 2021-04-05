@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {
   Route,
   Switch,
@@ -11,15 +11,14 @@ import {
 import Lists from '../lists/ListsIndex'
 import Friends from '../friends/FriendIndex'
 import Account from '../Account'
+import MainNav from '../common/MainNav'
 const UserRouter = () => {
-  // const user_id = useParams()
   const { path, url } = useRouteMatch()
+  // const user_id = useParams()
 
   return (
     <div>
-      <Link to={`${url}/lists`}>lists</Link>
-      <Link to={`${url}/friends`}>friends</Link>
-      <Link to={`${url}/account`}>account</Link>
+      <MainNav />
 
       <Switch>
         <Route exact path={`${path}/`} >
