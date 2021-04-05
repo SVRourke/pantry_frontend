@@ -1,8 +1,6 @@
 TODO:
 
 # Lists page
-    Style List Nav
-    Fix List Nav (passed id as props?)
     Style List contributor card
     add button to invite new contributor
     invite contributor page
