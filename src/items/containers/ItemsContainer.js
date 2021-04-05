@@ -1,6 +1,17 @@
 import React from 'react'
 import { Link, useRouteMatch } from "react-router-dom"
 import ItemCard from "../components/ItemCard"
+import styled from 'styled-components'
+
+const AddLink = styled(Link)`
+    border: solid black 2px;
+    padding: .5rem 2rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    ${'' /* position: absolute;
+    bottom: 5rem;
+    right: 5rem; */}
+`;
 
 export default function ItemContainer({records}) {
     const { path, url } = useRouteMatch()
@@ -8,7 +19,7 @@ export default function ItemContainer({records}) {
     return (
         <div>
             {cards}
-            <Link to={`${url}/new`} >new</Link>
+            <AddLink to={`${url}/new`} >new</AddLink>
         </div>
     )
 }
