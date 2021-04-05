@@ -83,7 +83,7 @@ const TestLists = [
         id: 1,
         name: 'Garlic',
         amount: '3 bulbs',
-        acquired: null
+        acquired: true
       },
       {
         id: 2,
@@ -101,7 +101,7 @@ const TestLists = [
         id: 4,
         name: '3 mangoes',
         amount: '',
-        acquired: null
+        acquired: true
       },
       {
         id: 5,
