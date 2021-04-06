@@ -6,8 +6,32 @@ const TestFriends = [
     friend_id: 2
   },
   {
-    id: 3,
+    id: 2,
     friend_name: 'Maya',
+    record_age: '1 days',
+    friend_id: 3
+  },
+  {
+    id: 3,
+    friend_name: 'Jake',
+    record_age: '1 days',
+    friend_id: 2
+  },
+  {
+    id: 4,
+    friend_name: 'Rohan',
+    record_age: '1 days',
+    friend_id: 3
+  },
+  {
+    id: 5,
+    friend_name: 'Autumn',
+    record_age: '1 days',
+    friend_id: 2
+  },
+  {
+    id: 6,
+    friend_name: 'Molly',
     record_age: '1 days',
     friend_id: 3
   }
