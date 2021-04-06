@@ -12,7 +12,7 @@ const Block = styled.div`
 `
 
 const ListCardContainer = ({ records }) => {
-  const cards = records.map(r => <ListCard key={r.id} user={r} />)
+  const cards = records.map(r => <ListCard key={r.id} list={r} />)
 
   return (
     <Block>
