@@ -11,9 +11,6 @@ TODO:
         add margin
 
 # Friends Page
-    style add friend button
-    create add friend page
-
     # FriendCard
         style unfriend? button
 
