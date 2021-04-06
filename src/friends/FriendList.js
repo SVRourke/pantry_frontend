@@ -5,7 +5,9 @@ const FriendList = ({ records }) => {
   const cards = records.map(r => <FriendCard record={r} />)
   
   return (
-    <div>
+    <div style={{
+      overflowY: "scroll"
+    }}>
       {cards}
     </div>
   );
