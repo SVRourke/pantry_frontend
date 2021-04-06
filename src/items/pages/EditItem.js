@@ -1,9 +1,27 @@
 import React from 'react'
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from 'react-router-dom';
 import ItemForm from '../components/ItemForm'
+import styled from 'styled-components'
 
 // REPLACE WITH CALL TO STORE
 import { TestItems } from '../../common/TestData'
+
+const Wrapper = styled.div`
+    display: flex;
+    margin: 1rem 0 2rem 0;
+    
+`;
+
+const CancelButton = styled.button`
+    background: none;
+    border: none;
+    padding-left: 1rem;
+    font-size: 1.2rem;
+
+    &:hover {
+        color: var(--red-color)
+    }
+`;
 
 export default function EditItem() {
     const history = useHistory()
@@ -16,12 +34,12 @@ export default function EditItem() {
     const userId = parseInt(useParams().id)
     const record = TestItems.find(i => i.id === userId)
 
-
-
     return (
         <div>
-            <h1>EDIT ITEM</h1>
-            <button onClick={() => history.goBack()}>cancel</button>
+            <Wrapper>
+                <h1>EDIT: {record.name}</h1>
+                <CancelButton onClick={() => history.goBack()}>cancel?</CancelButton>
+            </Wrapper>
             <ItemForm cb={formHandler} record={record} />
         </div>
     )
