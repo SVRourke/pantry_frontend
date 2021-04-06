@@ -1,4 +1,5 @@
-// ALERT: ADD LATEST ACTIVITY TIME TO LIST INDEX RESPONSE * BACKEND * 
+// TODO: API- ADD RECORD AGE TO ITEMS IN LIST SERIALIZER
+
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {
@@ -8,24 +9,26 @@ import {
 } from "../../common/elements"
 
 const ListCard = (props) => {
-  const { id, name, contributor_count, /*item_count*/ } = props.user
+  console.log(props.list.items)
+  const { id, name, contributors, items } = props.list
   return (
     <Link to={`/lists/${id}`} >
       <CardBody>
         <CardHeading>{name}</CardHeading>
-        <p>Add most recent to response!</p>
+        {/* <p>Add most recent Item age OR "Empty List"</p> */}
+        <p>{items.length} items</p>
 
-        {/* <TimeDisplay style={{ color: color }}>
-                  activity {latestactivity} ago
-              {/* </TimeDisplay> */}
 
-        <MemberCount>{contributor_count} members</MemberCount>
+        <MemberCount>{contributors.length} members</MemberCount>
       </CardBody>
     </Link>
   )
 }
-
 export default ListCard
+
+{/* <TimeDisplay style={{ color: color }}>
+          activity {latestactivity} ago
+</TimeDisplay> */}
 
 // * LOGIC FOR CHANGING THE TEXT Color depending on how much time has passed
 // const timeType = latestactivity.split(" ")[1];
