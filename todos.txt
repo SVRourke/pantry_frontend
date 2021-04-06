@@ -1,4 +1,6 @@
 TODO:
+# ALL
+    Style scrollbars
 
 # Lists page
     Style List contributor card
@@ -6,9 +8,13 @@ TODO:
     invite contributor page
     add invite list
     style new item button
+    add filter (acquired)
 
     # List ItemCard
         add margin
+
+    # edit item
+        style
 
 # Friends Page
     # FriendCard
