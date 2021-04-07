@@ -6,13 +6,30 @@ import styled from 'styled-components'
 const Block = styled.div`
     width: 100%;
     overflow-y: scroll;
-    ${'' /* height: 20vh; */}
-    ${'' /* background-color: #CACACA; */}
 `
 
+
 const FriendRequestContainer = ({ requests }) => {
+  const handleRequest = (id, action) => {
+    console.log("REQUESTHANDLED", action, id)
+    switch(action) {
+      case 'CANCEL':
+        alert(`CANCEL ID: ${id}`)
+        break;
+      case 'ACCEPT':
+        alert(`ACCEPT ID: ${id}`)
+        break;
+      case 'DECLINE':
+        alert(`DENY ID: ${id}`)
+        break;
+      default:
+        return false
+    }
+  }
+
+
   const [filter, setFilter] = useState('received')
-  const cards = requests.filter(r => r.type === filter).map(r => <FriendRequestCard record={r} />)
+  const cards = requests.filter(r => r.type === filter).map(r => <FriendRequestCard record={r} clickHandler={handleRequest}/>)
 
   const filterChange = (event) => { setFilter(event.target.id) }
 
@@ -25,8 +42,3 @@ const FriendRequestContainer = ({ requests }) => {
 }
 
 export default FriendRequestContainer;
-
-
-
-
-
