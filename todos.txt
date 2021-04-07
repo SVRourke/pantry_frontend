@@ -2,13 +2,15 @@ TODO:
 # ALL
     Style scrollbars
 
+# style new list page
+
 # Lists page
     Style List contributor card
     add button to invite new contributor
     invite contributor page
     add invite list
-    style new item button
     add filter (acquired)
+    make list items container max-height 60vh
 
     # List ItemCard
         add margin
@@ -17,9 +19,6 @@ TODO:
         style
 
 # Friends Page
-    # FriendCard
-        style unfriend? button
-
     # friedrequest card
         add handler functions to mimic redux
 
@@ -29,3 +28,9 @@ TODO:
 # API
     add mutual list count to friendserializer
     
+REDUX
+    -Account Actions
+    -list Actions
+    -Friend Actions
+    -FriendRequest Actions
+    -List Invite Actions
