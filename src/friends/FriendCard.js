@@ -20,17 +20,16 @@ const UnFriend = styled.button`
 `;
 
 
-
 const FriendCard = (props) => {
-  const { /*friend_id,*/ friend_name, /*id,*/ record_age } = props.record
-  
+  const { /*friend_id,*/ friend_name, id, record_age } = props.record
+
   return (
     <CardBody>
       <CardHeading>{friend_name}</CardHeading>
       <Row>
         <TimeDisplay>{record_age}</TimeDisplay>
-        {/* use id to post delete */}
-        <UnFriend>unfriend?</UnFriend> 
+
+        <UnFriend onClick={(event) => props.cb(id)}>unfriend?</UnFriend> 
       </Row>
       <SubHeading>{'mutual listcount'}</SubHeading>
     </CardBody>
