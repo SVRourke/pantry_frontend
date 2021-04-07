@@ -12,9 +12,12 @@ import {
 } from '../../common/elements'
 
 
-const ListInviteCard = ({ record }) => {
-  const { /*id,*/ record_age, requestor_name, requestee_name, contributor_count, type } = record
-  const style = type === 'sent' ? { color: '#cccccc' } : { color: 'var(--offblack-color)' }
+const ListInviteCard = ({record, clickHandler}) => {
+  const { id, record_age, requestor_name, requestee_name, contributor_count, type } = record
+  
+  const style = {
+    color: type === 'sent' ? '#ccc' : 'var(--offblack-color)'
+  }
 
   return (
     <CardBody typeStyle={type}>
@@ -25,7 +28,7 @@ const ListInviteCard = ({ record }) => {
           {type === 'sent' ? requestee_name : requestor_name}
         </InvitedDisplay>
 
-        <RequestCancel displayType={type}>
+        <RequestCancel displayType={type} onClick={() => clickHandler(id, 'DELETE')} > 
           cancel?
           </RequestCancel>
       </Row>
@@ -34,8 +37,8 @@ const ListInviteCard = ({ record }) => {
       <MemberCount displayType={type}>{contributor_count} members</MemberCount>
 
       <Row>
-        <AcceptButton displayType={type} >accept</AcceptButton>
-        <DeclineButton displayType={type} >decline</DeclineButton>
+        <AcceptButton displayType={type} onClick={() => clickHandler(id, 'ACCEPT')} >accept</AcceptButton>
+        <DeclineButton displayType={type} onClick={() => clickHandler(id, 'DELETE')} >decline</DeclineButton>
       </Row>
 
     </CardBody>
