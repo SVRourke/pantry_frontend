@@ -5,10 +5,7 @@ TODO:
 # style new list page
 
 # Lists page
-    Style List contributor card
-    add button to invite new contributor
     invite contributor page
-    add invite list
     add filter (acquired)
     make list items container max-height 60vh
 
