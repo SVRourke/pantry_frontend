@@ -1,3 +1,4 @@
+// ALERT CONNECT TO REDUX
 // Alert: Add List Name to list Invite Serializer * Backend *
 import React, { useState } from 'react'
 import InvitesControls from '../../common/InvitesControls'
@@ -7,23 +8,35 @@ import styled from 'styled-components'
 const Block = styled.div`
     width: 100%;
     overflow-y: scroll;
-    ${'' /* height: 20vh; */}
-    ${'' /* background-color: #CACACA; */}
 `
 
 const ListInvitesContainer = ({ invites }) => {
   const [filter, setFilter] = useState('received')
-  const cards = invites.filter(r => r.type === filter).map(r => <ListInviteCard record={r} />)
+
+  const inviteHandler = (id, action) => {
+    switch (action) {
+      case 'DELETE':
+        alert(`DELETE INVITE ${id}`)
+        break
+      case 'ACCEPT':
+        alert(`ACCEPT INVITE ${id}`)
+        break
+      default:
+        return false
+    }
+  }
+
+  const cards = invites.filter(r => r.type === filter).map(r => <ListInviteCard record={r} clickHandler={inviteHandler} />)
 
   const filterChange = (event) => {
     setFilter(event.target.id)
   }
 
-    return (
+  return (
       <Block>
-          <InvitesControls filter={filter} cb={filterChange} />
-          {cards}
-        </Block>
+        <InvitesControls filter={filter} cb={filterChange} />
+        {cards}
+      </Block>
   )
 }
 
