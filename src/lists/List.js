@@ -1,4 +1,3 @@
-// ALERT: make items default
 import React from 'react';
 import ListInvitesContainer from './containers/ListInvitesContainer';
 import ItemsContainer from '../items/containers/ItemsContainer'
