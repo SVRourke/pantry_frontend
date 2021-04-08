@@ -29,13 +29,13 @@ export default function ItemForm (props) {
 
   return (
     <div>
-      <form onSubmit={submitHandler}>
+      <NiceForm onSubmit={submitHandler}>
         <NiceLabel for='name'>item</NiceLabel>
         <TextField onChange={changeHandler} type='text' name='name' value={info.name} />
         <NiceLabel for='amount'>amount</NiceLabel>
         <TextArea onChange={changeHandler} name='amount' value={info.amount} />
         <SubmitButton type='submit' value='submit' />
-      </form>
+      </NiceForm>
     </div>
   )
 }
