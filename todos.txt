@@ -1,11 +1,8 @@
 TODO:
-# Style scrollbars
-# Add List member invite from friendlist
 # Add friend redirect back to friends after submit
 
 # list item card
-      make acquired a toggle
-    move functions to List.js for redux
+    make acquired a toggle
 
 # Lists page
     add filter (acquired)
@@ -31,5 +28,7 @@ REDUX
 
 
 
+# Style scrollbars
 # ListInvitesContainer CONNECT TO REDUX
 # RENAME LISTSINDEX COMPONENT
+# Add List member invite from friendlist
