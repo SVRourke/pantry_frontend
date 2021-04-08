@@ -1,27 +1,11 @@
 import React from 'react';
 import InviteForm from '../common/InviteForm'
 import { useHistory } from "react-router-dom";
-import { Row } from '../common/elements'
-import styled from "styled-components"
+import { Row, CancelButton } from '../common/elements'
 
-const PageHeading = styled.h1`
-  
-`;
-
-const GoBack = styled.button`
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: var(--gray-color);
-  padding-left: 1rem;
-
-  &:hover {
-    color: var(--red-color)
-  }
-`;
 
 const NewFriendInvite = () => {
-  let history = useHistory();
+  const history = useHistory();
   // replace with dispatch
   const handleForm = (info) => {
     alert(info)
@@ -33,10 +17,10 @@ const NewFriendInvite = () => {
       padding: "1rem 0"
     }}>
       <Row>
-        <PageHeading>add friend</PageHeading>
-        <GoBack
+        <h1>add friend</h1>
+        <CancelButton
           onClick={() => history.goBack()}
-        >cancel?</GoBack>
+        >cancel?</CancelButton>
       </Row>
       <InviteForm cb={handleForm} />
 

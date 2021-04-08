@@ -1,27 +1,12 @@
 import React from 'react'
+import { Route, Switch, useRouteMatch } from 'react-router-dom'
 import FriendRequestContainer from '../friends/FriendRequestContainer'
 import NewFriendInvite from '../friends/NewFriendInvite'
 import FriendCard from './FriendCard'
+import { NewFriend } from '../common/elements'
 
-import { Route, Switch, Link, useRouteMatch } from 'react-router-dom'
-
-import styled from 'styled-components'
 // TEST DATA
 import { TestFriends, FriendRequests } from '../common/TestData';
-
-const NewFriend = styled(Link)`
-  border: solid var(--offblack-color) 2px;
-  padding: .3rem .7rem;
-  border-radius: 3rem;
-  width: 11ch;
-  margin: 1rem 0;
-
-  &:hover {
-    background: var(--offblack-color);
-    color: white;
-
-  }
-`;
 
 const friendPageContainer = {
   height: "60vh",

@@ -3,12 +3,7 @@
 import React, { useState } from 'react'
 import InvitesControls from '../../common/InvitesControls'
 import ListInviteCard from '../components/ListInviteCard'
-import styled from 'styled-components'
-
-const Block = styled.div`
-    width: 100%;
-    overflow-y: scroll;
-`
+import { Block } from '../../common/elements'
 
 const ListInvitesContainer = ({ invites }) => {
   const [filter, setFilter] = useState('received')
@@ -33,10 +28,10 @@ const ListInvitesContainer = ({ invites }) => {
   }
 
   return (
-      <Block>
-        <InvitesControls filter={filter} cb={filterChange} />
-        {cards}
-      </Block>
+    <Block>
+      <InvitesControls filter={filter} cb={filterChange} />
+      {cards}
+    </Block>
   )
 }
 

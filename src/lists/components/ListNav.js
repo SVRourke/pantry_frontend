@@ -1,18 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-
-const NavContainer = styled.nav`
-  width: 100%;
-  display: flex;
-  padding: .7rem 0;
-`;
-
-const ListNavLink = styled(Link)`
-  font-size: 1.4rem;
-  margin-right: 1rem;
-  font-weight: ${props => props.active ? '600' : '400'};
-`;
+import { NavContainer, ListNavLink } from '../../common/elements'
 
 const ListNav = ({id, url }) => {
   const currentPage = window.location.href.split('/').pop()

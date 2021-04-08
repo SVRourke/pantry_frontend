@@ -1,13 +1,7 @@
 import React, { useState } from 'react'
 import InvitesControls from '../common/InvitesControls'
 import FriendRequestCard from '../friends/FriendRequestCard'
-import styled from 'styled-components'
-
-const Block = styled.div`
-    width: 100%;
-    overflow-y: scroll;
-`
-
+import { Block } from '../common/elements'
 
 const FriendRequestContainer = ({ requests }) => {
   const handleRequest = (id, action) => {
@@ -25,7 +19,6 @@ const FriendRequestContainer = ({ requests }) => {
         return false
     }
   }
-
 
   const [filter, setFilter] = useState('received')
   const cards = requests.filter(r => r.type === filter).map(r => <FriendRequestCard record={r} clickHandler={handleRequest}key={r.id} />)

@@ -5,20 +5,9 @@ import {
   CardHeading,
   TimeDisplay,
   SubHeading,
-  Row
+  Row,
+  UnFriend
 } from "../common/elements";
-
-import styled from 'styled-components'
-const UnFriend = styled.button`
-  background: none;
-  border: none;
-  margin: 0 1rem;
-  color: var(--red-color);
-  &:hover {
-    font-weight: 600;
-  }
-`;
-
 
 const FriendCard = (props) => {
   const { /*friend_id,*/ friend_name, id, record_age } = props.record

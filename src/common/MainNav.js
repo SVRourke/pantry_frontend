@@ -1,26 +1,6 @@
 import React, { useState } from 'react';
-import { useRouteMatch, Link } from 'react-router-dom'
-import styled from "styled-components"
-
-const NavLinkContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction:row;
-  padding-top: 2rem;
-
-`;
-
-const NavLink = styled(Link)`
-  font-weight: ${props => props.$active ? "800" : "500"};
-  font-size: 1.5rem;
-  padding-right: 1rem;
-  text-decoration: ${props => props.$active ? 'underline' : 'none'};
-  text-decoration-thickness: 3px;
-  &:after {
-    content: ":";
-    display: ${props => props.$active ? "true" : "none"};
-  }
-`;
+import { useRouteMatch } from 'react-router-dom'
+import { NavLink, NavLinkContainer  } from '../common/elements'
 
 const MainNav = () => {
   const { url } = useRouteMatch()

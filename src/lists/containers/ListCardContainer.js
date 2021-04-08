@@ -1,15 +1,6 @@
 import React from 'react'
-
 import ListCard from '../components/ListCard'
-
-import styled from 'styled-components'
-
-const Block = styled.div`
-    width: 100%;
-    ${'' /* height: 60vh; */}
-    overflow-y: scroll;
-    ${'' /* background-color: #CACACA; */}
-`
+import { Block } from '../../common/elements'
 
 const ListCardContainer = ({ records }) => {
   const cards = records.map(r => <ListCard key={r.id} list={r} />)
