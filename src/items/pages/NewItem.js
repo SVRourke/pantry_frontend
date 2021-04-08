@@ -25,6 +25,7 @@ export default function NewItem() {
 
     const formHandler = (info) => {
         alert(`Form Submitted ${info.name}: ${info.amount}`)
+        history.goBack()
     }
 
     return (
