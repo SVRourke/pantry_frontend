@@ -2,7 +2,14 @@ TODO:
 #EXTRACT ALL COMMON STYLES
 # Standardize Form Styles
 # Style scrollbars
-
+# REDIRECT AFTER FORM SUBMIT new list
+# ListInvitesContainer CONNECT TO REDUX
+# ListInvitesContainer Add List Name to list Invite Serializer * Backend *
+# List MemberCard add record_age and itemCount to contributors in seriaizer
+# List Card add most recent activity to list serializer ADD RECORD AGE TO ITEMS IN LIST SERIALIZER
+# FIX List INVITE ROUTE
+# Add mutual list count to friend serializer 
+# RENAME LISTSINDEX COMPONENT
 
 # list item card
     make acquired a toggle
