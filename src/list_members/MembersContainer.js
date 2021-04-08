@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, Route, useRouteMatch } from 'react-router-dom'
-import { MemberCount } from '../common/elements';
 import MemberCard from './components/MemberCard'
 import styled from 'styled-components'
 
