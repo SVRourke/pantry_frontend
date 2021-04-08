@@ -1,3 +1,4 @@
+// ALERT: DELETE
 import React from 'react';
 
 const InvitePage = () => {
