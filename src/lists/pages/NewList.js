@@ -53,7 +53,7 @@ const NewList = () => {
   const inputHandler = (event) => { 
     setInput(event.target.value)
   }
-  // ALERT: REDIRECT AFTER FORM SUBMIT
+  // ALERT: REDIRECT AFTER FORM SUBMIT history.push(list/id)
   const submitHandler = (event) => {
     event.preventDefault()
     alert(`Creating ${inputValue}`)
