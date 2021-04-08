@@ -1,9 +1,8 @@
 import React from 'react'
-import FriendList from './FriendList'
 import FriendRequestContainer from '../friends/FriendRequestContainer'
 import NewFriendInvite from '../friends/NewFriendInvite'
-import { FancyLink } from '../common/GlobalElements'
 import FriendCard from './FriendCard'
+
 import { Route, Switch, Link, useRouteMatch } from 'react-router-dom'
 
 import styled from 'styled-components'
@@ -38,7 +37,7 @@ const FriendIndex = () => {
     alert(`{action: DELETE, id: ${id} }`)
 
   }
-  const cards = TestFriends.map(r => <FriendCard record={r} cb={handleUnFriend} />)
+  const cards = TestFriends.map(r => <FriendCard record={r} cb={handleUnFriend} key={r.id} />)
   // Connect to REDUX 
   return (
     <Switch>
