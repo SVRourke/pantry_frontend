@@ -1,7 +1,6 @@
 import React from 'react';
-import ListInvitesContainer from './containers/ListInvitesContainer';
+// import ListInvitesContainer from './containers/ListInvitesContainer';
 import ItemsContainer from '../items/containers/ItemsContainer'
-import ItemCard from '../items/components/ItemCard'
 import EditItem from '../items/pages/EditItem'
 import NewItem from '../items/pages/NewItem'
 import MembersContainer from '../list_members/MembersContainer'
@@ -9,7 +8,6 @@ import ListNav from './components/ListNav'
 import {
   Redirect,
   Route,
-  Link,
   useParams,
   useRouteMatch
 } from 'react-router-dom'
