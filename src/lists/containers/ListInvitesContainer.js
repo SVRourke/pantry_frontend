@@ -26,7 +26,7 @@ const ListInvitesContainer = ({ invites }) => {
     }
   }
 
-  const cards = invites.filter(r => r.type === filter).map(r => <ListInviteCard record={r} clickHandler={inviteHandler} />)
+  const cards = invites.filter(r => r.type === filter).map(r => <ListInviteCard record={r} clickHandler={inviteHandler} key={r.id} />)
 
   const filterChange = (event) => {
     setFilter(event.target.id)
