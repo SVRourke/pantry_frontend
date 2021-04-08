@@ -31,18 +31,6 @@ const NiceLabel = styled.label`
   font-weight: 600
 `;
 
-const GoBack = styled.button`
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: var(--gray-color);
-  padding-left: 1rem;
-
-  &:hover {
-    color: var(--red-color)
-  }
-`;
-
 
 const InviteForm = ({cb}) => {
   const [ email, setEmail] = useState("")
