@@ -24,7 +24,7 @@ const innerContainerStyles = {
 }
 
 export default function ItemContainer ({ records }) {
-  const { path, url } = useRouteMatch()
+  const { url } = useRouteMatch()
   const cards = records.map(r => <ItemCard record={r} />)
 
   return (
