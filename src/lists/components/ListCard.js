@@ -9,7 +9,6 @@ import {
 } from "../../common/elements"
 
 const ListCard = (props) => {
-  console.log(props.list.items)
   const { id, name, contributors, items } = props.list
   return (
     <Link to={`/lists/${id}`} >
@@ -26,9 +25,9 @@ const ListCard = (props) => {
 }
 export default ListCard
 // ALERT: add most recent activity to api
-{/* <TimeDisplay style={{ color: color }}>
-          activity {latestactivity} ago
-</TimeDisplay> */}
+//<TimeDisplay style={{ color: color }}>
+//          activity {latestactivity} ago
+//</TimeDisplay>
 
 // * LOGIC FOR CHANGING THE TEXT Color depending on how much time has passed
 // const timeType = latestactivity.split(" ")[1];
