@@ -8,7 +8,7 @@ import {
   // useParams 
 } from 'react-router-dom'
 
-import Lists from '../lists/ListsIndex'
+import ListsIndex from '../lists/ListsIndex'
 import Friends from '../friends/FriendIndex'
 import Account from '../Account'
 import MainNav from '../common/MainNav'
@@ -24,7 +24,7 @@ const UserRouter = () => {
         <Route exact path={`${path}/`} >
           <Redirect to={`${url}/lists`} />
         </Route>
-        <Route path={`${path}/lists`} component={Lists} />
+        <Route path={`${path}/lists`} component={ListsIndex} />
         <Route path={`${path}/friends`} component={Friends} />
         <Route path={`${path}/account`} component={Account} />
       </Switch>
