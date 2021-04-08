@@ -1,7 +1,8 @@
 TODO:
-#EXTRACT ALL COMMON STYLES
-# Standardize Form Styles
 # Style scrollbars
+# EXTRACT ALL COMMON STYLES
+# Standardize Form Styles
+
 # REDIRECT AFTER FORM SUBMIT new list
 # ListInvitesContainer CONNECT TO REDUX
 # ListInvitesContainer Add List Name to list Invite Serializer * Backend *
@@ -10,6 +11,7 @@ TODO:
 # FIX List INVITE ROUTE
 # Add mutual list count to friend serializer 
 # RENAME LISTSINDEX COMPONENT
+# Redirect after submit new item
 
 # list item card
     make acquired a toggle
