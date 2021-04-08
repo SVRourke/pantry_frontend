@@ -27,13 +27,14 @@ const Heading = styled.p`
 
 const FancyLink = styled.div`
   display: block;
-  margin: 1rem 0;   
-    a {
-      text-decoration: none;
-      border: solid black 2px;
-      padding: .5rem 2rem;
-      margin: 2rem 0;
-    }
+  margin: 1rem 0; 
+  a {
+    border-radius: 3rem;  
+    text-decoration: none;
+    border: solid black 2px;
+    padding: .5rem 2rem;
+    margin: 2rem 0;
+  }
 `;
 
 export {
