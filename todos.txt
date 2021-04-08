@@ -1,23 +1,18 @@
 TODO:
-# ALL
-    Style scrollbars
+#EXTRACT ALL COMMON STYLES
+# Standardize Form Styles
+# Style scrollbars
 
-# style new list page
+
+# list item card
+    make acquired a toggle
+
 
 # Lists page
     invite contributor page
     add filter (acquired)
     make list items container max-height 60vh
-
-    # List ItemCard
-        add margin
-
-    # edit item
-        style
-
-# Friends Page
-    # friedrequest card
-        add handler functions to mimic redux
+    make invites container min-height: 40vh
 
 # Account page
     make account page
