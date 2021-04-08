@@ -11,7 +11,6 @@ const Block = styled.div`
 
 const FriendRequestContainer = ({ requests }) => {
   const handleRequest = (id, action) => {
-    console.log("REQUESTHANDLED", action, id)
     switch(action) {
       case 'CANCEL':
         alert(`CANCEL ID: ${id}`)
@@ -29,7 +28,7 @@ const FriendRequestContainer = ({ requests }) => {
 
 
   const [filter, setFilter] = useState('received')
-  const cards = requests.filter(r => r.type === filter).map(r => <FriendRequestCard record={r} clickHandler={handleRequest}/>)
+  const cards = requests.filter(r => r.type === filter).map(r => <FriendRequestCard record={r} clickHandler={handleRequest}key={r.id} />)
 
   const filterChange = (event) => { setFilter(event.target.id) }
 
