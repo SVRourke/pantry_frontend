@@ -1,6 +1,4 @@
-import { createEvent } from '@testing-library/dom'
 import React, { useState } from 'react'
-import { CardBody } from '../../common/elements'
 import styled from "styled-components"
 
 const NiceLabel = styled.label`
@@ -47,7 +45,6 @@ export default function ItemForm (props) {
     name: '',
     amount: ''
   })
-  console.log(info)
 
   const changeHandler = (event) => {
     setInfo({
