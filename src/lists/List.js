@@ -1,5 +1,5 @@
 import React from 'react';
-// import ListInvitesContainer from './containers/ListInvitesContainer';
+import InvitePage from '../list_members/pages/InvitePage'
 import ItemsContainer from '../items/containers/ItemsContainer'
 import EditItem from '../items/pages/EditItem'
 import NewItem from '../items/pages/NewItem'
@@ -56,6 +56,10 @@ const List = () => {
 
       <Route exact path={`${path}/members`} >
         <MembersContainer contributors={list.contributors} />
+      </Route>
+
+      <Route path={`${path}/members/invite`} >
+        <InvitePage />
       </Route>
 
     </div>
