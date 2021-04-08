@@ -10,16 +10,8 @@ import {
 } from '../../common/elements'
 
 
-export default function ItemCard ({ record }) {
-  const toggleAcquired = () => {
-    alert(`marking ${record.name} acquired ID: ${record.id}`)
-  }
-  const trash = () => {
-    alert(`trashing ${record.name} ID: ${record.id}`)
-  }
-
+export default function ItemCard ({ record, toggle, trash }) {
   const { path, url } = useRouteMatch()
-
   return (
     <div style={{margin: '0 0 2rem 0'}}>
       <Route exact path={path}>
@@ -29,14 +21,14 @@ export default function ItemCard ({ record }) {
 
         <Row>
           <Acquired 
-            onClick={toggleAcquired}
+            onClick={() => toggle(record.id)}
             acquired={record.acquired}
           >
             acquired
           </Acquired>
 
           <Edit to={`${url}/${record.id}/edit`}>edit</Edit>
-          <Trash onClick={trash}>trash</Trash>
+          <Trash onClick={() => trash(record.id)}>trash</Trash>
         </Row>
       </Route>
 
