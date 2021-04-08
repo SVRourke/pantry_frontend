@@ -1,5 +1,5 @@
 import React from 'react'
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams, useRouteMatch } from 'react-router-dom';
 import ItemForm from '../components/ItemForm'
 import styled from 'styled-components'
 
@@ -25,9 +25,11 @@ const CancelButton = styled.button`
 
 export default function EditItem() {
     const history = useHistory()
+    const {url} = useRouteMatch()
 
     const formHandler = (info) => {
-        alert(`Form Submitted ${info.name}: ${info.amount}`)
+        alert(`Form Submitted ${info.name}: ${info.amount}|`)
+        history.push(url.split('/').slice(0, url.split("/").length - 2).join('/'))
     }
 
     // REPLACE WITH CALL TO STORE
