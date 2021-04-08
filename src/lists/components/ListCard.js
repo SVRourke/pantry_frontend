@@ -25,7 +25,7 @@ const ListCard = (props) => {
   )
 }
 export default ListCard
-
+// ALERT: add most recent activity to api
 {/* <TimeDisplay style={{ color: color }}>
           activity {latestactivity} ago
 </TimeDisplay> */}
