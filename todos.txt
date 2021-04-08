@@ -1,18 +1,13 @@
 TODO:
 # Style scrollbars
-# EXTRACT ALL COMMON STYLES
-# Standardize Form Styles
-
-# ListInvitesContainer CONNECT TO REDUX
-# FIX List INVITE ROUTE
-# Add mutual list count to friend serializer 
-# RENAME LISTSINDEX COMPONENT
+# Add List member invite from friendlist
+# Add friend redirect back to friends after submit
 
 # list item card
-    make acquired a toggle
+      make acquired a toggle
+    move functions to List.js for redux
 
 # Lists page
-    invite contributor page
     add filter (acquired)
     make list items container max-height 60vh
     make invites container min-height: 40vh
@@ -25,6 +20,7 @@ TODO:
     Add List Name to list Invite Serializer *** ListInvitesContainer
     add record_age and itemCount to contributors in seriaizer *** List MemberCard 
     add most recent activity to list serializer ADD RECORD AGE TO ITEMS IN LIST SERIALIZER *** List Card
+    REDIRECT AFTER FORM SUBMIT new list NEEDS API to return id
     
 REDUX
     -Account Actions
@@ -35,4 +31,5 @@ REDUX
 
 
 
-# REDIRECT AFTER FORM SUBMIT new list NEEDS API to return id
+# ListInvitesContainer CONNECT TO REDUX
+# RENAME LISTSINDEX COMPONENT
