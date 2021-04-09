@@ -10,17 +10,17 @@ import {
 } from "../common/elements";
 
 const FriendCard = (props) => {
-  const { /*friend_id,*/ friend_name, id, record_age } = props.record
+  const { /*friend_id,*/ friend_name, id, record_age, mutual_list_count } = props.record
 
   return (
     <CardBody>
       <CardHeading>{friend_name}</CardHeading>
       <Row>
-        <TimeDisplay>{record_age}</TimeDisplay>
+        <TimeDisplay>since {record_age} minutes ago</TimeDisplay>
 
         <UnFriend onClick={(event) => props.cb(id)}>unfriend?</UnFriend> 
       </Row>
-      <SubHeading>{'mutual listcount'}</SubHeading>
+      <SubHeading>{mutual_list_count} lists together</SubHeading>
     </CardBody>
   );
 }
