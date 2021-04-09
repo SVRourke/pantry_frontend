@@ -1,4 +1,5 @@
 TODO:
+# ADD SOME TIME FORMATTING THING
 # Add friend redirect back to friends after submit
 
 # list item card
@@ -13,9 +14,6 @@ TODO:
     make account page
 
 # API
-    add mutual list count to friendserializer
-    Add List Name to list Invite Serializer *** ListInvitesContainer
-    add record_age and itemCount to contributors in seriaizer *** List MemberCard 
     add most recent activity to list serializer ADD RECORD AGE TO ITEMS IN LIST SERIALIZER *** List Card
     REDIRECT AFTER FORM SUBMIT new list NEEDS API to return id
     
