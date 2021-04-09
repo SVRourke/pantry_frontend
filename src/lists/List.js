@@ -55,7 +55,7 @@ const List = () => {
 
 
       <Route exact path={`${path}/members`} >
-        <MembersContainer contributors={list.contributors} />
+        <MembersContainer contributors={list.contributions} />
       </Route>
 
       <Route path={`${path}/members/invite`} >
