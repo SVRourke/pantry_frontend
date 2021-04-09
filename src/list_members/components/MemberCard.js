@@ -11,9 +11,9 @@ import {
 const MemberCard = ({ user }) => {
   return (
     <CardBody>
-      <CardHeading>{user.name}</CardHeading>
-      <SubHeading>since 3 weeks ago{/*user.user_age*/}</SubHeading>
-      <TimeDisplay>2 items{/* user.itemCount */}</TimeDisplay>
+      <CardHeading>{user.username}</CardHeading>
+      <SubHeading>since {user.record_age} minutes ago</SubHeading>
+      <TimeDisplay>{ user.item_count } items</TimeDisplay>
     </CardBody>
   );
 }
