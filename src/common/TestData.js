@@ -2,38 +2,16 @@ const TestFriends = [
   {
     id: 1,
     friend_name: 'Sharain',
-    record_age: '1 days',
-    friend_id: 2
-  },
-  {
-    id: 2,
-    friend_name: 'Maya',
-    record_age: '1 days',
-    friend_id: 3
+    record_age: 30243,
+    friend_id: 2,
+    mutual_list_count: 3
   },
   {
     id: 3,
-    friend_name: 'Jake',
-    record_age: '1 days',
-    friend_id: 2
-  },
-  {
-    id: 4,
-    friend_name: 'Rohan',
-    record_age: '1 days',
-    friend_id: 3
-  },
-  {
-    id: 5,
-    friend_name: 'Autumn',
-    record_age: '1 days',
-    friend_id: 2
-  },
-  {
-    id: 6,
-    friend_name: 'Molly',
-    record_age: '1 days',
-    friend_id: 3
+    friend_name: 'Maya',
+    record_age: 30243,
+    friend_id: 3,
+    mutual_list_count: 3
   }
 ]
 const FriendRequests = [
@@ -43,7 +21,7 @@ const FriendRequests = [
     requestor_name: 'Sam',
     requestee_name: 'Autumn',
     type: 'sent',
-    record_age: '5 days'
+    record_age: 23102
   },
   {
     id: 3,
@@ -51,55 +29,70 @@ const FriendRequests = [
     requestor_name: 'Jake',
     requestee_name: 'Sam',
     type: 'received',
-    record_age: '5 days'
+    record_age: 23107
   }
 ]
+
 const TestLists = [
   {
     id: 3,
     name: 'Squad',
-    contributors: [
+    contributions: [
       {
         id: 1,
-        email: 'Sam@gmail.com',
-        name: 'Sam'
+        user_id: 1,
+        username: 'Sam',
+        record_age: 30249,
+        item_count: 0
       },
       {
         id: 2,
-        email: 'Sharain@gmail.com',
-        name: 'Sharain'
+        user_id: 2,
+        username: 'Sharain',
+        record_age: 30249,
+        item_count: 0
       },
       {
         id: 3,
-        email: 'Maya@gmail.com',
-        name: 'Maya'
+        user_id: 3,
+        username: 'Maya',
+        record_age: 30249,
+        item_count: 0
       },
       {
         id: 4,
-        email: 'Rohan@gmail.com',
-        name: 'Rohan'
+        user_id: 4,
+        username: 'Rohan',
+        record_age: 30249,
+        item_count: 0
       },
       {
-        id: 6,
-        email: 'Autumn@gmail.com',
-        name: 'Autumn'
+        id: 5,
+        user_id: 6,
+        username: 'Autumn',
+        record_age: 30249,
+        item_count: 0
       }
     ],
     items: []
   },
   {
     id: 2,
-    name: "Rain & Sam's List",
-    contributors: [
+    name: "Rain \u0026 Sam's List",
+    contributions: [
       {
-        id: 1,
-        email: 'Sam@gmail.com',
-        name: 'Sam'
+        id: 6,
+        user_id: 1,
+        username: 'Sam',
+        record_age: 30249,
+        item_count: 5
       },
       {
-        id: 2,
-        email: 'Sharain@gmail.com',
-        name: 'Sharain'
+        id: 7,
+        user_id: 2,
+        username: 'Sharain',
+        record_age: 30249,
+        item_count: 0
       }
     ],
     items: [
@@ -107,42 +100,49 @@ const TestLists = [
         id: 1,
         name: 'Garlic',
         amount: '3 bulbs',
-        acquired: true
+        acquired: null,
+        record_age: 24495
       },
       {
         id: 2,
         name: 'Coffee',
         amount: '1 tub',
-        acquired: null
+        acquired: null,
+        record_age: 24494
       },
       {
         id: 3,
         name: 'butter',
         amount: '1 lb',
-        acquired: null
+        acquired: null,
+        record_age: 24494
       },
       {
         id: 4,
         name: '3 mangoes',
         amount: '',
-        acquired: true
+        acquired: null,
+        record_age: 24494
       },
       {
         id: 5,
         name: 'potatoes',
         amount: '1 little bag',
-        acquired: null
+        acquired: null,
+        record_age: 24494
       }
     ]
   },
   {
     id: 1,
     name: "Sam's List",
-    contributors: [
+    contributions: [
       {
-        id: 1,
-        email: 'Sam@gmail.com',
-        name: 'Sam'
+        id: 8,
+        user_id: 1,
+        username: 'Sam',
+        record_age: 30249,
+        item_count: 0
       }
     ],
     items: []
@@ -152,37 +152,42 @@ const TestLists = [
 const TestInvites = [
   {
     id: 1,
-    record_age: '1 days',
+    type: 'sent',
+    list_name: "Sam's List",
     requestor_name: 'Sam',
     requestee_name: 'Jake',
     contributor_count: 1,
-    type: 'sent'
+    record_age: 30250
   },
   {
     id: 7,
-    record_age: '5 days',
+    type: 'sent',
+    list_name: "Sam's List",
     requestor_name: 'Sam',
     requestee_name: 'Rohan',
-    contributor_count: 3,
-    type: 'sent'
+    contributor_count: 1,
+    record_age: 23072
   },
   {
     id: 2,
-    record_age: '5 days',
+    type: 'received',
+    list_name: 'new list',
     requestor_name: 'Autumn',
     requestee_name: 'Sam',
-    contributor_count: 10,
-    type: 'received'
+    contributor_count: 0,
+    record_age: 23960
   },
   {
     id: 3,
-    record_age: '5 days',
+    type: 'received',
+    list_name: 'New New List',
     requestor_name: 'Autumn',
     requestee_name: 'Sam',
-    contributor_count: 4,
-    type: 'received'
+    contributor_count: 0,
+    record_age: 23958
   }
 ]
+
 const TestItems = [
   {
     id: 1,
