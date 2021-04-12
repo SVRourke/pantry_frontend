@@ -13,8 +13,23 @@ const Toggle = (listId, itemId) => {
     itemId: itemId
   }
 }
-
+const Create = (listId, item) => {
+  return {
+    type: 'CREATE',
+    listId: listId,
+    item: item
+  }
+}
+const Edit = (listId, item) => {
+  return {
+    type: 'EDIT',
+    listId: listId,
+    item: item
+  }
+}
 export {
   Trash,
-  Toggle
+  Toggle,
+  Create,
+  Edit
 }
