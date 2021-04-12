@@ -20,7 +20,7 @@ const List = () => {
   const { path, url } = useRouteMatch()
 
   // REPLACED BY REDUX
-  const listId = useParams().id
+  const listId = useParams().list_id
   const list = TestLists.find(l => l.id === parseInt(listId))
   const userId = 3;
 
@@ -41,7 +41,7 @@ const List = () => {
         <Redirect to={`${url}/items`} />
       </Route>
 
-      <Route path={`${path}/items/:id/edit`} >
+      <Route path={`${path}/items/:item_id/edit`} >
         <EditItem />
       </Route>
 
