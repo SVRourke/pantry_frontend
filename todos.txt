@@ -17,6 +17,7 @@ TODO:
     add most recent activity to list serializer ADD RECORD AGE TO ITEMS IN LIST SERIALIZER *** List Card
     REDIRECT AFTER FORM SUBMIT new list NEEDS API to return id
     List serializer, items = dict of items by id
+    item.acquired default to false
     
 REDUX
     -Account Actions
