@@ -16,6 +16,7 @@ TODO:
 # API
     add most recent activity to list serializer ADD RECORD AGE TO ITEMS IN LIST SERIALIZER *** List Card
     REDIRECT AFTER FORM SUBMIT new list NEEDS API to return id
+    List serializer, items = dict of items by id
     
 REDUX
     -Account Actions
@@ -30,3 +31,9 @@ REDUX
 # ListInvitesContainer CONNECT TO REDUX
 # RENAME LISTSINDEX COMPONENT
 # Add List member invite from friendlist
+
+
+
+actions
+reducers
+store
