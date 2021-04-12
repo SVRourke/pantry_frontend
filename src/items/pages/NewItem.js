@@ -1,13 +1,18 @@
 import React from 'react'
 import ItemForm from '../components/ItemForm'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { CancelButton, Wrapper } from '../../common/elements'
 
-export default function NewItem () {
+import { connect } from 'react-redux'
+import { Trash, Toggle, Create, Edit } from '../../actions/ItemActions'
+
+const NewItem = ({ createAction }) => {
   const history = useHistory()
+  const listId = useParams().list_id
 
   const formHandler = (info) => {
     alert(`Form Submitted ${info.name}: ${info.amount}`)
+    createAction(listId, info)
     history.goBack()
   }
 
@@ -21,3 +26,13 @@ export default function NewItem () {
     </div>
   )
 }
+
+const mapStateToProps = state => ({
+  lists: state
+})
+
+const mapDispatchToProps = dispatch => ({
+  createAction: (listId, item) => dispatch(Create(listId, item))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewItem)
