@@ -1,21 +1,43 @@
 import React from 'react'
-import { useRouteMatch } from 'react-router-dom'
+import {
+  useRouteMatch,
+  useParams
+} from 'react-router-dom'
+
 import ItemCard from '../components/ItemCard'
-import { AddLink, containerStyles, innerContainerStyles } from '../../common/elements'
+
+import {
+  AddLink,
+  containerStyles,
+  innerContainerStyles
+} from '../../common/elements'
+
+import { connect } from 'react-redux'
+import { Trash } from '../../actions/ItemActions'
 
 // Attach To REDUX
-export default function ItemContainer({ records }) {
+function ItemContainer({lists, trashAction, records}) {
+  const listId = parseInt(useParams().id)
   const { url } = useRouteMatch()
+
 
   const toggleAcquired = (id) => {
     const item = records.find(e => e.id === id)
     alert(`TOGGLE: ${item.name}, ${item.id}`)
   }
 
-  const trash = (id) => {
-    alert(`DELETE: ${id}`)
-  }
-  const cards = records.map(r => <ItemCard record={r} toggle={toggleAcquired} trash={trash} />)
+  const cards = lists.find(e => e.id === listId).items.map(r => {
+    return (
+      <ItemCard
+        key={r.id}
+        record={r}
+        toggle={toggleAcquired}
+        trash={
+          () => trashAction(listId, r.id)
+        }
+      />
+    )
+  })
 
   return (
     <div style={containerStyles}>
@@ -27,3 +49,12 @@ export default function ItemContainer({ records }) {
     </div>
   )
 }
+
+const mapStateToProps = state => ({
+  lists: state
+})
+
+const mapDispatchToProps = dispatch => ({
+  trashAction: (listId, itemId) => dispatch(Trash(listId, itemId))
+})
+export default connect(mapStateToProps, mapDispatchToProps)(ItemContainer)
