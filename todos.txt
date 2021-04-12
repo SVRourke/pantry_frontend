@@ -1,3 +1,4 @@
+# FIX EDIT ITEM REDUX
 TODO:
 # ADD SOME TIME FORMATTING THING
 # Add friend redirect back to friends after submit
