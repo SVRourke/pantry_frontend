@@ -1,7 +1,8 @@
 import React from 'react'
 import {
   useRouteMatch,
-  useParams
+  useParams,
+  Route
 } from 'react-router-dom'
 
 import ItemCard from '../components/ItemCard'
@@ -13,16 +14,18 @@ import {
 } from '../../common/elements'
 
 import { connect } from 'react-redux'
-import { Trash, Toggle } from '../../actions/ItemActions'
+import { Trash, Toggle, Create, Edit } from '../../actions/ItemActions'
 
 // Attach To REDUX
-function ItemContainer({lists, trashAction, toggleAction, records}) {
+function ItemContainer({lists, trashAction, toggleAction, createAction}) {
   const { url } = useRouteMatch()
-  const listId = parseInt(useParams().id)
-  
+  const listId = parseInt(useParams().list_id)
+
   const items = lists.find(l => l.id === listId).items
+
   const cards = Object.entries(items).map(r => {
     const [idx, record] = r
+
     return (
       <ItemCard
         key={idx}
@@ -52,6 +55,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   trashAction: (listId, itemId) => dispatch(Trash(listId, itemId)),
-  toggleAction: (listId, itemId) => dispatch(Toggle(listId, itemId))
+  toggleAction: (listId, itemId) => dispatch(Toggle(listId, itemId)),
 })
 export default connect(mapStateToProps, mapDispatchToProps)(ItemContainer)
