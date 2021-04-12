@@ -35,119 +35,120 @@ const FriendRequests = [
 
 const TestLists = [
   {
-    id: 3,
-    name: 'Squad',
-    contributions: [
+    "id": 3,
+    "name": "Squad",
+    "items": {},
+    "contributions": [
       {
-        id: 1,
-        user_id: 1,
-        username: 'Sam',
-        record_age: 30249,
-        item_count: 0
+        "id": 1,
+        "user_id": 1,
+        "username": "Sam",
+        "record_age": 34725,
+        "item_count": 0
       },
       {
-        id: 2,
-        user_id: 2,
-        username: 'Sharain',
-        record_age: 30249,
-        item_count: 0
+        "id": 2,
+        "user_id": 2,
+        "username": "Sharain",
+        "record_age": 34725,
+        "item_count": 0
       },
       {
-        id: 3,
-        user_id: 3,
-        username: 'Maya',
-        record_age: 30249,
-        item_count: 0
+        "id": 3,
+        "user_id": 3,
+        "username": "Maya",
+        "record_age": 34725,
+        "item_count": 0
       },
       {
-        id: 4,
-        user_id: 4,
-        username: 'Rohan',
-        record_age: 30249,
-        item_count: 0
+        "id": 4,
+        "user_id": 4,
+        "username": "Rohan",
+        "record_age": 34725,
+        "item_count": 0
       },
       {
-        id: 5,
-        user_id: 6,
-        username: 'Autumn',
-        record_age: 30249,
-        item_count: 0
-      }
-    ],
-    items: []
-  },
-  {
-    id: 2,
-    name: "Rain \u0026 Sam's List",
-    contributions: [
-      {
-        id: 6,
-        user_id: 1,
-        username: 'Sam',
-        record_age: 30249,
-        item_count: 5
-      },
-      {
-        id: 7,
-        user_id: 2,
-        username: 'Sharain',
-        record_age: 30249,
-        item_count: 0
-      }
-    ],
-    items: [
-      {
-        id: 1,
-        name: 'Garlic',
-        amount: '3 bulbs',
-        acquired: null,
-        record_age: 24495
-      },
-      {
-        id: 2,
-        name: 'Coffee',
-        amount: '1 tub',
-        acquired: null,
-        record_age: 24494
-      },
-      {
-        id: 3,
-        name: 'butter',
-        amount: '1 lb',
-        acquired: null,
-        record_age: 24494
-      },
-      {
-        id: 4,
-        name: '3 mangoes',
-        amount: '',
-        acquired: null,
-        record_age: 24494
-      },
-      {
-        id: 5,
-        name: 'potatoes',
-        amount: '1 little bag',
-        acquired: null,
-        record_age: 24494
+        "id": 5,
+        "user_id": 6,
+        "username": "Autumn",
+        "record_age": 34725,
+        "item_count": 0
       }
     ]
   },
   {
-    id: 1,
-    name: "Sam's List",
-    contributions: [
-      {
-        id: 8,
-        user_id: 1,
-        username: 'Sam',
-        record_age: 30249,
-        item_count: 0
+    "id": 2,
+    "name": "Rain \u0026 Sam's List",
+    "items": {
+      "1": {
+        "id": 1,
+        "name": "Garlic",
+        "amount": "3 bulbs",
+        "acquired": false,
+        "record_age": 28971
+      },
+      "2": {
+        "id": 2,
+        "name": "Coffee",
+        "amount": "1 tub",
+        "acquired": false,
+        "record_age": 28970
+      },
+      "3": {
+        "id": 3,
+        "name": "butter",
+        "amount": "1 lb",
+        "acquired": false,
+        "record_age": 28970
+      },
+      "4": {
+        "id": 4,
+        "name": "3 mangoes",
+        "amount": "",
+        "acquired": false,
+        "record_age": 28970
+      },
+      "5": {
+        "id": 5,
+        "name": "potatoes",
+        "amount": "1 little bag",
+        "acquired": false,
+        "record_age": 28970
       }
-    ],
-    items: []
+    },
+    "contributions": [
+      {
+        "id": 6,
+        "user_id": 1,
+        "username": "Sam",
+        "record_age": 34725,
+        "item_count": 5
+      },
+      {
+        "id": 7,
+        "user_id": 2,
+        "username": "Sharain",
+        "record_age": 34725,
+        "item_count": 0
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "name": "Sam's List",
+    "items": {},
+    "contributions": [
+      {
+        "id": 8,
+        "user_id": 1,
+        "username": "Sam",
+        "record_age": 34725,
+        "item_count": 0
+      }
+    ]
   }
 ]
+
 
 const TestInvites = [
   {
