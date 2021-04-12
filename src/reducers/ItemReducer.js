@@ -1,41 +1,54 @@
-const DELETE = "DELETE"
-const TOGGLE = "TOGGLE"
-
+const DELETE = 'DELETE'
+const TOGGLE = 'TOGGLE'
+const CREATE = 'CREATE'
+const EDIT = 'EDIT'
 
 const itemReducer = (state, action) => {
-  const list = state.find(l => l.id === action.listId)
-
+  const list = state.find(l => l.id === parseInt(action.listId))
   
   switch (action.type) {
     // TOGGLE ACQUIRED
     case TOGGLE:
-      const item = list.items[action.itemId]
-      let { [action.itemId]: target, ...remainder } = list.items
-      console.log(target)
-
+      const { [action.itemId]: target, ...remainder } = list.items
       return [
-        ...state.filter(l => l.id !== action.listId),
+        ...state.filter(l => l.id !== parseInt(action.listId)),
         {
           ...list,
           items: {
-            [action.itemId]: {...target, acquired: !target.acquired},
-            ...remainder,
+            [action.itemId]: { ...target, acquired: !target.acquired },
+            ...remainder
           }
         }
       ]
 
     // DELETE
     case DELETE:
-      let { [action.itemId]: value, ...newItems } = list.items
+      const { [action.itemId]: value, ...untouched } = list.items
 
       return [
-        ...state.filter(l => l.id !== action.listId),
-        { ...list, items: newItems}
+        ...state.filter(l => l.id !== parseInt(action.listId)),
+        { ...list, items: untouched }
       ]
 
     // EDIT
-    // NEW
+    // ALERT: CHANGE TO OBJECT.ASSIGN MINIMIZE THE PAYLOAD 
+    case EDIT:
+      const { [action.item.id]: old, ...nonupdated } = list.items
 
+      return [
+        ...state.filter(l => l.id !== parseInt(action.listId)),
+        {
+          ...list,
+          items: {
+            [action.item.id]: action.item,
+            ...nonupdated 
+          }
+        }
+      ]
+
+    // NEW NEEDS API TO WORK
+
+    // DEFAULT
     default:
       return state
   }
