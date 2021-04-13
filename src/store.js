@@ -7,3 +7,6 @@ function configureStore(state = TestLists) {
   return createStore(itemReducer, state)
 }
 export default configureStore
+
+
+// SWITCH TO COMBINE REDUCERS
