@@ -36,28 +36,33 @@ const List = () => {
       
       <ListNav id={userId} url={url} />
 
-
+      {/* Root, redirects to items */}
       <Route exact path={path} >
         <Redirect to={`${url}/items`} />
       </Route>
 
+      {/* Edit Item Page */}
       <Route path={`${path}/items/:item_id/edit`} >
         <EditItem />
       </Route>
 
+      {/* New Item Page */}
       <Route path={`${path}/items/new`} >
         <NewItem />
       </Route>
 
+      {/* Main List View, Shows items */}
+      {/* ? MAYBE MOVE REDUX OUT OF ItemsContainer */}
       <Route exact path={`${path}/items`} >
-        <ItemsContainer records={list.items} />
+        <ItemsContainer />
       </Route>
 
-
+      {/* List Members Page */}
       <Route exact path={`${path}/members`} >
         <MembersContainer contributors={list.contributions} />
       </Route>
 
+      {/* New List Member Page */}
       <Route path={`${path}/members/invite`} >
         <InvitePage />
       </Route>
