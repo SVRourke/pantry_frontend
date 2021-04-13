@@ -15,13 +15,17 @@ const Accept = (id) => {
 }
 // DECLINE
 const Decline = (id) => {
-  type: 'DECLINE',
-  id: id
+  return {
+    type: 'DECLINE',
+    id: id
+  }
 }
 // CANCEL
 const Cancel = (id) => {
-  type: 'CANCEL',
-  id: id
+  return {
+    type: 'CANCEL',
+    id: id
+  }
 }
 
 export {
