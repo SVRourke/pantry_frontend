@@ -1,11 +1,9 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {
   Route,
   Switch,
-  Link,
   Redirect,
   useRouteMatch,
-  // useParams 
 } from 'react-router-dom'
 
 import ListsIndex from '../lists/ListsIndex'
@@ -14,7 +12,6 @@ import Account from '../Account'
 import MainNav from '../common/MainNav'
 const UserRouter = () => {
   const { path, url } = useRouteMatch()
-  // const user_id = useParams()
 
   return (
     <div>
