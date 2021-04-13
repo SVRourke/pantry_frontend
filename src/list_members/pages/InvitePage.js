@@ -1,11 +1,14 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import InviteForm from '../../common/InviteForm'
 import { GoBack } from '../../common/FormElements'
 import { Row } from '../../common/elements'
+
 const InvitePage = () => {
   const { goBack } = useHistory()
+  const listId = useParams().list_id
 
   return (
     <div>
