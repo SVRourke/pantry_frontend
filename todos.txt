@@ -1,4 +1,3 @@
-# FIX EDIT ITEM REDUX
 TODO:
 # ADD SOME TIME FORMATTING THING
 # Add friend redirect back to friends after submit
@@ -10,6 +9,7 @@ TODO:
     add filter (acquired)
     make list items container max-height 60vh
     make invites container min-height: 40vh
+    leave list option
 
 # Account page
     make account page
@@ -21,11 +21,23 @@ TODO:
     item.acquired default to false
     
 REDUX
-    -Account Actions
     -list Actions
+        new list
+    -Item Actions
+        # NEW ITEM REDUX
     -Friend Actions
+        unfriend
     -FriendRequest Actions
+        send request
+        accept request
+        decline request
+        cancel request
     -List Invite Actions
+        send request
+        accept request
+        decline request
+        cancel request
+    -Account Actions
 
 
 
