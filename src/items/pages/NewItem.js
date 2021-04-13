@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import { CancelButton, Wrapper } from '../../common/elements'
 
 import { connect } from 'react-redux'
-import { Trash, Toggle, Create, Edit } from '../../actions/ItemActions'
+import { Create } from '../../actions/ItemActions'
 
 const NewItem = ({ createAction }) => {
   const history = useHistory()
