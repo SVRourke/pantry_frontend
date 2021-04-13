@@ -1,12 +1,14 @@
-import { createStore } from 'redux'
-import itemReducer from "./reducers/ItemReducer"
-import { TestLists } from "./common/TestData"
+import { combineReducers, createStore } from 'redux'
+import itemReducer from "./reducers/Items"
+import listInviteReducer from './reducers/ListInvites'
 
 
-function configureStore(state = TestLists) {
-  return createStore(itemReducer, state)
-}
-export default configureStore
+const rootReducer = combineReducers({
+  lists: itemReducer,
+  listInvites: listInviteReducer,
+})
+const combinedStore = createStore(rootReducer)
+export default combinedStore
 
 
 // SWITCH TO COMBINE REDUCERS
