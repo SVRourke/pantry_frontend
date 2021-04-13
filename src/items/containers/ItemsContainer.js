@@ -1,8 +1,7 @@
 import React from 'react'
 import {
   useRouteMatch,
-  useParams,
-  Route
+  useParams
 } from 'react-router-dom'
 
 import ItemCard from '../components/ItemCard'
@@ -14,12 +13,13 @@ import {
 } from '../../common/elements'
 
 import { connect } from 'react-redux'
-import { Trash, Toggle, Create, Edit } from '../../actions/ItemActions'
+import { Trash, Toggle } from '../../actions/ItemActions'
 
 // Attach To REDUX
 function ItemContainer({lists, trashAction, toggleAction, createAction}) {
   const { url } = useRouteMatch()
   const listId = parseInt(useParams().list_id)
+
 
   const items = lists.find(l => l.id === listId).items
 
@@ -50,7 +50,7 @@ function ItemContainer({lists, trashAction, toggleAction, createAction}) {
 }
 
 const mapStateToProps = state => ({
-  lists: state
+  ...state
 })
 
 const mapDispatchToProps = dispatch => ({
