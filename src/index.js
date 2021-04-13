@@ -5,11 +5,11 @@ import './index.css'
 import App from './App'
 
 import { Provider } from "react-redux"
-import configureStore from "./store.js"
+import combinedStore from "./store.js"
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={configureStore()} >
+    <Provider store={combinedStore} >
       <BrowserRouter>
         <App />
       </BrowserRouter>
