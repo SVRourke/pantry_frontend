@@ -7,13 +7,12 @@ import { FancyLink } from '../common/GlobalElements'
 
 import {
   Route,
-  Switch,
   Link,
   useRouteMatch
 } from 'react-router-dom'
 
 // TEST DATA
-import { TestLists, TestInvites } from '../common/TestData'
+import { TestLists } from '../common/TestData'
 
 
 const ListIndex = () => {
@@ -28,7 +27,7 @@ const ListIndex = () => {
             <Link to={`${url}/new`}>New List Button</Link>
           </FancyLink>
 
-          <ListInvitesContainer invites={TestInvites} />
+          <ListInvitesContainer />
         </Route>
 
         <Route path={`${path}/new`} component={NewList} />
