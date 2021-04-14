@@ -19,6 +19,13 @@ export const Schemas = {
         user: user
       })
     }
+  },
+  basicGet: {
+    method: 'GET',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json'
+    }
   }
 }
 
