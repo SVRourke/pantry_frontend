@@ -12,6 +12,3 @@ const rootReducer = combineReducers({
 })
 const combinedStore = createStore(rootReducer, applyMiddleware(thunk))
 export default combinedStore
-
-
-// SWITCH TO COMBINE REDUCERS
