@@ -17,6 +17,7 @@ export const loginFailure = (error) => {
     error: error
   }
 }
+// ADD LOGOUT
 
 export const handleLogin = (data) => {
   return dispatch => {
