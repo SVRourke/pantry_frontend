@@ -11,7 +11,6 @@ function App () {
       <Switch>
         <Route exact path='/' component={Welcome} />
         <Route path='/login' component={Login} />
-        {/* <Route path='/about' component={About} /> */}
         <Route path={`/users/:user_id`} component={UserRouter} />
         <Route path={`/lists/:list_id`} component={List} />
       </Switch>
