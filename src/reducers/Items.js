@@ -3,12 +3,16 @@ const DELETE = 'DELETE'
 const TOGGLE = 'TOGGLE'
 const CREATE = 'CREATE'
 const EDIT = 'EDIT'
+const LOAD = 'LOADLISTS'
 
 
-const itemReducer = (state = TestLists, action) => {
+const itemReducer = (state = [], action) => {
   const list = state.find(l => l.id === parseInt(action.listId))
   
   switch (action.type) {
+    case LOAD:
+      return [...state, ...action.lists]
+    
     // TOGGLE ACQUIRED
     case TOGGLE:
       const { [action.itemId]: target, ...remainder } = list.items
@@ -17,7 +21,10 @@ const itemReducer = (state = TestLists, action) => {
         {
           ...list,
           items: {
-            [action.itemId]: { ...target, acquired: !target.acquired },
+            [action.itemId]: { 
+              ...target, 
+              acquired: !target.acquired 
+            },
             ...remainder
           }
         }
@@ -29,11 +36,13 @@ const itemReducer = (state = TestLists, action) => {
 
       return [
         ...state.filter(l => l.id !== parseInt(action.listId)),
-        { ...list, items: untouched }
+        { 
+          ...list, 
+          items: untouched 
+        }
       ]
 
     // EDIT
-    // ALERT: CHANGE TO OBJECT.ASSIGN MINIMIZE THE PAYLOAD 
     case EDIT:
       const { [action.item.id]: old, ...nonupdated } = list.items
 
