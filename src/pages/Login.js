@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Interface, Schemas } from '../api/Interface'
 
 const Login = () => {
   const [input, setInput] = useState({
@@ -10,39 +11,13 @@ const Login = () => {
 
   const submitHandler = event => {
     event.preventDefault()
-    // DO SOMETHING!?!
-    // alert(`email: ${input.email}, password: ${input.password}`)
-    fetch("http://localhost:3000/login", {
-      method: "POST",
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        user: {
-          email: input['email'],
-          password: input['password']
-        }
-      })
-    })
-    .then(resp => {
-      if (resp.ok) {
-        setInput({
-          ...input,
-          loggedIn: "TRUE!!!!"
-        })
-      } else {
-        return Promise.reject(resp)
-      }
-    })
-    .catch(error => {
-      console.log(error)
-      // setInput({
-      //   ...input,
-      //   loggedIn: error
-      // })
-    })
+    const { loggedIn, ...remainder } = input
+
+    Interface('login', Schemas['login'](remainder))
+      .then(resp => { setInput({...input, loggedIn: "TRUE!!!!"})})
+      .catch(error => { alert("Login Failed, Try Again") })
   }
+  
   const changeHandler = event => {
     setInput({
       ...input,
