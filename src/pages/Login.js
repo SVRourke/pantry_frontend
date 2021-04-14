@@ -1,23 +1,21 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Interface, Schemas } from '../api/Interface'
+import { connect } from 'react-redux'
+import {handleLogin} from '../actions/LoginActions'
 
-const Login = () => {
+import { Link } from 'react-router-dom'
+
+const Login = ({isLoggedIn, login}) => {
   const [input, setInput] = useState({
     email: "",
     password: "",
-    loggedIn: 'FALSE'
   })
 
   const submitHandler = event => {
     event.preventDefault()
     const { loggedIn, ...remainder } = input
-
-    Interface('login', Schemas['login'](remainder))
-      .then(resp => { setInput({...input, loggedIn: "TRUE!!!!"})})
-      .catch(error => { alert("Login Failed, Try Again") })
+    login(remainder)
   }
-  
+
   const changeHandler = event => {
     setInput({
       ...input,
@@ -28,7 +26,7 @@ const Login = () => {
     <div>
       <h1>Login</h1>
       <Link to={`/users/6`}>Login</Link>
-      <p>logged in?: {input.loggedIn}</p>
+      <p>logged in?: {isLoggedIn}</p>
       <form onSubmit={event => submitHandler(event)} >
         <input name="email" type="email" value={input['email']} onChange={event => changeHandler(event)} />
         <input name="password" type="password" value={input['password']} onChange={event => changeHandler(event)} />
@@ -38,4 +36,12 @@ const Login = () => {
   )
 }
 
-export default Login
+const mapStateToProps = state => ({
+  ...state.profile
+})
+const mapDispatchToProps = dispatch => {
+  return {
+    login: data => dispatch(handleLogin(data))
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
