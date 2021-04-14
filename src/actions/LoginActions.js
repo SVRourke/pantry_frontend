@@ -22,7 +22,7 @@ export const handleLogin = (data) => {
   return dispatch => {
     dispatch(loginPending())
     Interface('login', Schemas['login'](data))
-      .then(res => { dispatch(loginSuccess(res.json())) })
+      .then(res => { dispatch(loginSuccess(res)) })
       .catch(error => dispatch(loginFailure(error)))
   }
 }
