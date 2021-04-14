@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import {handleLogin} from '../actions/LoginActions'
-
+import { handleLogin } from '../actions/LoginActions'
+import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
-const Login = ({isLoggedIn, login}) => {
+const Login = ({ userId, isLoggedIn, login }) => {
   const [input, setInput] = useState({
     email: "",
     password: "",
@@ -24,14 +24,29 @@ const Login = ({isLoggedIn, login}) => {
   }
   return (
     <div>
+      {isLoggedIn === 'TRUE' ? <Redirect to={`/users/${userId}`} /> : false}
+
       <h1>Login</h1>
       <Link to={`/users/6`}>Login</Link>
       <p>logged in?: {isLoggedIn}</p>
       <form onSubmit={event => submitHandler(event)} >
-        <input name="email" type="email" value={input['email']} onChange={event => changeHandler(event)} />
-        <input name="password" type="password" value={input['password']} onChange={event => changeHandler(event)} />
-        <input type="submit" value="login" />
+        <input 
+          name="email" 
+          type="email" 
+          value={input['email']} 
+          onChange={event => changeHandler(event)} />
+
+        <input 
+          name="password" 
+          type="password" 
+          value={input['password']} 
+          onChange={event => changeHandler(event)} />
+
+        <input 
+          type="submit" 
+          value="login" />
       </form>
+
     </div>
   )
 }
