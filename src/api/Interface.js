@@ -8,6 +8,18 @@ export const Schemas = {
       'Content-Type': 'application/json',
     }
   },
+  login: (user) => {
+    return {
+      method: "POST",
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user: user
+      })
+    }
+  }
 }
 
 
