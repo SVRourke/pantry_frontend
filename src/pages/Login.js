@@ -12,8 +12,7 @@ const Login = ({ userId, isLoggedIn, login }) => {
 
   const submitHandler = event => {
     event.preventDefault()
-    const { loggedIn, ...remainder } = input
-    login(remainder)
+    login(input)
   }
 
   const changeHandler = event => {
@@ -22,13 +21,13 @@ const Login = ({ userId, isLoggedIn, login }) => {
       [event.target.name]: event.target.value
     })
   }
+
   return (
     <div>
       {isLoggedIn === 'TRUE' ? <Redirect to={`/users/${userId}`} /> : false}
 
       <h1>Login</h1>
-      <Link to={`/users/6`}>Login</Link>
-      <p>logged in?: {isLoggedIn}</p>
+      
       <form onSubmit={event => submitHandler(event)} >
         <input 
           name="email" 
