@@ -1,5 +1,6 @@
-// ALERT: RENAME
+// ALERT: REEVALUATE REDUX
 import React from 'react'
+import PrivateRoute from '../common/PrivateRoute'
 
 import { connect } from 'react-redux'
 import {LoadLists} from '../actions/ItemActions'
@@ -15,19 +16,11 @@ import {
   useRouteMatch
 } from 'react-router-dom'
 
-// TEST DATA
-// import { TestLists } from '../common/TestData'
-
-
-const ListIndex = (props) => {
-  const {lists, load, userId} = props
-  
+const ListIndex = ({lists, load, userId}) => {
   const { path, url } = useRouteMatch()
 
   return (
       <div>
-      <p>{lists.length}</p>
-      <button onClick={() => load(userId, () => {console.log(lists)})} >LOAD</button>
         <Route exact path={path} >
           <ListCardContainer records={lists} />
 
@@ -56,5 +49,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListIndex)
-
-// Connects to slice of redux store
