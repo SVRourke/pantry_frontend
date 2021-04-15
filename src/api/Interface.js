@@ -1,5 +1,6 @@
 const ROOTURL = 'http://localhost:3000/'
 
+// ALERT ADD ENDPOINTS TO SCHEMAS
 export const Schemas = {
   logout: {
     method: "DELETE",
@@ -20,6 +21,13 @@ export const Schemas = {
       })
     }
   },
+  checkauth: {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+    }
+  }, 
   basicGet: {
     method: 'GET',
     credentials: 'include',
