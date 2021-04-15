@@ -4,17 +4,6 @@ const LOGOUT = 'logout'
 const LOGIN = 'login'
 const CHECKAUTH = 'checkauth'
 
-// const setups = {
-//   'logout': {
-
-//   }
-//   'login': {
-
-//   }
-//   'checkauth': {
-
-//   }
-// }
 const baseOptions = {
   credentials: 'include',
   headers: {
