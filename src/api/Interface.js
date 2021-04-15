@@ -1,39 +1,49 @@
 const ROOTURL = 'http://localhost:3000/'
 
+const LOGOUT = 'logout'
+const LOGIN = 'login'
+const CHECKAUTH = 'checkauth'
+
+// const setups = {
+//   'logout': {
+
+//   }
+//   'login': {
+
+//   }
+//   'checkauth': {
+
+//   }
+// }
+const baseOptions = {
+  credentials: 'include',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+}
+
 // ALERT ADD ENDPOINTS TO SCHEMAS
 export const Schemas = {
   logout: {
     method: "DELETE",
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json',
-    }
+    ...baseOptions
   },
   login: (user) => {
     return {
       method: "POST",
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      ...baseOptions,
       body: JSON.stringify({
         user: user
       })
     }
   },
   checkauth: {
-      method: 'GET',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json'
-    }
-  }, 
+    method: 'GET',
+    ...baseOptions
+  },
   basicGet: {
     method: 'GET',
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json'
-    }
+    ...baseOptions
   }
 }
 
