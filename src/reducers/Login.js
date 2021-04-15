@@ -6,6 +6,9 @@ const initialState = {
   isLoggedIn: 'Logged Out',
   userId: ''
 }
+// Check Auth,
+//     If Authed- dispatch({ type: SUCCESS, userId: response.userId})
+
 
 const LoginReducer = (state=initialState, action) => {
   switch(action.type) {
