@@ -39,7 +39,6 @@ const Load = (lists) => {
 }
 
 const LoadLists = (userId) => {
-  alert(`Loading Lists ${userId}`)
   return async dispatch => {
     fetch(`http://localhost:3000/users/${userId}/lists`, {
       method: 'GET',
