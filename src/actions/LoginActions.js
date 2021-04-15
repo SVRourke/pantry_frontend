@@ -27,3 +27,12 @@ export const handleLogin = (data) => {
       .catch(error => dispatch(loginFailure(error)))
   }
 }
+
+export const authCheck = () => {
+  return dispatch => {
+    dispatch(loginPending())
+    Interface('auth_check', Schemas['checkauth'])
+      .then(res => { dispatch(loginSuccess(res)) })
+      .catch(error => { dispatch(loginFailure(error)) })
+  }
+}
