@@ -40,10 +40,6 @@ export const Schemas = {
 export const Interface = (endpoint, schema) => {
   return (fetch(`${ROOTURL}${endpoint}`, schema)
     .then(resp => {
-      if (resp.ok) {
         return resp.json()
-      } else {
-        return Promise.reject(resp)
-      }
     }))
 }
