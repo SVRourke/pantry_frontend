@@ -1,4 +1,5 @@
 import { Interface, Schemas } from '../api/Interface'
+import Cookies from 'js-cookie'
 
 const Trash = (listId, itemId) => {
   return {
@@ -37,36 +38,76 @@ const Load = (lists) => {
 
   }
 }
+
+// console.log(document.cookie.split('=')[1])
+// fetch('http://localhost:3000/lists/2/items/1/acquire', {
+//   method: 'PATCH',
+//   credentials: 'include',
+//   headers: {
+//     'X-Requested-With': 'XMLHttpRequest',
+//     "X-CSRF-Token": document.cookie.split('=')[1]
+//   }
+
+// })
+// .then(r => console.log(r.json()))
+
+
+// const ToggleItem = (listId, itemId) => {
+//   return async dispatch => {
+//     Interface('auth_check', Schemas['checkauth'])
+//       .then(response => {
+//         console.log(response)
+//         if (response.status === 'authorized') {
+//           fetch(`http://localhost:3000/lists/${listId}/items/${itemId}/acquire`, {
+//             method: 'PATCH',
+//             credentials: 'include',
+//             headers: {
+//               'X-Requested-With': 'XMLHttpRequest',
+//               "X-CSRF-Token": Cookies.get("CSRF-TOKEN")
+//             }
+//           })
+//             .then(r => {
+//               console.log("weird", r)
+//               if (r.ok) {
+//                 return r.json()
+//               } else {
+//                 console.log(r)
+//                 return Promise.reject(r)
+//               }
+//             })
+//             .then(d => dispatch(Toggle(listId, itemId)))
+//             .catch(error => console.log("ERROR", error))
+//         } else {
+//         }
+//       })
+
+//   }
+// }
 const ToggleItem = (listId, itemId) => {
   return async dispatch => {
-    Interface('auth_check', Schemas['checkauth'])
-      .then(response => {
-        console.log(response)
-        if (response.status === 'authorized') {
-          fetch(`http://localhost:3000/lists/${listId}/items/${itemId}/acquire`, {
-            method: 'PATCH',
-            credentials: 'include',
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          })
-            .then(r => {
-              console.log("weird", r)
-              if (r.ok) {
-                return r.json()
-              } else {
-                console.log(r)
-                return Promise.reject(r)
-              }
-            })
-            .then(d => console.log(d))
-            .catch(error => console.log("ERROR", error))
+    fetch(`http://localhost:3000/lists/${listId}/items/${itemId}/acquire`, {
+      method: 'PATCH',
+      credentials: 'include',
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest',
+        "X-CSRF-Token": Cookies.get("CSRF-TOKEN")
+      }
+    })
+      .then(r => {
+        console.log("weird", r)
+        if (r.ok) {
+          return r.json()
         } else {
+          console.log(r)
+          return Promise.reject(r)
         }
       })
+      .then(d => dispatch(Toggle(listId, itemId)))
+      .catch(error => console.log("ERROR", error))
 
   }
 }
+
 
 const LoadLists = (userId) => {
   return async dispatch => {
