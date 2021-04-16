@@ -3,7 +3,7 @@ import React from 'react'
 import PrivateRoute from '../common/PrivateRoute'
 
 import { connect } from 'react-redux'
-import {LoadLists} from '../actions/ItemActions'
+import {LoadLists} from '../actions/ListActions'
 
 import ListCardContainer from './containers/ListCardContainer'
 import ListInvitesContainer from './containers/ListInvitesContainer'
