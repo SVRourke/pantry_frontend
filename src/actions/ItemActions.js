@@ -31,58 +31,15 @@ const Edit = (listId, item) => {
   }
 }
 
-const Load = (lists) => {
+const Load = (items) => {
   return {
-    type: 'LOADLISTS',
-    lists: [...lists]
+    type: 'LOADITEMS',
+    lists: [...items]
 
   }
 }
 
-// console.log(document.cookie.split('=')[1])
-// fetch('http://localhost:3000/lists/2/items/1/acquire', {
-//   method: 'PATCH',
-//   credentials: 'include',
-//   headers: {
-//     'X-Requested-With': 'XMLHttpRequest',
-//     "X-CSRF-Token": document.cookie.split('=')[1]
-//   }
 
-// })
-// .then(r => console.log(r.json()))
-
-
-// const ToggleItem = (listId, itemId) => {
-//   return async dispatch => {
-//     Interface('auth_check', Schemas['checkauth'])
-//       .then(response => {
-//         console.log(response)
-//         if (response.status === 'authorized') {
-//           fetch(`http://localhost:3000/lists/${listId}/items/${itemId}/acquire`, {
-//             method: 'PATCH',
-//             credentials: 'include',
-//             headers: {
-//               'X-Requested-With': 'XMLHttpRequest',
-//               "X-CSRF-Token": Cookies.get("CSRF-TOKEN")
-//             }
-//           })
-//             .then(r => {
-//               console.log("weird", r)
-//               if (r.ok) {
-//                 return r.json()
-//               } else {
-//                 console.log(r)
-//                 return Promise.reject(r)
-//               }
-//             })
-//             .then(d => dispatch(Toggle(listId, itemId)))
-//             .catch(error => console.log("ERROR", error))
-//         } else {
-//         }
-//       })
-
-//   }
-// }
 const ToggleItem = (listId, itemId) => {
   return async dispatch => {
     fetch(`http://localhost:3000/lists/${listId}/items/${itemId}/acquire`, {
@@ -109,9 +66,9 @@ const ToggleItem = (listId, itemId) => {
 }
 
 
-const LoadLists = (userId) => {
+const LoadItems = (listId) => {
   return async dispatch => {
-    fetch(`http://localhost:3000/users/${userId}/lists`, {
+    fetch(`http://localhost:3000/lists/${listId}/items`, {
       method: 'GET',
       credentials: 'include',
       headers: {
@@ -120,6 +77,7 @@ const LoadLists = (userId) => {
     })
       .then(r => r.json())
       .then(d => dispatch(Load(d)))
+      // .then(d => dispatch(Load(d)))
       .catch(error => alert('error'))
   }
 }
@@ -129,6 +87,6 @@ export {
   Toggle,
   Create,
   Edit,
-  LoadLists,
+  LoadItems,
   ToggleItem
 }
