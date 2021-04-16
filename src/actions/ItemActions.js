@@ -37,6 +37,36 @@ const Load = (lists) => {
 
   }
 }
+const ToggleItem = (listId, itemId) => {
+  return async dispatch => {
+    Interface('auth_check', Schemas['checkauth'])
+      .then(response => {
+        console.log(response)
+        if (response.status === 'authorized') {
+          fetch(`http://localhost:3000/lists/${listId}/items/${itemId}/acquire`, {
+            method: 'PATCH',
+            credentials: 'include',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+            .then(r => {
+              console.log("weird", r)
+              if (r.ok) {
+                return r.json()
+              } else {
+                console.log(r)
+                return Promise.reject(r)
+              }
+            })
+            .then(d => console.log(d))
+            .catch(error => console.log("ERROR", error))
+        } else {
+        }
+      })
+
+  }
+}
 
 const LoadLists = (userId) => {
   return async dispatch => {
@@ -58,5 +88,6 @@ export {
   Toggle,
   Create,
   Edit,
-  LoadLists
+  LoadLists,
+  ToggleItem
 }
