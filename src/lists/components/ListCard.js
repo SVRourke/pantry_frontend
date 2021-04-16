@@ -9,16 +9,14 @@ import {
 } from "../../common/elements"
 
 const ListCard = (props) => {
-  const { id, name, contributions, items } = props.list
+  const { id, name, contributions, item_count, contributor_count } = props.list
   return (
     <Link to={`/lists/${id}`} >
       <CardBody>
         <CardHeading>{name}</CardHeading>
         {/* <p>Add most recent Item age OR "Empty List"</p> */}
-        <p>{items.length} items</p>
-
-
-        <MemberCount>{contributions.length} members</MemberCount>
+        <p>{item_count} items</p>
+        <MemberCount>{contributor_count} members</MemberCount>
       </CardBody>
     </Link>
   )
