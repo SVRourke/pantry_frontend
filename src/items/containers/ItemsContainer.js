@@ -16,7 +16,9 @@ import { connect } from 'react-redux'
 import { ToggleItem, Trash, Toggle } from '../../actions/ItemActions'
 
 // Attach To REDUX
-function ItemContainer({lists, trashAction, toggleAction, createAction}) {
+function ItemContainer(props) {
+  const {lists, trashAction, toggleAction, createAction} = props
+  console.log(props)
   const { url } = useRouteMatch()
   const listId = parseInt(useParams().list_id)
 
