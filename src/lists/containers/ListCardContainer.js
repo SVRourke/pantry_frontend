@@ -3,7 +3,7 @@ import ListCard from '../components/ListCard'
 import { Block } from '../../common/elements'
 
 import { connect } from 'react-redux'
-import {LoadLists} from '../../actions/ItemActions'
+import {LoadLists} from '../../actions/ListActions'
 
 
 const ListCardContainer = ({ records, lists, userId, loggedIn, load }) => {
@@ -19,7 +19,6 @@ const ListCardContainer = ({ records, lists, userId, loggedIn, load }) => {
     <Block>
       {cards}
     </Block>
-    
   )
 }
 
@@ -36,5 +35,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListCardContainer)
-
-// Connects to slice of redux store
