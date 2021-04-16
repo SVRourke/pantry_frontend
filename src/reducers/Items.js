@@ -3,7 +3,7 @@ const DELETE = 'DELETE'
 const TOGGLE = 'TOGGLE'
 const CREATE = 'CREATE'
 const EDIT = 'EDIT'
-const LOAD = 'LOADLISTS'
+const LOAD = 'LOADITEMS'
 
 
 const itemReducer = (state = [], action) => {
