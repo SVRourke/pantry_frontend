@@ -13,7 +13,7 @@ import {
 } from '../../common/elements'
 
 import { connect } from 'react-redux'
-import { Trash, Toggle } from '../../actions/ItemActions'
+import { ToggleItem, Trash, Toggle } from '../../actions/ItemActions'
 
 // Attach To REDUX
 function ItemContainer({lists, trashAction, toggleAction, createAction}) {
@@ -55,6 +55,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   trashAction: (listId, itemId) => dispatch(Trash(listId, itemId)),
-  toggleAction: (listId, itemId) => dispatch(Toggle(listId, itemId)),
+  toggleAction: (listId, itemId) => dispatch(ToggleItem(listId, itemId)),
 })
 export default connect(mapStateToProps, mapDispatchToProps)(ItemContainer)
