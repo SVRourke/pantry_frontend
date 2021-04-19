@@ -1,65 +1,32 @@
-import { TestLists } from "../common/TestData"
 const DELETE = 'DELETE'
 const TOGGLE = 'TOGGLE'
 const CREATE = 'CREATE'
 const EDIT = 'EDIT'
 const LOAD = 'LOADITEMS'
 
-
 const itemReducer = (state = [], action) => {
-  const list = state.find(l => l.id === parseInt(action.listId))
-  
   switch (action.type) {
     case LOAD:
-      return [...state, ...action.lists]
-    
+      return [...state, ...action.items]
+
     // TOGGLE ACQUIRED
     case TOGGLE:
-      const { [action.itemId]: target, ...remainder } = list.items
+      const target = state.find(i => i.id === action.itemId)
+      
       return [
-        ...state.filter(l => l.id !== parseInt(action.listId)),
-        {
-          ...list,
-          items: {
-            [action.itemId]: { 
-              ...target, 
-              acquired: !target.acquired 
-            },
-            ...remainder
-          }
-        }
+        Object.assign({}, target, {acquired: !target.acquired}),
+        ...state.filter(i => i.id !== action.itemId),
       ]
 
     // DELETE
     case DELETE:
-      const { [action.itemId]: value, ...untouched } = list.items
-
-      return [
-        ...state.filter(l => l.id !== parseInt(action.listId)),
-        { 
-          ...list, 
-          items: untouched 
-        }
-      ]
+      const { [action.itemId]: value, ...untouched } = state
+      return [...untouched]
 
     // EDIT
     case EDIT:
-      const { [action.item.id]: old, ...nonupdated } = list.items
-
-      return [
-        ...state.filter(l => l.id !== parseInt(action.listId)),
-        {
-          ...list,
-          items: {
-            [action.item.id]: action.item,
-            ...nonupdated 
-          }
-        }
-      ]
-
-      case CREATE: 
-        // NEW NEEDS API TO WORK create a new item
-        return state
+      const { [action.item.id]: old, ...nonupdated } = state
+      return [...state]
 
     // DEFAULT
     default:
