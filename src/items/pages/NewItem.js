@@ -4,14 +4,13 @@ import { useHistory, useParams } from 'react-router-dom'
 import { CancelButton, Wrapper } from '../../common/elements'
 
 import { connect } from 'react-redux'
-import { Create } from '../../actions/ItemActions'
+import { createItem } from '../../actions/ItemActions'
 
 const NewItem = ({ createAction }) => {
   const history = useHistory()
   const listId = useParams().list_id
 
   const formHandler = (info) => {
-    alert(`Form Submitted ${info.name}: ${info.amount}`)
     createAction(listId, info)
     history.goBack()
   }
@@ -32,7 +31,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  createAction: (listId, item) => dispatch(Create(listId, item))
+  createAction: (listId, item) => dispatch(createItem(listId, item))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewItem)
