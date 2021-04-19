@@ -2,8 +2,7 @@ TODO:
 # ADD SOME TIME FORMATTING THING
 # Add friend redirect back to friends after submit
 
-# list item card
-    make acquired a toggle
+add redirect to dash if logged in on login page
 
 # Lists page
     add filter (acquired)
@@ -17,8 +16,6 @@ TODO:
 # API
     add most recent activity to list serializer ADD RECORD AGE TO ITEMS IN LIST SERIALIZER *** List Card
     REDIRECT AFTER FORM SUBMIT new list NEEDS API to return id
-    List serializer, items = dict of items by id
-    item.acquired default to false
     
 REDUX
     -list Actions
@@ -51,3 +48,11 @@ REDUX
 actions
 reducers
 store
+
+
+
+NEW CHANGES **********************8
+
+make list subroutes protected routes
+REDO INTERFACE
+FIX DISPATCHES
