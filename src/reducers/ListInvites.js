@@ -24,7 +24,6 @@ const listInviteReducer = (state = TestInvites, action) => {
       return [
         ...state.filter(i => i.id !== parseInt(action.id))
       ]
-      return state
 
     case CANCEL:
       // TODO: NEEDS RESPONSE FROM API
