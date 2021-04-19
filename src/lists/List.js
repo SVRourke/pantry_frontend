@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import InvitePage from '../list_members/pages/InvitePage'
 import ItemsContainer from '../items/containers/ItemsContainer'
 import EditItem from '../items/pages/EditItem'
@@ -13,16 +14,13 @@ import {
 } from 'react-router-dom'
 
 
-// REPLACED BY REDUX 
-import { TestLists } from '../common/TestData'
-
-const List = () => {
+const List = (props) => {
   const { path, url } = useRouteMatch()
 
   // REPLACED BY REDUX
   const listId = useParams().list_id
-  const list = TestLists.find(l => l.id === parseInt(listId))
-  const userId = 3;
+  const list = props.lists.find(l => l.id === parseInt(listId))
+  const userId = props.profile.userId
 
 
   return (
@@ -48,17 +46,18 @@ const List = () => {
 
       {/* New Item Page */}
       <Route path={`${path}/items/new`} >
+      {/* connect to reduxt */}
         <NewItem />
       </Route>
 
       {/* Main List View, Shows items */}
-      {/* ? MAYBE MOVE REDUX OUT OF ItemsContainer */}
       <Route exact path={`${path}/items`} >
         <ItemsContainer />
       </Route>
 
       {/* List Members Page */}
       <Route exact path={`${path}/members`} >
+      {/* connect to redux */}
         <MembersContainer contributors={list.contributions} />
       </Route>
 
@@ -71,4 +70,9 @@ const List = () => {
   );
 }
 
-export default List;
+const mapStateToProps = state => ({
+  ...state
+})
+const mapDispatchToProps = dispatch => ({
+})
+export default connect(mapStateToProps, )(List)
