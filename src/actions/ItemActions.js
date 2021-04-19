@@ -35,8 +35,31 @@ const Edit = (listId, item) => {
 const Load = (items) => {
   return {
     type: 'LOADITEMS',
-    items: [...items]
+    items: items
 
+  }
+}
+const updateItem = (listId, item) => {
+  return async dispatch => {
+    fetch(`http://localhost:3000/lists/${listId}/items/${item.id}/update`, {
+      method: 'PUT',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        "X-CSRF-Token": Cookies.get("CSRF-TOKEN")
+      },
+      body: JSON.stringify({"item": item})
+    })
+      .then(r => {
+        if (r.ok) {
+          return r.json()
+        } else {
+          return Promise.reject(r)
+        }
+      })
+      .then(d => dispatch(Edit(listId, item)))
+      .catch(error => console.log("ERROR", error))
   }
 }
 
@@ -88,5 +111,6 @@ export {
   Create,
   Edit,
   LoadItems,
-  ToggleItem
+  ToggleItem,
+  updateItem
 }
