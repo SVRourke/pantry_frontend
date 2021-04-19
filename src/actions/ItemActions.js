@@ -40,26 +40,28 @@ const Load = (items) => {
   }
 }
 
-const createItem = (listId, itemId) => {
-  // /lists/:list_id/items/:id
+const createItem = (listId, item) => {
   return async dispatch => {
-    fetch(`http://localhost:3000/lists/${listId}/items/${itemId}`, {
-      method: 'delete',
+    fetch(`http://localhost:3000/lists/${listId}/items`, {
+      method: 'POST',
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
         'X-Requested-With': 'XMLHttpRequest',
         "X-CSRF-Token": Cookies.get("CSRF-TOKEN")
-      }
+      },
+      body: JSON.stringify({
+        item: item
+      })
     })
-    .then(r => {
-        if (r.status === 410) {
+      .then(r => {
+        if (r.ok) {
           return r.json()
         } else {
           return Promise.reject(r)
         }
       })
-      .then(d => dispatch(Trash(listId, itemId)))
+      .then(d => dispatch(Create(listId, item)))
       .catch(error => console.log("ERROR", error))
   }
 }
@@ -78,7 +80,7 @@ const deleteItem = (listId, itemId) => {
         "X-CSRF-Token": Cookies.get("CSRF-TOKEN")
       }
     })
-    .then(r => {
+      .then(r => {
         if (r.status === 410) {
           return r.json()
         } else {
@@ -99,7 +101,7 @@ const updateItem = (listId, item) => {
         'X-Requested-With': 'XMLHttpRequest',
         "X-CSRF-Token": Cookies.get("CSRF-TOKEN")
       },
-      body: JSON.stringify({"item": item})
+      body: JSON.stringify({ "item": item })
     })
       .then(r => {
         if (r.ok) {
@@ -163,5 +165,6 @@ export {
   LoadItems,
   ToggleItem,
   updateItem,
-  deleteItem
+  deleteItem,
+  createItem
 }
