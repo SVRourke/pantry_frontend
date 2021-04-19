@@ -2,11 +2,9 @@ const LOAD = 'LOADLISTS'
 
 
 const listReducer = (state = [], action) => {
-  const list = state.find(l => l.id === parseInt(action.listId))
-  
   switch (action.type) {
     case LOAD:
-      return [...state, ...action.lists]
+      return [...action.lists]
 
     // DEFAULT
     default:
