@@ -28,8 +28,7 @@ const itemReducer = (state = [], action) => {
 
     // DELETE
     case DELETE:
-      const { [action.itemId]: value, ...untouched } = state
-      return [...untouched]
+      return state.filter(i => i.id !== action.itemId)
 
     // DEFAULT
     default:
