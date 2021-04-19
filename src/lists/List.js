@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { connect } from 'react-redux'
 import InvitePage from '../list_members/pages/InvitePage'
 import ItemsContainer from '../items/containers/ItemsContainer'
@@ -13,7 +13,6 @@ import {
   useRouteMatch
 } from 'react-router-dom'
 
-
 const List = (props) => {
   const { path, url } = useRouteMatch()
 
@@ -22,7 +21,6 @@ const List = (props) => {
   const list = props.lists.find(l => l.id === parseInt(listId))
   const userId = props.profile.userId
 
-
   return (
     <div>
       <h1 style={{
@@ -30,44 +28,46 @@ const List = (props) => {
         textDecoration: 'underline',
         textDecorationThickness: '4px',
         fontWeight: '600'
-      }}>{list.name}</h1>
-      
+      }}
+      >{list.name}
+      </h1>
+
       <ListNav id={userId} url={url} />
 
       {/* Root, redirects to items */}
-      <Route exact path={path} >
+      <Route exact path={path}>
         <Redirect to={`${url}/items`} />
       </Route>
 
       {/* Edit Item Page */}
-      <Route path={`${path}/items/:item_id/edit`} >
+      <Route path={`${path}/items/:item_id/edit`}>
         <EditItem />
       </Route>
 
       {/* New Item Page */}
-      <Route path={`${path}/items/new`} >
-      {/* connect to reduxt */}
+      <Route path={`${path}/items/new`}>
+        {/* connect to reduxt */}
         <NewItem />
       </Route>
 
       {/* Main List View, Shows items */}
-      <Route exact path={`${path}/items`} >
+      <Route exact path={`${path}/items`}>
         <ItemsContainer />
       </Route>
 
       {/* List Members Page */}
-      <Route exact path={`${path}/members`} >
-      {/* connect to redux */}
+      <Route exact path={`${path}/members`}>
+        {/* connect to redux */}
         <MembersContainer contributors={list.contributions} />
       </Route>
 
       {/* New List Member Page */}
-      <Route path={`${path}/members/invite`} >
+      <Route path={`${path}/members/invite`}>
         <InvitePage />
       </Route>
 
     </div>
-  );
+  )
 }
 
 const mapStateToProps = state => ({
@@ -75,4 +75,4 @@ const mapStateToProps = state => ({
 })
 const mapDispatchToProps = dispatch => ({
 })
-export default connect(mapStateToProps, )(List)
+export default connect(mapStateToProps)(List)
