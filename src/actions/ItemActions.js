@@ -39,6 +39,56 @@ const Load = (items) => {
 
   }
 }
+
+const createItem = (listId, itemId) => {
+  // /lists/:list_id/items/:id
+  return async dispatch => {
+    fetch(`http://localhost:3000/lists/${listId}/items/${itemId}`, {
+      method: 'delete',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        "X-CSRF-Token": Cookies.get("CSRF-TOKEN")
+      }
+    })
+    .then(r => {
+        if (r.status === 410) {
+          return r.json()
+        } else {
+          return Promise.reject(r)
+        }
+      })
+      .then(d => dispatch(Trash(listId, itemId)))
+      .catch(error => console.log("ERROR", error))
+  }
+}
+
+
+const deleteItem = (listId, itemId) => {
+  // /lists/:list_id/items/:id
+  console.log("DELETING-")
+  return async dispatch => {
+    fetch(`http://localhost:3000/lists/${listId}/items/${itemId}`, {
+      method: 'delete',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        "X-CSRF-Token": Cookies.get("CSRF-TOKEN")
+      }
+    })
+    .then(r => {
+        if (r.status === 410) {
+          return r.json()
+        } else {
+          return Promise.reject(r)
+        }
+      })
+      .then(d => dispatch(Trash(listId, itemId)))
+      .catch(error => console.log("ERROR", error))
+  }
+}
 const updateItem = (listId, item) => {
   return async dispatch => {
     fetch(`http://localhost:3000/lists/${listId}/items/${item.id}/update`, {
@@ -112,5 +162,6 @@ export {
   Edit,
   LoadItems,
   ToggleItem,
-  updateItem
+  updateItem,
+  deleteItem
 }
