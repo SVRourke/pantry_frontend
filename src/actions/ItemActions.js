@@ -1,3 +1,4 @@
+// ALERT: REFACTOR
 import { Interface, Schemas } from '../api/Interface'
 import Cookies from 'js-cookie'
 
@@ -34,7 +35,7 @@ const Edit = (listId, item) => {
 const Load = (items) => {
   return {
     type: 'LOADITEMS',
-    lists: [...items]
+    items: [...items]
 
   }
 }
@@ -51,8 +52,8 @@ const ToggleItem = (listId, itemId) => {
       }
     })
       .then(r => {
-        console.log("weird", r)
         if (r.ok) {
+          console.log("response ok")
           return r.json()
         } else {
           console.log(r)
@@ -77,7 +78,6 @@ const LoadItems = (listId) => {
     })
       .then(r => r.json())
       .then(d => dispatch(Load(d)))
-      // .then(d => dispatch(Load(d)))
       .catch(error => alert('error'))
   }
 }
