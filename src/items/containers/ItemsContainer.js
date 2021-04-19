@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   useRouteMatch,
   useParams
@@ -13,24 +13,18 @@ import {
 } from '../../common/elements'
 
 import { connect } from 'react-redux'
-import { ToggleItem, Trash, Toggle } from '../../actions/ItemActions'
+import { ToggleItem, Trash, Toggle, LoadItems } from '../../actions/ItemActions'
 
 // Attach To REDUX
 function ItemContainer(props) {
-  const {lists, trashAction, toggleAction, createAction} = props
-  console.log(props)
+  const { items, trashAction, toggleAction, createAction, load } = props
   const { url } = useRouteMatch()
   const listId = parseInt(useParams().list_id)
 
-
-  const items = lists.find(l => l.id === listId).items
-
-  const cards = Object.entries(items).map(r => {
-    const [idx, record] = r
-
+  const cards = items.sort((a, b) => a.id > b.id).map((record) => {
     return (
       <ItemCard
-        key={idx}
+        key={record.id}
         record={record}
         toggle={() => toggleAction(listId, record.id)}
         trash={
@@ -39,6 +33,10 @@ function ItemContainer(props) {
       />
     )
   })
+
+  useEffect(() => {
+    load(listId)
+  }, [])
 
   return (
     <div style={containerStyles}>
@@ -52,10 +50,11 @@ function ItemContainer(props) {
 }
 
 const mapStateToProps = state => ({
-  ...state
+  items: state.items
 })
 
 const mapDispatchToProps = dispatch => ({
+  load: (listId) => dispatch(LoadItems(listId)),
   trashAction: (listId, itemId) => dispatch(Trash(listId, itemId)),
   toggleAction: (listId, itemId) => dispatch(ToggleItem(listId, itemId)),
 })
