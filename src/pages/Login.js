@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { handleLogin } from '../actions/LoginActions'
 import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
 
 const Login = ({ userId, isLoggedIn, login }) => {
   const [input, setInput] = useState({
