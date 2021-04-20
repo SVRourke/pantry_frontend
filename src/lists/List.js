@@ -58,7 +58,7 @@ const List = (props) => {
       {/* List Members Page */}
       <Route exact path={`${path}/members`}>
         {/* connect to redux */}
-        <MembersContainer contributors={list.contributions} />
+        <MembersContainer />
       </Route>
 
       {/* New List Member Page */}
