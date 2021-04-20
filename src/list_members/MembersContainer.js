@@ -1,17 +1,33 @@
-import React from 'react';
-import { useRouteMatch } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import { useRouteMatch, useParams } from 'react-router-dom'
 import MemberCard from './components/MemberCard'
 import { NiceLink } from '../common/elements'
 
-const MembersContainer = ({ contributors }) => {
+import {
+  loadMembers,
+} from '../actions/ListMemberActions'
+
+const MembersContainer = ({ members, load }) => {
   const { path, url } = useRouteMatch()
-  const members = contributors.map(c => <MemberCard user={c} />)
-  console.log(path)
+  const {list_id} = useParams()
+
+  useEffect(() => {
+    load(list_id)
+  }, [])
+
   return (
     <div>
-      {members}
+      { members.map(c => <MemberCard user={c} />) }
       <NiceLink to={`${url}/invite`}>invite a user</NiceLink>
     </div>
   );
 }
-export default MembersContainer;
+
+const mapStateToProps = state => ({
+  members: state.members
+})
+const mapDispatchToProps = dispatch => ({
+  load: (list_id) => dispatch(loadMembers(list_id))
+})
+export default connect(mapStateToProps, mapDispatchToProps)(MembersContainer)
