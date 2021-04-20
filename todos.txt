@@ -56,3 +56,5 @@ NEW CHANGES **********************8
 make list subroutes protected routes
 REDO INTERFACE
 FIX DISPATCHES
+
+FIX add item dispatch
