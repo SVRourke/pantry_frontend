@@ -67,6 +67,10 @@ const requestOptions = {
   loadItems: {
     method: 'GET',
     ...AUTHEDOPTIONS
+  },
+  loadMembers: {
+    method: 'GET',
+    ...AUTHEDOPTIONS
   }
 }
 
@@ -140,6 +144,14 @@ const loadItems = (listId) => {
   )
 }
 
+const loadMembers = (listId) => {
+  return(
+    fetch(
+      `${BASEURL}lists/${listId}/contributions`, 
+      requestOptions['loadItems']
+    )
+  )
+}
 const Api = {
   login,
   logout,
@@ -149,6 +161,7 @@ const Api = {
   deleteItem,
   updateItem,
   toggleItem,
-  loadItems
+  loadItems,
+  loadMembers
 }
 export default Api
