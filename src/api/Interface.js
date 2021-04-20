@@ -71,87 +71,120 @@ const requestOptions = {
   loadMembers: {
     method: 'GET',
     ...AUTHEDOPTIONS
+  },
+  sendInvite: (email) => {
+    return {
+      method: 'POST',
+      ...AUTHEDOPTIONS,
+      body: JSON.stringify(email)
+    }
   }
 }
 
 
-
 const login = (user) => {
-  return(
+  return (
     fetch(
       `${BASEURL}login`,
       requestOptions['login'](user)
     ).then(r => r.json())
   )
 }
+
 const logout = () => {
-  return(
+  return (
     fetch(
       `${BASEOPTIONS}/logout`,
       requestOptions['logout']
     )
   )
 }
+
 const checkAuth = () => {
-  return fetch( `${BASEURL}auth_check`, requestOptions['checkauth'] )
-  .then(r => {
-    return r.json()
-  })
-  
-}
-const loadLists = (userId) => {
-  return fetch(`${BASEURL}users/${userId}/lists`, requestOptions['loadlists'] )
+  return fetch(
+    `${BASEURL}auth_check`,
+    requestOptions['checkauth']
+  )
     .then(r => {
-      return(r)
+      return r.json()
+    })
+
+}
+
+const loadLists = (userId) => {
+  return fetch(
+    `${BASEURL}users/${userId}/lists`,
+    requestOptions['loadlists']
+  )
+    .then(r => {
+      return (r)
     })
 }
+
 const createItem = (listId, item) => {
-  return fetch( `${BASEURL}lists/${listId}/items`, requestOptions['createItem'](item))
-  .then(r => {
-    return r.json()
-  })
+  return fetch(
+    `${BASEURL}lists/${listId}/items`,
+    requestOptions['createItem'](item)
+  )
+    .then(r => {
+      return r.json()
+    })
 }
+
 const deleteItem = (listId, itemId) => {
-  return(
+  return (
     fetch(
       `${BASEURL}lists/${listId}/items/${itemId}`,
       requestOptions['deleteItem']
     )
   )
 }
+
 const updateItem = (listId, item) => {
-  return(
+  return (
     fetch(
       `${BASEURL}lists/${listId}/items/${item.id}/update`,
       requestOptions['updateItem'](item)
     )
   )
 }
+
 const toggleItem = (listId, itemId) => {
-  return(
+  return (
     fetch(
-      `${BASEURL}lists/${listId}/items/${itemId}/acquire`, 
+      `${BASEURL}lists/${listId}/items/${itemId}/acquire`,
       requestOptions['toggleItem']
     )
   )
 }
+
 const loadItems = (listId) => {
-  return(
+  return (
     fetch(
-      `${BASEURL}lists/${listId}/items`, 
+      `${BASEURL}lists/${listId}/items`,
       requestOptions['loadItems']
     )
   )
 }
 
 const loadMembers = (listId) => {
-  return(
+  return (
     fetch(
-      `${BASEURL}lists/${listId}/contributions`, 
+      `${BASEURL}lists/${listId}/contributions`,
       requestOptions['loadItems']
     )
   )
 }
+
+const sendListInvite = (email, listId) => {
+  return (
+    fetch(
+      `${BASEURL}lists/${listId}/list_invites`,
+      requestOptions['sendInvite']({ "email": email })
+    )
+  )
+}
+
 const Api = {
   login,
   logout,
@@ -162,6 +195,7 @@ const Api = {
   updateItem,
   toggleItem,
   loadItems,
-  loadMembers
+  loadMembers,
+  sendListInvite
 }
 export default Api
