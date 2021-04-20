@@ -4,10 +4,7 @@ import { Route, Redirect } from 'react-router-dom'
 import { authCheck } from '../actions/LoginActions'
 
 const PrivateRoute = ({ loggedIn, userId, path, component, authCheck, ...others }) => {
-  if (loggedIn !== 'TRUE') {
-    authCheck()
-  }
-
+  authCheck()
   return (
     loggedIn === 'TRUE'
       ? <Route path={path} component={component} />
