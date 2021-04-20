@@ -1,8 +1,8 @@
 import React from 'react'
-import { Interface, Schemas } from './api/Interface'
+import Api from './api/Interface'
 const Account = () => {
   const logout = () => {
-    Interface('logout', Schemas['logout'])
+    Api.logout()
       .then(d => {
         console.log(d)
       })
