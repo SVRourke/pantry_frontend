@@ -1,45 +1,154 @@
-const ROOTURL = 'http://localhost:3000/'
+import Cookies from 'js-cookie'
 
-const LOGOUT = 'logout'
-const LOGIN = 'login'
-const CHECKAUTH = 'checkauth'
+const BASEURL = "http://localhost:3000/"
 
-const baseOptions = {
+const BASEOPTIONS = {
   credentials: 'include',
   headers: {
     'Content-Type': 'application/json'
   }
+
+}
+const AUTHEDOPTIONS = {
+  credentials: 'include',
+  headers: {
+    'Content-Type': 'application/json',
+    'X-Requested-With': 'XMLHttpRequest',
+    "X-CSRF-Token": Cookies.get("CSRF-TOKEN")
+  }
 }
 
-// ALERT ADD ENDPOINTS TO SCHEMAS
-export const Schemas = {
-  logout: {
-    method: "DELETE",
-    ...baseOptions
-  },
+const requestOptions = {
   login: (user) => {
     return {
       method: "POST",
-      ...baseOptions,
+      ...BASEOPTIONS,
       body: JSON.stringify({
         user: user
       })
     }
   },
+  logout: {
+    method: "DELETE",
+    ...AUTHEDOPTIONS
+  },
+  loadlists: {
+    method: 'GET',
+    ...BASEOPTIONS
+  },
   checkauth: {
     method: 'GET',
-    ...baseOptions
+    ...AUTHEDOPTIONS
   },
-  basicGet: {
+  createItem: (item) => {
+    return {
+      method: 'POST',
+      ...AUTHEDOPTIONS,
+      body: JSON.stringify({
+        item: item
+      })
+    }
+  },
+  deleteItem: {
+    method: 'delete',
+    ...AUTHEDOPTIONS
+  },
+  updateItem: (item) => {
+    return {
+      method: 'PUT',
+      ...AUTHEDOPTIONS,
+      body: JSON.stringify({ "item": item })
+    }
+  },
+  toggleItem: {
+    method: 'PATCH',
+    ...AUTHEDOPTIONS
+  },
+  loadItems: {
     method: 'GET',
-    ...baseOptions
+    ...AUTHEDOPTIONS
   }
 }
 
 
-export const Interface = (endpoint, schema) => {
-  return (fetch(`${ROOTURL}${endpoint}`, schema)
-    .then(resp => {
-        return resp.json()
-    }))
+
+const login = (user) => {
+  return(
+    fetch(
+      `${BASEURL}login`,
+      requestOptions['login'](user)
+    ).then(r => r.json())
+  )
 }
+const logout = () => {
+  return(
+    fetch(
+      `${BASEOPTIONS}/logout`,
+      requestOptions['logout']
+    )
+  )
+}
+const checkAuth = () => {
+  return fetch( `${BASEURL}auth_check`, requestOptions['checkauth'] )
+  .then(r => {
+    return r.json()
+  })
+  
+}
+const loadLists = (userId) => {
+  return fetch(`${BASEURL}users/${userId}/lists`, requestOptions['loadlists'] )
+    .then(r => {
+      return(r)
+    })
+}
+const createItem = (listId, item) => {
+  return fetch( `${BASEURL}lists/${listId}/items`, requestOptions['createItem'](item))
+  .then(r => {
+    return r.json()
+  })
+}
+const deleteItem = (listId, itemId) => {
+  return(
+    fetch(
+      `${BASEURL}lists/${listId}/items/${itemId}`,
+      requestOptions['deleteItem']
+    )
+  )
+}
+const updateItem = (listId, item) => {
+  return(
+    fetch(
+      `${BASEURL}lists/${listId}/items/${item.id}/update`,
+      requestOptions['updateItem'](item)
+    )
+  )
+}
+const toggleItem = (listId, itemId) => {
+  return(
+    fetch(
+      `${BASEURL}lists/${listId}/items/${itemId}/acquire`, 
+      requestOptions['toggleItem']
+    )
+  )
+}
+const loadItems = (listId) => {
+  return(
+    fetch(
+      `${BASEURL}lists/${listId}/items`, 
+      requestOptions['loadItems']
+    )
+  )
+}
+
+const Api = {
+  login,
+  logout,
+  checkAuth,
+  loadLists,
+  createItem,
+  deleteItem,
+  updateItem,
+  toggleItem,
+  loadItems
+}
+export default Api
