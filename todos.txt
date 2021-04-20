@@ -1,8 +1,8 @@
 TODO:
 # ADD SOME TIME FORMATTING THING
 # Add friend redirect back to friends after submit
-
-add redirect to dash if logged in on login page
+# SEND LIST INVITE REDIRECT TO LIST PAGE
+# add redirect to dash if logged in on login page
 
 # Lists page
     add filter (acquired)
@@ -20,8 +20,6 @@ add redirect to dash if logged in on login page
 REDUX
     -list Actions
         new list
-    -Item Actions
-        # NEW ITEM REDUX
     -Friend Actions
         unfriend
     -FriendRequest Actions
@@ -30,7 +28,6 @@ REDUX
         decline request
         cancel request
     -List Invite Actions
-        send request
         accept request
         decline request
         cancel request
@@ -40,21 +37,9 @@ REDUX
 
 # Style scrollbars
 # ListInvitesContainer CONNECT TO REDUX
-# RENAME LISTSINDEX COMPONENT
-# Add List member invite from friendlist
-
-
-
-actions
-reducers
-store
 
 
 
 NEW CHANGES **********************8
 
 make list subroutes protected routes
-REDO INTERFACE
-FIX DISPATCHES
-
-FIX add item dispatch
