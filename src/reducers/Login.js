@@ -12,7 +12,7 @@ const LoginReducer = (state=initialState, action) => {
     case PENDING:
       return { ...state, isLoggedIn: 'pending' }
     case SUCCESS:
-      return {...state, isLoggedIn: 'TRUE', userId: action['info']['userId'] }
+      return {...state, isLoggedIn: 'TRUE', userId: action.id }
     case FAILURE:
       return {...state, isLoggedIn: 'FAILED'}
     default:
