@@ -1,13 +1,9 @@
-import { Interface, Schemas } from '../api/Interface'
-
-export const loginPending = () => {
-  return { type: "LOGINPENDING" }
-}
+import Api from '../api/Interface'
 
 export const loginSuccess = (info) => {
   return {
     type: "LOGGEDIN",
-    info: info
+    id: info.id
   }
 }
 
@@ -17,12 +13,11 @@ export const loginFailure = (error) => {
     error: error
   }
 }
-// ADD LOGOUT
 
+// ADD LOGOUT
 export const handleLogin = (data) => {
   return dispatch => {
-    dispatch(loginPending())
-    Interface('login', Schemas['login'](data))
+    Api.login(data)
       .then(res => { dispatch(loginSuccess(res)) })
       .catch(error => dispatch(loginFailure(error)))
   }
@@ -30,9 +25,17 @@ export const handleLogin = (data) => {
 
 export const authCheck = () => {
   return dispatch => {
-    dispatch(loginPending())
-    Interface('auth_check', Schemas['checkauth'])
-      .then(res => { dispatch(loginSuccess(res)) })
-      .catch(error => { dispatch(loginFailure(error)) })
+    Api.checkAuth()
+      .then(r => {
+        if (r.ok) {
+          return r.json()
+        } else {
+          return Promise.reject(r)
+        }
+      })
+      .then(res => {
+        dispatch(loginSuccess(res))
+      })
+      .catch(error => { console.log(loginFailure(error)) })
   }
 }
