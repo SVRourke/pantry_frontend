@@ -26,13 +26,6 @@ export const handleLogin = (data) => {
 export const authCheck = () => {
   return dispatch => {
     Api.checkAuth()
-      .then(r => {
-        if (r.ok) {
-          return r.json()
-        } else {
-          return Promise.reject(r)
-        }
-      })
       .then(res => {
         dispatch(loginSuccess(res))
       })
