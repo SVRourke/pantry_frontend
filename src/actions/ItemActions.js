@@ -1,5 +1,4 @@
-// ALERT: REFACTOR
-import { Interface, Schemas } from '../api/Interface'
+import Api from '../api/Interface'
 import Cookies from 'js-cookie'
 
 const Trash = (listId, itemId) => {
@@ -42,18 +41,7 @@ const Load = (items) => {
 
 const createItem = (listId, item) => {
   return async dispatch => {
-    fetch(`http://localhost:3000/lists/${listId}/items`, {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest',
-        "X-CSRF-Token": Cookies.get("CSRF-TOKEN")
-      },
-      body: JSON.stringify({
-        item: item
-      })
-    })
+    Api.createItem(listId, item)
       .then(r => {
         if (r.ok) {
           return r.json()
@@ -65,21 +53,10 @@ const createItem = (listId, item) => {
       .catch(error => console.log("ERROR", error))
   }
 }
-
-
 const deleteItem = (listId, itemId) => {
   // /lists/:list_id/items/:id
-  console.log("DELETING-")
   return async dispatch => {
-    fetch(`http://localhost:3000/lists/${listId}/items/${itemId}`, {
-      method: 'delete',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest',
-        "X-CSRF-Token": Cookies.get("CSRF-TOKEN")
-      }
-    })
+    Api.deleteItem(listId, itemId)
       .then(r => {
         if (r.status === 410) {
           return r.json()
@@ -93,16 +70,7 @@ const deleteItem = (listId, itemId) => {
 }
 const updateItem = (listId, item) => {
   return async dispatch => {
-    fetch(`http://localhost:3000/lists/${listId}/items/${item.id}/update`, {
-      method: 'PUT',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest',
-        "X-CSRF-Token": Cookies.get("CSRF-TOKEN")
-      },
-      body: JSON.stringify({ "item": item })
-    })
+    Api.updateItem(listId, item)
       .then(r => {
         if (r.ok) {
           return r.json()
@@ -114,18 +82,9 @@ const updateItem = (listId, item) => {
       .catch(error => console.log("ERROR", error))
   }
 }
-
-
 const ToggleItem = (listId, itemId) => {
   return async dispatch => {
-    fetch(`http://localhost:3000/lists/${listId}/items/${itemId}/acquire`, {
-      method: 'PATCH',
-      credentials: 'include',
-      headers: {
-        'X-Requested-With': 'XMLHttpRequest',
-        "X-CSRF-Token": Cookies.get("CSRF-TOKEN")
-      }
-    })
+    Api.toggleItem(listId, itemId)
       .then(r => {
         if (r.ok) {
           console.log("response ok")
@@ -140,17 +99,9 @@ const ToggleItem = (listId, itemId) => {
 
   }
 }
-
-
 const LoadItems = (listId) => {
   return async dispatch => {
-    fetch(`http://localhost:3000/lists/${listId}/items`, {
-      method: 'GET',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
+    Api.loadItems(listId)
       .then(r => r.json())
       .then(d => dispatch(Load(d)))
       .catch(error => alert('error'))
