@@ -1,3 +1,4 @@
+import Api from '../api/Interface'
 // SEND
 const Send = (listId, email) => {
   return {
@@ -7,7 +8,7 @@ const Send = (listId, email) => {
   }
 }
 // ACCEPT
-const Accept = (id) => {
+const accept = (id) => {
   return {
     type: 'ACCEPT',
     id: id
@@ -28,9 +29,38 @@ const Cancel = (id) => {
   }
 }
 
+const sendInvite = (email, listId) => {
+  return async dispatch => {
+    Api.sendListInvite(email, listId)
+      .then(r => {
+        return (
+          r.ok
+            ? r.json()
+            : Promise.reject(r)
+        )
+      })
+      .then(d => {
+        alert("INVITE SENT")
+      })
+      .catch(error => {
+        switch (error.status) {
+          case 404:
+            alert(`No user with email: ${email}`)
+            break;
+          case 422:
+            alert("That user is already invited!")
+            break;
+        }
+      })
+  }
+}
+// const cancelInvite = () => {}
+// const acceptInvite = () => {}
+
 export {
   Send,
-  Accept,
+  accept as Accept,
   Decline,
-  Cancel
+  Cancel,
+  sendInvite,
 }
