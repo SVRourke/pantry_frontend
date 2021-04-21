@@ -1,10 +1,13 @@
-import { TestInvites } from '../common/TestData'
 const SEND = 'SEND'
 const ACCEPT = 'ACCEPT'
 const CANCEL = 'CANCEL'
+const LOAD = 'LOADINVITES'
 
-const listInviteReducer = (state = TestInvites, action) => {
+const listInviteReducer = (state = [], action) => {
   switch (action.type) {
+    case LOAD:
+      return action.invites
+
     case SEND:
       console.log(SEND)
       // TODO: NEEDS RESPONSE FROM API
@@ -33,6 +36,8 @@ const listInviteReducer = (state = TestInvites, action) => {
       return [
         ...state.filter(i => i.id !== parseInt(action.id))
       ]
+
+
 
     default:
       return state
