@@ -3,7 +3,7 @@ import InvitesControls from '../../common/InvitesControls'
 import ListInviteCard from '../components/ListInviteCard'
 
 import { connect } from 'react-redux'
-import { Accept, Cancel, loadInvites } from '../../actions/ListInviteActions'
+import { Accept, Cancel, loadInvites, cancelInvite } from '../../actions/ListInviteActions'
 
 import { Block } from '../../common/elements'
 
@@ -16,10 +16,9 @@ const ListInvitesContainer = (props) => {
   },[])
 
 
-
   const inviteHandler = (id, action) => {
     const matrix = {
-      DELETE: (id) => cancel(id),
+      DELETE: (id) => cancel(userId, id),
       ACCEPT: (id) => accept(id)
     }
     return matrix[action](id)
@@ -48,7 +47,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   accept: (id) => dispatch(Accept(id)),
-  cancel: (id) => dispatch(Cancel(id)),
+  cancel: (userId, itemId) => dispatch(cancelInvite(userId, itemId)),
   load: (id) => dispatch(loadInvites(id))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(ListInvitesContainer)
