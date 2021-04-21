@@ -29,6 +29,13 @@ const Cancel = (id) => {
   }
 }
 
+const Load = (invites) => {
+  return {
+    type: 'LOADINVITES',
+    invites: invites
+  }
+}
+
 const sendInvite = (email, listId) => {
   return async dispatch => {
     Api.sendListInvite(email, listId)
@@ -40,6 +47,8 @@ const sendInvite = (email, listId) => {
         )
       })
       .then(d => {
+        console.log(d)
+
         alert("INVITE SENT")
       })
       .catch(error => {
@@ -54,6 +63,26 @@ const sendInvite = (email, listId) => {
       })
   }
 }
+// /users/:user_id/list_invites
+const loadInvites = (userId) => {
+  return dispatch => {
+    Api.loadInvites(userId)
+      .then(r => {
+        return (
+          r.ok
+            ? r.json()
+            : Promise.reject(r)
+        )
+      })
+      .then(d => {
+        dispatch(Load(d))
+      })
+      .catch(error => console.log(error))
+  }
+}
+
+
+
 // const cancelInvite = () => {}
 // const acceptInvite = () => {}
 
@@ -63,4 +92,5 @@ export {
   Decline,
   Cancel,
   sendInvite,
+  loadInvites
 }
