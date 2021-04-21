@@ -43,3 +43,9 @@ REDUX
 NEW CHANGES **********************8
 
 make list subroutes protected routes
+fix no list on refresh
+first list item add doesnt show up immediately
+
+API add logic to caps standaradize emails
+LIST INVITE VALIDATOR NEED WORK
+FIX LIST INVITE DISPLAY SCROLL
