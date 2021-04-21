@@ -78,6 +78,10 @@ const requestOptions = {
       ...AUTHEDOPTIONS,
       body: JSON.stringify(email)
     }
+  },
+  loadInvites: {
+    method: 'GET',
+    ...AUTHEDOPTIONS
   }
 }
 
@@ -185,6 +189,15 @@ const sendListInvite = (email, listId) => {
   )
 }
 
+const loadInvites = (userId) => {
+  return (
+    fetch(
+      `${BASEURL}users/${userId}/list_invites`,
+      requestOptions['loadInvites']
+    )
+  )
+}
+
 const Api = {
   login,
   logout,
@@ -196,6 +209,7 @@ const Api = {
   toggleItem,
   loadItems,
   loadMembers,
-  sendListInvite
+  sendListInvite,
+  loadInvites
 }
 export default Api
