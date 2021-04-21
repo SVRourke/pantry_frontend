@@ -82,6 +82,10 @@ const requestOptions = {
   loadInvites: {
     method: 'GET',
     ...AUTHEDOPTIONS
+  },
+  cancelInvite:  {
+    method: "DELETE",
+    ...AUTHEDOPTIONS
   }
 }
 
@@ -198,6 +202,16 @@ const loadInvites = (userId) => {
   )
 }
 
+const cancelInvite = (userId, itemId) => {
+  fetch(
+    `${BASEURL}users/${userId}/list_invites/${itemId}`,
+    requestOptions['cancelInvite']
+  )
+}
+
+// acceptInvite /users/:user_id/list_invites/:list_invite_id/accept
+// const acceptInvite = () => {}
+
 const Api = {
   login,
   logout,
@@ -210,6 +224,7 @@ const Api = {
   loadItems,
   loadMembers,
   sendListInvite,
-  loadInvites
+  loadInvites,
+  cancelInvite
 }
 export default Api
