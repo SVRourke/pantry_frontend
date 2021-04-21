@@ -81,10 +81,25 @@ const loadInvites = (userId) => {
   }
 }
 
+const cancelInvite = (userId, inviteId) => {
+  return dispatch =>
+    Api.cancelInvite(userId, inviteId)
+      .then(r => {
+        return (
+          r.ok
+            ? dispatch(Cancel(inviteId))
+            : Promise.reject(r)
+        )
+      })
+      .then(error => alert("That didn't work, try again in a few minutes"))
+  alert("Cancelling")
+}
 
-
-// const cancelInvite = () => {}
-// const acceptInvite = () => {}
+// const acceptInvite = () => {
+  // send request
+  // dispatch action
+  // when done dispatch loadLists
+// }
 
 export {
   Send,
@@ -92,5 +107,6 @@ export {
   Decline,
   Cancel,
   sendInvite,
-  loadInvites
+  loadInvites,
+  cancelInvite
 }
