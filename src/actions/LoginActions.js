@@ -21,7 +21,7 @@ export const handleLogin = (data) => {
       .then(res => {
         return (
           res.ok
-            ? res
+            ? res.json()
             : Promise.reject(res)
         )
       })
