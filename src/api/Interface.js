@@ -226,12 +226,24 @@ const acceptInvite = (userId, listInviteId) => {
   )
 }
 
-const loadRequests = userId => {
+const loadRequests = (userId) => {
   return (
     fetch(
-      `${BASEURL}users/${userId}/list_invites`,
+      `${BASEURL}users/${userId}/friendrequests`,
       {
-        method: "GET",
+        method: 'GET',
+        ...AUTHEDOPTIONS
+      }
+    )
+  )
+}
+
+const acceptRequest = (userId, requestId) => {
+  return (
+    fetch(
+      `${BASEURL}users/${userId}/friendrequests/${requestId}/accept`,
+      {
+        method: 'PATCH',
         ...AUTHEDOPTIONS
       }
     )
@@ -254,7 +266,8 @@ const Api = {
   cancelInvite,
   acceptInvite,
   createList,
-  loadRequests
+  loadRequests,
+  acceptRequest
 
 }
 export default Api
