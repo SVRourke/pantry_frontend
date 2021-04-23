@@ -73,6 +73,5 @@ const List = (props) => {
 const mapStateToProps = state => ({
   ...state
 })
-const mapDispatchToProps = dispatch => ({
-})
+
 export default connect(mapStateToProps)(List)
