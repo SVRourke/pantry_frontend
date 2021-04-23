@@ -19,7 +19,7 @@ const AUTHEDOPTIONS = {
 }
 
 const requestOptions = {
-  
+
   createItem: (item) => {
     return {
       method: 'POST',
@@ -63,7 +63,7 @@ const requestOptions = {
     method: 'GET',
     ...AUTHEDOPTIONS
   },
-  
+
 }
 
 const login = (user) => {
@@ -226,6 +226,18 @@ const acceptInvite = (userId, listInviteId) => {
   )
 }
 
+const loadRequests = userId => {
+  return (
+    fetch(
+      `${BASEURL}users/${userId}/list_invites`,
+      {
+        method: "GET",
+        ...AUTHEDOPTIONS
+      }
+    )
+  )
+}
+
 const Api = {
   login,
   logout,
@@ -241,7 +253,8 @@ const Api = {
   sendListInvite,
   cancelInvite,
   acceptInvite,
-  createList
+  createList,
+  loadRequests
 
 }
 export default Api
