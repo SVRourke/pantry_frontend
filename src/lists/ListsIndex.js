@@ -1,6 +1,5 @@
 // ALERT: REEVALUATE REDUX
 import React from 'react'
-import PrivateRoute from '../common/PrivateRoute'
 
 import { connect } from 'react-redux'
 import {LoadLists} from '../actions/ListActions'
