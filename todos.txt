@@ -28,3 +28,5 @@ FIX LIST INVITE DISPLAY SCROLL
 clear storage on logout
 
 ADD DELETE LIST FUNCTIONALITY
+
+first item in a list doesnt show up until reload
