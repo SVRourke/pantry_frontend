@@ -59,6 +59,8 @@ const sendInvite = (email, listId) => {
           case 422:
             alert("That user is already invited!")
             break;
+          default:
+            alert(`Nothing, thats weird ${error.status}`)
         }
       })
   }
