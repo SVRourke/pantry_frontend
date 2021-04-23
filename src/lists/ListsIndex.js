@@ -1,5 +1,5 @@
 // ALERT: REEVALUATE REDUX
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { connect } from 'react-redux'
 import {LoadLists} from '../actions/ListActions'
@@ -17,6 +17,10 @@ import {
 
 const ListIndex = ({lists, load, userId}) => {
   const { path, url } = useRouteMatch()
+
+  useEffect(() => {
+    load(userId)
+  }, [])
 
   return (
       <div>
