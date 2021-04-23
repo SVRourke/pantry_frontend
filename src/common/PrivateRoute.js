@@ -1,10 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { Route, Redirect } from 'react-router-dom'
-import { authCheck } from '../actions/LoginActions'
 
 const PrivateRoute = ({ loggedIn, userId, path, component, authCheck, ...others }) => {
-  authCheck()
   return (
     loggedIn === 'TRUE'
       ? <Route path={path} component={component} />
@@ -17,9 +15,4 @@ const mapStateToProps = state => ({
   loggedIn: state.profile.isLoggedIn
 })
 
-const mapDispatchToProps = dispatch => {
-  return {
-    authCheck: () => dispatch(authCheck())
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(PrivateRoute);
+export default connect(mapStateToProps,)(PrivateRoute);
