@@ -8,6 +8,13 @@ const Load = (lists) => {
   }
 }
 
+const Add = list => {
+  return {
+    type: 'ADDLIST',
+    list: list
+  }
+}
+
 const LoadLists = (userId) => {
   return async dispatch => {
     Api.loadLists(userId)
@@ -18,4 +25,4 @@ const LoadLists = (userId) => {
 
 }
 
-export { Load, LoadLists }
+export { Load, Add, LoadLists }
