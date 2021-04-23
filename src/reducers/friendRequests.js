@@ -11,8 +11,7 @@ const FriendRequestReducer = (state = [], action) => {
       console.log(SEND)
       return state
     case ACCEPT:
-      console.log(ACCEPT)
-      return state
+      return state.filter((r) => r.id !== action.id)
     case CANCEL:
       console.log(CANCEL)
       return state
