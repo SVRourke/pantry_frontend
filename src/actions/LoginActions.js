@@ -27,8 +27,19 @@ export const authCheck = () => {
   return dispatch => {
     Api.checkAuth()
       .then(res => {
-        dispatch(loginSuccess(res))
+        return (
+          res.status === 'authorized'
+            ? res
+            : Promise.reject(res)
+        )
       })
-      .catch(error => { console.log(loginFailure(error)) })
+      .then(d => {
+        dispatch(loginSuccess(d))
+      })
+      .catch(error => {
+        alert("Request could not be completed try again")
+        console.log("THUNK ERROR", error)
+        dispatch(loginFailure(error))
+      })
   }
 }
