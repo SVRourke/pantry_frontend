@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import InvitesControls from '../../common/InvitesControls'
-import ListInviteCard from '../components/ListInviteCard'
 
 import { connect } from 'react-redux'
-import { Accept, loadInvites, cancelInvite } from '../../actions/ListInviteActions'
+import { 
+  loadInvites, 
+  cancelInvite, 
+  acceptInviteThunk 
+} from '../../actions/ListInviteActions'
 
+import InvitesControls from '../../common/InvitesControls'
+import ListInviteCard from '../components/ListInviteCard'
 import { Block } from '../../common/elements'
+
 
 const ListInvitesContainer = (props) => {
   const { invites, accept, cancel, load, userId } = props
@@ -18,13 +23,22 @@ const ListInvitesContainer = (props) => {
   const inviteHandler = (id, action) => {
     const matrix = {
       DELETE: (id) => cancel(userId, id),
-      ACCEPT: (id) => accept(id)
+      ACCEPT: (id) => accept(userId, id)
     }
     return matrix[action](id)
   }
 
   const filtered = invites.filter(r => r.type === filter)
-  const cards = filtered.map(r => <ListInviteCard record={r} clickHandler={inviteHandler} key={r.id} />)
+
+  const cards = filtered.map(r => {
+    return (
+      <ListInviteCard
+        record={r}
+        clickHandler={inviteHandler}
+        key={r.id}
+      />
+    )
+  })
 
   const filterChange = (event) => {
     setFilter(event.target.id)
@@ -44,7 +58,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  accept: (id) => dispatch(Accept(id)),
+  accept: (userId, inviteId) => dispatch(acceptInviteThunk(userId, inviteId)),
   cancel: (userId, itemId) => dispatch(cancelInvite(userId, itemId)),
   load: (id) => dispatch(loadInvites(id))
 })
