@@ -9,19 +9,21 @@ import {
   SubmitButton
 } from '../../common/FormElements'
 
-const NewList = () => {
-  const history = useHistory();
-  const [ inputValue, setInput ] = useState("")
+import { connect } from 'react-redux'
+import { CreateList } from '../../actions/ListActions'
 
-  const inputHandler = (event) => { 
+const NewList = ({ history, userId, create }) => {
+  const [inputValue, setInput] = useState("")
+
+  const inputHandler = (event) => {
     setInput(event.target.value)
   }
-  // ALERT: REDIRECT AFTER FORM SUBMIT history.push(list/id)
+
   const submitHandler = (event) => {
     event.preventDefault()
-    alert(`Creating ${inputValue}`)
+    create(userId, inputValue)
     setInput("")
-    // ALERT: MAKE DYNAMIC REDIRECT WITH RETURNED LIST ID VALUE
+    history.goBack()
   }
 
   return (
@@ -39,4 +41,12 @@ const NewList = () => {
   );
 }
 
-export default NewList;
+const mapStateToProps = state => ({
+  userId: state.profile.userId
+})
+
+const mapDispatchToProps = dispatch => ({
+  create: (userId, list) => dispatch(CreateList(userId, list))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewList);
