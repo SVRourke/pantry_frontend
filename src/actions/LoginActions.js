@@ -38,7 +38,7 @@ export const authCheck = () => {
       .then(res => {
         return (
           res.ok
-            ? res
+            ? res.json()
             : Promise.reject(res)
         )
       })
