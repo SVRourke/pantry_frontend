@@ -1,5 +1,4 @@
 import Api from '../api/Interface'
-import Cookies from 'js-cookie'
 
 const Trash = (listId, itemId) => {
   return {
