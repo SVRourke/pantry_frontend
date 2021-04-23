@@ -18,7 +18,16 @@ export const loginFailure = (error) => {
 export const handleLogin = (data) => {
   return dispatch => {
     Api.login(data)
-      .then(res => { dispatch(loginSuccess(res)) })
+      .then(res => {
+        return (
+          res.ok
+            ? res
+            : Promise.reject(res)
+        )
+      })
+      .then(d => {
+        dispatch(loginSuccess(d))
+      })
       .catch(error => dispatch(loginFailure(error)))
   }
 }
@@ -28,7 +37,7 @@ export const authCheck = () => {
     Api.checkAuth()
       .then(res => {
         return (
-          res.status === 'authorized'
+          res.ok
             ? res
             : Promise.reject(res)
         )
