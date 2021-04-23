@@ -3,7 +3,7 @@ import InvitesControls from '../../common/InvitesControls'
 import ListInviteCard from '../components/ListInviteCard'
 
 import { connect } from 'react-redux'
-import { Accept, Cancel, loadInvites, cancelInvite } from '../../actions/ListInviteActions'
+import { Accept, loadInvites, cancelInvite } from '../../actions/ListInviteActions'
 
 import { Block } from '../../common/elements'
 
@@ -13,8 +13,7 @@ const ListInvitesContainer = (props) => {
 
   useEffect(() => {
     load(userId)
-  },[])
-
+  }, [])
 
   const inviteHandler = (id, action) => {
     const matrix = {
@@ -38,7 +37,6 @@ const ListInvitesContainer = (props) => {
     </Block>
   )
 }
-
 
 const mapStateToProps = state => ({
   invites: state.listInvites,
