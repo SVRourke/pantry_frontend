@@ -1,4 +1,3 @@
-TODO:
 # ADD SOME TIME FORMATTING THING
 # Add friend redirect back to friends after submit
 # SEND LIST INVITE REDIRECT TO LIST PAGE
@@ -15,36 +14,12 @@ TODO:
 
 # API
     add most recent activity to list serializer ADD RECORD AGE TO ITEMS IN LIST SERIALIZER *** List Card
-    REDIRECT AFTER FORM SUBMIT new list NEEDS API to return id
     
-REDUX
-    -list Actions
-        new list
-    -Friend Actions
-        unfriend
-    -FriendRequest Actions
-        send request
-        accept request
-        decline request
-        cancel request
-    -List Invite Actions
-        accept request
-        decline request
-        cancel request
-    -Account Actions
-
-
-
 # Style scrollbars
-# ListInvitesContainer CONNECT TO REDUX
-
-
 
 NEW CHANGES **********************8
 
 make list subroutes protected routes
-fix no list on refresh
-first list item add doesnt show up immediately
 
 API add logic to caps standaradize emails
 LIST INVITE VALIDATOR NEED WORK
@@ -52,3 +27,4 @@ FIX LIST INVITE DISPLAY SCROLL
 
 clear storage on logout
 
+ADD DELETE LIST FUNCTIONALITY
