@@ -33,7 +33,7 @@ const FriendRequestCard = ({record, clickHandler}) => {
 
       <Row>
         <AcceptButton onClick={() => clickHandler(id, "ACCEPT")} displayType={type} >accept</AcceptButton>
-        <DeclineButton onClick={() => clickHandler(id, "DECLINE")} displayType={type} >decline</DeclineButton>
+        <DeclineButton onClick={() => clickHandler(id, "CANCEL")} displayType={type} >decline</DeclineButton>
       </Row>
 
     </CardBody>
