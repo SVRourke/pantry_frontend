@@ -19,27 +19,7 @@ const AUTHEDOPTIONS = {
 }
 
 const requestOptions = {
-  login: (user) => {
-    return {
-      method: "POST",
-      ...BASEOPTIONS,
-      body: JSON.stringify({
-        user: user
-      })
-    }
-  },
-  logout: {
-    method: "DELETE",
-    ...AUTHEDOPTIONS
-  },
-  loadlists: {
-    method: 'GET',
-    ...BASEOPTIONS
-  },
-  checkauth: {
-    method: 'GET',
-    ...AUTHEDOPTIONS
-  },
+  
   createItem: (item) => {
     return {
       method: 'POST',
@@ -83,19 +63,22 @@ const requestOptions = {
     method: 'GET',
     ...AUTHEDOPTIONS
   },
-  cancelInvite:  {
+  cancelInvite: {
     method: "DELETE",
     ...AUTHEDOPTIONS
   }
 }
 
-
 const login = (user) => {
   return (
     fetch(
       `${BASEURL}login`,
-      requestOptions['login'](user)
-    ).then(r => r.json())
+      {
+        method: "POST",
+        ...BASEOPTIONS,
+        body: JSON.stringify({ user: user })
+      }
+    )
   )
 }
 
@@ -103,7 +86,10 @@ const logout = () => {
   return (
     fetch(
       `${BASEOPTIONS}/logout`,
-      requestOptions['logout']
+      {
+        method: "DELETE",
+        ...AUTHEDOPTIONS
+      }
     )
   )
 }
@@ -111,12 +97,11 @@ const logout = () => {
 const checkAuth = () => {
   return fetch(
     `${BASEURL}auth_check`,
-    requestOptions['checkauth']
+    {
+      method: 'GET',
+      ...AUTHEDOPTIONS
+    }
   )
-    .then(r => {
-      return r.json()
-    })
-
 }
 
 const loadLists = (userId) => {
@@ -209,8 +194,15 @@ const cancelInvite = (userId, itemId) => {
   )
 }
 
-// acceptInvite /users/:user_id/list_invites/:list_invite_id/accept
-// const acceptInvite = () => {}
+// const acceptInvite = (userId, listInviteId) => {
+//   fetch(
+//     `${BASEURL}users/${userId}/list_invites/${listInviteId}/accept`,
+//     {
+//       method: 'PATCH',
+//       ...AUTHEDOPTIONS
+//     }
+//   )
+// }
 
 const Api = {
   login,
@@ -223,8 +215,8 @@ const Api = {
   toggleItem,
   loadItems,
   loadMembers,
-  sendListInvite,
   loadInvites,
-  cancelInvite
+  sendListInvite,
+  cancelInvite,
 }
 export default Api
