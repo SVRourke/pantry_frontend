@@ -113,7 +113,22 @@ const loadLists = (userId) => {
       return (r)
     })
 }
-
+// POST   /users/:user_id/lists(.:format)
+const createList = (userId, list) => {
+  console.log("INTERFACE TRIGGERED")
+  return fetch(
+    `${BASEURL}users/${userId}/lists`,
+    {
+      method: "POST",
+      ...AUTHEDOPTIONS,
+      body: JSON.stringify({
+        list: {
+          name: list
+        }
+      })
+    }
+  )
+}
 const createItem = (listId, item) => {
   return fetch(
     `${BASEURL}lists/${listId}/items`,
@@ -225,6 +240,8 @@ const Api = {
   loadInvites,
   sendListInvite,
   cancelInvite,
-  acceptInvite
+  acceptInvite,
+  createList
+
 }
 export default Api
