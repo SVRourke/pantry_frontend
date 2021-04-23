@@ -63,10 +63,7 @@ const requestOptions = {
     method: 'GET',
     ...AUTHEDOPTIONS
   },
-  cancelInvite: {
-    method: "DELETE",
-    ...AUTHEDOPTIONS
-  }
+  
 }
 
 const login = (user) => {
@@ -107,7 +104,10 @@ const checkAuth = () => {
 const loadLists = (userId) => {
   return fetch(
     `${BASEURL}users/${userId}/lists`,
-    requestOptions['loadlists']
+    {
+      method: "GET",
+      ...AUTHEDOPTIONS
+    }
   )
     .then(r => {
       return (r)
@@ -188,21 +188,28 @@ const loadInvites = (userId) => {
 }
 
 const cancelInvite = (userId, itemId) => {
-  fetch(
-    `${BASEURL}users/${userId}/list_invites/${itemId}`,
-    requestOptions['cancelInvite']
+  return (
+    fetch(
+      `${BASEURL}users/${userId}/list_invites/${itemId}`,
+      {
+        method: "DELETE",
+        ...AUTHEDOPTIONS
+      }
+    )
   )
 }
 
-// const acceptInvite = (userId, listInviteId) => {
-//   fetch(
-//     `${BASEURL}users/${userId}/list_invites/${listInviteId}/accept`,
-//     {
-//       method: 'PATCH',
-//       ...AUTHEDOPTIONS
-//     }
-//   )
-// }
+const acceptInvite = (userId, listInviteId) => {
+  return (
+    fetch(
+      `${BASEURL}users/${userId}/list_invites/${listInviteId}/accept`,
+      {
+        method: 'PATCH',
+        ...AUTHEDOPTIONS
+      }
+    )
+  )
+}
 
 const Api = {
   login,
@@ -218,5 +225,6 @@ const Api = {
   loadInvites,
   sendListInvite,
   cancelInvite,
+  acceptInvite
 }
 export default Api
