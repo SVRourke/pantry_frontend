@@ -9,7 +9,7 @@ import {
 } from '../actions/ListMemberActions'
 
 const MembersContainer = ({ members, load }) => {
-  const { path, url } = useRouteMatch()
+  const {  url } = useRouteMatch()
   const {list_id} = useParams()
 
   useEffect(() => {
