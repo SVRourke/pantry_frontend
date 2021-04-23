@@ -6,6 +6,9 @@ import {
   useRouteMatch,
 } from 'react-router-dom'
 
+import {connect} from 'react-redux'
+import { authCheck } from '../actions/LoginActions'
+
 import PrivateRoute from '../common/PrivateRoute'
 
 import ListsIndex from '../lists/ListsIndex'
@@ -15,6 +18,9 @@ import MainNav from '../common/MainNav'
 
 const UserRouter = (props) => {
   const { path, url } = useRouteMatch()
+
+  props.authCheck()
+
 
   return (
     <div>
@@ -32,4 +38,16 @@ const UserRouter = (props) => {
   )
 }
 
-export default UserRouter
+
+const mapDispatchToProps = dispatch => {
+  return {
+    authCheck: () => dispatch(authCheck())
+  }
+}
+
+const mapStateToProps = state => ({
+  userId: state.profile.userId,
+  loggedIn: state.profile.isLoggedIn
+})
+
+export default connect( mapStateToProps, mapDispatchToProps)(UserRouter)
