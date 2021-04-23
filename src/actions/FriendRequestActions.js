@@ -1,31 +1,66 @@
-// SEND
-const Send = (email) => {
+import Api from '../api/Interface'
+// LOAD
+const load = (requests) => {
+  console.log(requests)
   return {
-    type: 'SEND',
-    email: email
+    type: 'LOADREQUESTS',
+    requests
+  }
+}
+
+// SEND
+const send = (email) => {
+  return {
+    type: 'SENDREQUEST',
+    email
   }
 }
 // ACCEPT
-const Accept = (id) => {
+const accept = (id) => {
   return {
-    type: 'ACCEPT',
-    id: id
+    type: 'ACCEPTREQUEST',
+    id
   }
 }
-// DECLINE
-const Decline = (id) => {
-  type: 'DECLINE',
-  id: id
-}
 // CANCEL
-const Cancel = (id) => {
-  type: 'CANCEL',
-  id: id
+const cancel = (id) => {
+  return {
+    type: 'CANCELREQUEST',
+    id
+  }
+}
+
+const loadRequests = (id) => {
+  return async dispatch => {
+    Api.loadRequests(id)
+      .then(r => {
+        return (
+          r.ok
+            ? r.json()
+            : Promise.reject(r)
+        )
+      })
+      .then(d => dispatch(load(d)))
+      .catch(error => console.log(error))
+  }
+}
+// maybe also dispatch load friends
+const acceptRequest = (userId, id) => {
+  return async dispatch => {
+    Api.acceptRequest(userId, id)
+      .then(r => {
+        return (
+          r.ok
+            ? r.json()
+            : Promise.reject(r)
+        )
+      })
+      .then(d => dispatch(accept(id)))
+      .catch(error => console.log(error))
+  }
 }
 
 export {
-  Send,
-  Accept,
-  Decline,
-  Cancel
+  loadRequests,
+  acceptRequest
 }
