@@ -13,11 +13,11 @@ import {
 } from '../../common/elements'
 
 import { connect } from 'react-redux'
-import { ToggleItem, Trash, Toggle, LoadItems, deleteItem } from '../../actions/ItemActions'
+import { ToggleItem, LoadItems, deleteItem } from '../../actions/ItemActions'
 
 // Attach To REDUX
 function ItemContainer(props) {
-  const { items, trashAction, toggleAction, createAction, load, deleteItem } = props
+  const { items, toggleAction, load, deleteItem } = props
   const { url } = useRouteMatch()
   const listId = parseInt(useParams().list_id)
 
@@ -53,7 +53,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   load: (listId) => dispatch(LoadItems(listId)),
-  trashAction: (listId, itemId) => dispatch(Trash(listId, itemId)),
   toggleAction: (listId, itemId) => dispatch(ToggleItem(listId, itemId)),
   deleteItem: (listId, itemId) => dispatch(deleteItem(listId, itemId))
 })
