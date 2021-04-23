@@ -4,7 +4,7 @@ import itemReducer from "./reducers/Items"
 import listInviteReducer from './reducers/ListInvites'
 import LoginReducer from './reducers/Login'
 import MemberReducer from './reducers/ListMembers'
-
+import FriendRequestReducer from './reducers/friendRequests'
 
 import {
   combineReducers,
@@ -29,6 +29,7 @@ const rootReducer = combineReducers({
   items: itemReducer,
   members: MemberReducer,
   listInvites: listInviteReducer,
+  friendRequests: FriendRequestReducer,
   profile: LoginReducer
 })
 
