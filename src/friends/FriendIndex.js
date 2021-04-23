@@ -6,7 +6,7 @@ import FriendCard from './FriendCard'
 import { NewFriend } from '../common/elements'
 
 // TEST DATA
-import { TestFriends, FriendRequests } from '../common/TestData';
+import { TestFriends } from '../common/TestData';
 
 const friendPageContainer = {
   height: "60vh",
@@ -37,7 +37,7 @@ const FriendIndex = () => {
           <NewFriend to={`${url}/new`}>add friend</NewFriend>
         </div>
 
-        <FriendRequestContainer requests={FriendRequests} />
+        <FriendRequestContainer />
       </Route>
 
       <Route path={`${path}/new`} component={NewFriendInvite} />
