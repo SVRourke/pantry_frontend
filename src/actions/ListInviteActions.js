@@ -1,4 +1,6 @@
 import Api from '../api/Interface'
+import { Add } from './ListActions'
+
 // SEND
 const Send = (listId, email) => {
   return {
@@ -87,28 +89,45 @@ const cancelInvite = (userId, inviteId) => {
   return dispatch =>
     Api.cancelInvite(userId, inviteId)
       .then(r => {
+        console.log("STATUS")
         return (
-          r.ok
-            ? dispatch(Cancel(inviteId))
+          r.status === 410
+            ? r.json()
             : Promise.reject(r)
         )
       })
-      .then(error => alert("That didn't work, try again in a few minutes"))
-  alert("Cancelling")
+      .then(d => {
+        console.log("THEN", d)
+        dispatch(Cancel(inviteId))
+      })
+      .catch(error => alert("That didn't work, try again in a few minutes"))
 }
 
-// const acceptInvite = () => {
-  // send request
-  // dispatch action
-  // when done dispatch loadLists
-// }
+const acceptInviteThunk = (userId, inviteId) => {
+  return dispatch => {
+    Api.acceptInvite(userId, inviteId)
+      .then(r => {
+        return (
+          r.ok
+            ? r.json()
+            : Promise.reject(r)
+        )
+      })
+      .then(d => {
+        console.log(d, inviteId)
+        dispatch(accept(inviteId))
+        dispatch(Add(d))
+      })
+      .catch(error => console.log("ERROR", error))
+  }
+}
 
 export {
   Send,
-  accept as Accept,
   Decline,
   Cancel,
   sendInvite,
   loadInvites,
-  cancelInvite
+  cancelInvite,
+  acceptInviteThunk
 }
