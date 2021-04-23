@@ -9,7 +9,7 @@ import {
 } from "../../common/elements"
 
 const ListCard = (props) => {
-  const { id, name, contributions, item_count, contributor_count } = props.list
+  const { id, name, item_count, contributor_count } = props.list
   return (
     <Link to={`/lists/${id}`} >
       <CardBody>
