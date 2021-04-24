@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Switch, useRouteMatch } from 'react-router-dom'
 import FriendRequestContainer from '../friends/FriendRequestContainer'
-import NewFriendInvite from '../friends/NewFriendInvite'
+import NewFriendRequest from '../friends/NewFriendRequest'
 import FriendCard from './FriendCard'
 import { NewFriend } from '../common/elements'
 
@@ -40,7 +40,7 @@ const FriendIndex = () => {
         <FriendRequestContainer />
       </Route>
 
-      <Route path={`${path}/new`} component={NewFriendInvite} />
+      <Route path={`${path}/new`} component={NewFriendRequest} />
     </Switch>
   )
 }
