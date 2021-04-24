@@ -4,32 +4,26 @@ import FriendRequestCard from '../friends/FriendRequestCard'
 import { Block } from '../common/elements'
 
 import { connect } from "react-redux"
-import { 
+import {
   loadRequests,
-  acceptRequest
- } from "../actions/FriendRequestActions"
+  acceptRequest,
+  cancelRequest
+} from "../actions/FriendRequestActions"
 
-const FriendRequestContainer = ({ userId, load, accept, requests }) => {
+const FriendRequestContainer = ({ userId, load, accept, cancel, requests }) => {
   useEffect(() => {
     load(userId)
   }, [])
 
   const handleRequest = (id, action) => {
-    switch (action) {
-      case 'CANCEL':
-        alert(`CANCEL ID: ${id}`)
-        break;
-      case 'ACCEPT':
-        alert(`ACCEPT ID: ${id}`)
-        accept(userId, id)
-        break;
-      default:
-        return false
-    }
+    action === 'CANCEL'
+      ? cancel(userId, id)
+      : accept(userId, id)
   }
 
   const [filter, setFilter] = useState('received')
-  const cards = requests.filter(r => r.type === filter).map(r => {
+  const filteredRequests = requests.filter(r => r.type === filter)
+  const cards = filteredRequests.map(r => {
     return (
       <FriendRequestCard
         record={r}
@@ -52,8 +46,10 @@ const mapStateToProps = state => ({
   userId: state.profile.userId,
   requests: state.friendRequests
 })
+
 const mapDispatchToProps = dispatch => ({
   load: (userId) => dispatch(loadRequests(userId)),
-  accept: (userId, reqId) => dispatch(acceptRequest(userId, reqId))
+  accept: (userId, reqId) => dispatch(acceptRequest(userId, reqId)),
+  cancel: (userId, reqId) => dispatch(cancelRequest(userId, reqId))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(FriendRequestContainer)
