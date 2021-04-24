@@ -7,14 +7,6 @@ const load = (requests) => {
     requests
   }
 }
-
-// SEND
-const send = (email) => {
-  return {
-    type: 'SENDREQUEST',
-    email
-  }
-}
 // ACCEPT
 const accept = (id) => {
   return {
@@ -60,7 +52,39 @@ const acceptRequest = (userId, id) => {
   }
 }
 
+const cancelRequest = (userId, id) => {
+  return async dispatch => {
+    Api.cancelRequest(userId, id)
+      .then(r => {
+        return (
+          r.status === 410
+            ? r.json()
+            : Promise.reject(r)
+        )
+      })
+      .then(d => dispatch(cancel(id)))
+      .catch(error => console.log("ERROR", error))
+  }
+}
+
+const sendRequest = (userId, email, cb) => {
+  return async dispatch => {
+    Api.sendRequest(userId, email)
+      .then(r => {
+        return (
+          r.ok
+            ? r.json()
+            : Promise.reject(r)
+        )
+      })
+      .then(d => cb())
+      .catch(error => console.log("Error", error))
+  }
+}
+
 export {
   loadRequests,
-  acceptRequest
+  acceptRequest,
+  cancelRequest,
+  sendRequest
 }
