@@ -250,24 +250,57 @@ const acceptRequest = (userId, requestId) => {
   )
 }
 
+const cancelRequest = (userId, reqId) => {
+  return (
+    fetch(
+      `${BASEURL}users/${userId}/friendrequests/${reqId}`,
+      {
+        method: 'DELETE',
+        ...AUTHEDOPTIONS,
+      }
+    )
+  )
+}
+
+const sendRequest = (userId, email) => {
+  return (
+    fetch(
+      `${BASEURL}users/${userId}/friendrequests`,
+      {
+        method: 'POST',
+        ...AUTHEDOPTIONS,
+        body: JSON.stringify({email: email})
+      }
+    )
+  )
+}
+
 const Api = {
+  // AUTH STUFF
   login,
   logout,
   checkAuth,
+  // LIST MEMBER STUFF
+  loadMembers,
+  // LIST STUFF
+  createList,
   loadLists,
+  // LIST ITEM STUFF
+  loadItems,
   createItem,
   deleteItem,
   updateItem,
   toggleItem,
-  loadItems,
-  loadMembers,
+  // LIST INVITE STUFF
   loadInvites,
   sendListInvite,
   cancelInvite,
   acceptInvite,
-  createList,
+  // FRIENDREQUEST STUFF
   loadRequests,
-  acceptRequest
+  acceptRequest,
+  cancelRequest,
+  sendRequest
 
 }
 export default Api
