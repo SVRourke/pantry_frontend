@@ -275,6 +275,17 @@ const sendRequest = (userId, email) => {
   )
 }
 
+const loadFriends = userId => {
+  return (
+    fetch(
+      `${BASEURL}users/${userId}/friends`,
+      {
+        ...AUTHEDOPTIONS
+      }
+    )
+  )
+}
+
 const Api = {
   // AUTH STUFF
   login,
@@ -300,7 +311,9 @@ const Api = {
   loadRequests,
   acceptRequest,
   cancelRequest,
-  sendRequest
+  sendRequest,
+  // FRIEND STUFF
+  loadFriends
 
 }
 export default Api
