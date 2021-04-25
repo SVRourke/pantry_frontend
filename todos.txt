@@ -23,3 +23,9 @@ clear storage on logout
 ADD DELETE LIST FUNCTIONALITY
 first item in a list doesnt show up until reload
 accept friend request returns friend, adds to store
+
+
+
+UNFRIEND FUNCTIONALITY
+ACCOUNT PAGE FUNCTIONS
+LOGOUT FUNCTIONS
