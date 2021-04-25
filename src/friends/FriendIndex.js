@@ -1,39 +1,49 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { connect } from "react-redux"
 import { Route, Switch, useRouteMatch } from 'react-router-dom'
 import FriendRequestContainer from '../friends/FriendRequestContainer'
 import NewFriendRequest from '../friends/NewFriendRequest'
 import FriendCard from './FriendCard'
 import { NewFriend } from '../common/elements'
 
-// TEST DATA
-import { TestFriends } from '../common/TestData';
+import { loadFriends } from '../actions/FriendActions'
+
 
 const friendPageContainer = {
-  height: "60vh",
+  maxHeight: "60vh",
   display: "flex",
   flexDirection: "column",
   padding: "0 0 2rem 0"
 }
 
-const FriendIndex = () => {
+const FriendIndex = ({ load, userId, friends }) => {
   const { path, url } = useRouteMatch()
+
+  useEffect(() => {
+    load(userId)
+  }, [])
 
   const handleUnFriend = (id) => {
     alert(`{action: DELETE, id: ${id} }`)
-
   }
-  const cards = TestFriends.map(r => <FriendCard record={r} cb={handleUnFriend} key={r.id} />)
-  // Connect to REDUX 
+
+  const cards = friends.map(r => (
+    <FriendCard
+      record={r}
+      cb={handleUnFriend}
+      key={r.id}
+    />
+  ))
+
   return (
     <Switch>
-      <Route exact path={path} >
+      <Route exact path={path}>
         <div style={friendPageContainer}>
 
-          <div style={{overflowY: "scroll"}}>
+          <div style={{ overflowY: "scroll" }}>
             {cards}
           </div>
 
-          {/* <FriendList records={TestFriends} /> */}
           <NewFriend to={`${url}/new`}>add friend</NewFriend>
         </div>
 
@@ -45,4 +55,13 @@ const FriendIndex = () => {
   )
 }
 
-export default FriendIndex
+const mapStateToProps = state => ({
+  userId: state.profile.userId,
+  friends: state.friends
+})
+
+const mapDispatchToProps = dispatch => ({
+  load: (userId) => dispatch(loadFriends(userId))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(FriendIndex)
