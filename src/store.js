@@ -1,10 +1,13 @@
 import thunk from 'redux-thunk'
-import listReducer from './reducers/Lists'
-import itemReducer from "./reducers/Items"
-import listInviteReducer from './reducers/ListInvites'
-import LoginReducer from './reducers/Login'
-import MemberReducer from './reducers/ListMembers'
-import FriendRequestReducer from './reducers/friendRequests'
+import {
+  listReducer,
+  itemReducer,
+  listInviteReducer,
+  LoginReducer,
+  MemberReducer,
+  FriendRequestReducer,
+  FriendsReducer
+} from "./reducers"
 
 import {
   combineReducers,
@@ -27,6 +30,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   lists: listReducer,
   items: itemReducer,
+  friends: FriendsReducer,
   members: MemberReducer,
   listInvites: listInviteReducer,
   friendRequests: FriendRequestReducer,
@@ -37,4 +41,4 @@ const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 const store = createStore(persistedReducer, applyMiddleware(thunk))
 const persistor = persistStore(store)
-export {store, persistor};
+export { store, persistor };
