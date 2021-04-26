@@ -22,6 +22,13 @@ const cancel = (id) => {
   }
 }
 
+const addFriend = friend => {
+  return {
+    type: 'ADDFRIEND',
+    friend: friend
+  }
+}
+
 const loadRequests = (id) => {
   return async dispatch => {
     Api.loadRequests(id)
@@ -47,7 +54,10 @@ const acceptRequest = (userId, id) => {
             : Promise.reject(r)
         )
       })
-      .then(d => dispatch(accept(id)))
+      .then(d => {
+        dispatch(accept(id))
+        dispatch(addFriend(d))
+      })
       .catch(error => console.log(error))
   }
 }
