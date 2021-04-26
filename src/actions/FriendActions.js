@@ -1,7 +1,7 @@
 import Api from '../api/Interface'
 
 // UNFRIEND
-const Unfriend = (friendshipId) => {
+const removeFriend = (friendshipId) => {
   return {
     type: 'UNFRIEND',
     friendshipId: friendshipId
@@ -12,6 +12,21 @@ const Load = friends => {
   return {
     type: 'LOADFRIENDS',
     friends
+  }
+}
+
+const unfriend = (userId, friendId, friendshipId) => {
+  return async dispatch => {
+    Api.unfriend(userId, friendId)
+      .then(r => {
+        return (
+          r.status === 410
+            ? r.json()
+            : Promise.reject(r)
+        )
+      })
+      .then(d => dispatch(removeFriend(friendshipId)))
+      .catch(e => console.log("UNFRIEND ERROR", e))
   }
 }
 
@@ -34,6 +49,6 @@ const loadFriends = userId => {
 
 
 export {
-  Unfriend,
-  loadFriends
+  loadFriends,
+  unfriend
 }
