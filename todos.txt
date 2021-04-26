@@ -1,4 +1,3 @@
-# ADD SOME TIME FORMATTING THING
 # Add friend redirect back to friends after submit
 # SEND LIST INVITE REDIRECT TO LIST PAGE
 
@@ -11,9 +10,6 @@
 # Account page
     make account page
 
-# API
-    add most recent activity to list serializer ADD RECORD AGE TO ITEMS IN LIST SERIALIZER *** List Card
-    
 # Style scrollbars
 
 API add logic to caps standaradize emails
@@ -31,5 +27,3 @@ ACCOUNT PAGE FUNCTIONS
 LOGOUT FUNCTIONS
 
 fix nav enboldening on refresh
-
-leave list function
