@@ -7,7 +7,7 @@ const FriendsReducer = (state = [], action) => {
     case LOAD:
       return action.friends
     case UNFRIEND:
-      return state.filter((r) => r.id !== action.id)
+      return state.filter((r) => r.id !== action.friendshipId)
     default:
       return state
   }
