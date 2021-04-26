@@ -280,6 +280,20 @@ const loadFriends = userId => {
     fetch(
       `${BASEURL}users/${userId}/friends`,
       {
+        method: "GET",
+        ...AUTHEDOPTIONS
+      }
+    )
+  )
+}
+
+// DELETE /users/:user_id/friends/:id
+const unfriend = (userId, friendId) => {
+  return (
+    fetch(
+      `${BASEURL}users/${userId}/friends/${friendId}`,
+      {
+        method: "DELETE",
         ...AUTHEDOPTIONS
       }
     )
@@ -313,7 +327,8 @@ const Api = {
   cancelRequest,
   sendRequest,
   // FRIEND STUFF
-  loadFriends
+  loadFriends,
+  unfriend
 
 }
 export default Api
