@@ -1,4 +1,3 @@
-// ALERT: Add mutual list count to friend serializer 
 import React from 'react';
 import {
   CardBody,
@@ -8,19 +7,39 @@ import {
   Row,
   UnFriend
 } from "../common/elements";
+import ageFormatter from '../common/TimeFormatter'
 
-const FriendCard = (props) => {
-  const { friend_id, friend_name, id, record_age, mutual_list_count } = props.record
+const FriendCard = ({
+  record: {
+    mutual_list_count,
+    friend_name,
+    record_age,
+    friend_id,
+    id,
+  },
+  cb,
+}) => {
+  const callBackHandler = (event) => cb(friend_id, id)
 
   return (
     <CardBody>
-      <CardHeading>{friend_name}</CardHeading>
-      <Row>
-        <TimeDisplay>since {record_age} minutes ago</TimeDisplay>
+      <CardHeading>
+        {friend_name}
+      </CardHeading>
 
-        <UnFriend onClick={(event) => props.cb(friend_id, id)}>unfriend?</UnFriend> 
+      <Row>
+        <TimeDisplay>
+          since {ageFormatter(record_age, 1)} ago
+        </TimeDisplay>
+
+        <UnFriend onClick={callBackHandler}>
+          unfriend?
+        </UnFriend>
       </Row>
-      <SubHeading>{mutual_list_count} lists together</SubHeading>
+
+      <SubHeading>
+        {mutual_list_count} shared lists
+      </SubHeading>
     </CardBody>
   );
 }

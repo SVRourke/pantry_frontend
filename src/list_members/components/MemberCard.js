@@ -1,19 +1,34 @@
-import React from 'react';
+import React from 'react'
 import {
   CardBody,
   CardHeading,
   TimeDisplay,
   SubHeading
-} from "../../common/elements";
+} from "../../common/elements"
 
+import ageFormatter from '../../common/TimeFormatter'
 
-// ALERT: add record_age and itemCount to contributors in seriaizer
-const MemberCard = ({ user }) => {
+const MemberCard = ({
+  user: {
+    username,
+    record_age,
+    item_count
+  }
+}) => {
   return (
     <CardBody>
-      <CardHeading>{user.username}</CardHeading>
-      <SubHeading>since {user.record_age} minutes ago</SubHeading>
-      <TimeDisplay>{ user.item_count } items</TimeDisplay>
+      <CardHeading>
+        {username}
+      </CardHeading>
+
+      <SubHeading>
+        since {ageFormatter(record_age, 2)} ago
+      </SubHeading>
+
+      <TimeDisplay>
+        {item_count} items
+      </TimeDisplay>
+
     </CardBody>
   );
 }
