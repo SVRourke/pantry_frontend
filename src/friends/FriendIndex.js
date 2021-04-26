@@ -6,7 +6,7 @@ import NewFriendRequest from '../friends/NewFriendRequest'
 import FriendCard from './FriendCard'
 import { NewFriend } from '../common/elements'
 
-import { loadFriends } from '../actions/FriendActions'
+import { loadFriends, unfriend } from '../actions/FriendActions'
 
 
 const friendPageContainer = {
@@ -16,15 +16,15 @@ const friendPageContainer = {
   padding: "0 0 2rem 0"
 }
 
-const FriendIndex = ({ load, userId, friends }) => {
+const FriendIndex = ({ load, userId, friends, unfriend }) => {
   const { path, url } = useRouteMatch()
 
   useEffect(() => {
     load(userId)
   }, [])
 
-  const handleUnFriend = (id) => {
-    alert(`{action: DELETE, id: ${id} }`)
+  const handleUnFriend = (friendId, friendshipId) => {
+    unfriend(userId, friendId, friendshipId)
   }
 
   const cards = friends.map(r => (
@@ -61,7 +61,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  load: (userId) => dispatch(loadFriends(userId))
+  load: (userId) => dispatch(loadFriends(userId)),
+  unfriend: (userId, friendId, friendshipId) => dispatch(unfriend(userId, friendId, friendshipId)) 
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(FriendIndex)
