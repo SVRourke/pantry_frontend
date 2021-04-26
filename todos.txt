@@ -29,3 +29,7 @@ accept friend request returns friend, adds to store
 UNFRIEND FUNCTIONALITY
 ACCOUNT PAGE FUNCTIONS
 LOGOUT FUNCTIONS
+
+fix nav enboldening on refresh
+
+leave list function
