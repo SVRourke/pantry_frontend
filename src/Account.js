@@ -1,8 +1,8 @@
 import React from 'react'
-import Api from './api/Interface'
+import api from './api/Index'
 const Account = () => {
   const logout = () => {
-    Api.logout()
+    api.auth.logout()
       .then(d => {
         console.log(d)
       })
