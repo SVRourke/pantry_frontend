@@ -1,4 +1,5 @@
 import Api from '../api/Interface'
+import api from '../api/Index'
 
 export const loginSuccess = (info) => {
   return {
@@ -17,7 +18,7 @@ export const loginFailure = (error) => {
 // ADD LOGOUT
 export const handleLogin = (data) => {
   return dispatch => {
-    Api.login(data)
+  api.auth.login(data)
       .then(res => {
         return (
           res.ok
@@ -34,7 +35,7 @@ export const handleLogin = (data) => {
 
 export const authCheck = () => {
   return dispatch => {
-    Api.checkAuth()
+    api.auth.checkAuth()
       .then(res => {
         return (
           res.ok

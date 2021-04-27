@@ -1,4 +1,4 @@
-import Api from '../api/Interface'
+import api from '../api/Index'
 
 const Load = (lists) => {
   return {
@@ -17,7 +17,7 @@ const Add = list => {
 // POST   /users/:user_id/lists(.:format)
 const CreateList = (userId, list) => {
   return async dispatch => {
-    Api.createList(userId, list)
+    api.lists.create(userId, list)
       .then(r => {
         return (
           r.ok
@@ -34,8 +34,14 @@ const CreateList = (userId, list) => {
 
 const LoadLists = (userId) => {
   return async dispatch => {
-    Api.loadLists(userId)
-      .then(r => r.json())
+    api.lists.load(userId)
+      .then(r => {
+        return (
+          r.ok
+            ? r.json()
+            : Promise.reject(r)
+        )
+      })
       .then(d => dispatch(Load(d)))
       .catch(error => alert('error'))
   }

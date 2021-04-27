@@ -1,5 +1,5 @@
 import Api from '../api/Interface'
-
+import api from '../api/Index'
 // UNFRIEND
 const removeFriend = (friendshipId) => {
   return {
@@ -17,7 +17,7 @@ const Load = friends => {
 
 const unfriend = (userId, friendId, friendshipId) => {
   return async dispatch => {
-    Api.unfriend(userId, friendId)
+    api.friends.unfriend(userId, friendId)
       .then(r => {
         return (
           r.status === 410
@@ -32,7 +32,7 @@ const unfriend = (userId, friendId, friendshipId) => {
 
 const loadFriends = userId => {
   return async dispatch => {
-    Api.loadFriends(userId)
+    api.friends.loadFriends(userId)
       .then(r => {
         return (
           r.ok

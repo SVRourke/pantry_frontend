@@ -1,4 +1,4 @@
-import Api from '../api/Interface'
+import api from '../api/Index'
 
 const Load = (members) => {
   return {
@@ -9,7 +9,7 @@ const Load = (members) => {
 
 const loadMembers = (listId) => {
   return dispatch => {
-    Api.loadMembers(listId)
+    api.lists.loadMembers(listId)
       .then(r => r.json())
       .then(d => dispatch(Load(d)))
       .catch(error => alert('error'))

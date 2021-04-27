@@ -1,4 +1,4 @@
-import Api from '../api/Interface'
+import api from '../api/Index'
 
 const Trash = (listId, itemId) => {
   return {
@@ -7,7 +7,6 @@ const Trash = (listId, itemId) => {
     itemId: itemId
   }
 }
-
 const Toggle = (listId, itemId) => {
   return {
     type: 'TOGGLE',
@@ -29,7 +28,6 @@ const Edit = (listId, item) => {
     item: item
   }
 }
-
 const Load = (items) => {
   return {
     type: 'LOADITEMS',
@@ -40,13 +38,13 @@ const Load = (items) => {
 
 const createItem = (listId, item) => {
   return async dispatch => {
-    Api.createItem(listId, item)
+    api.items.create(listId, item)
       .then(r => {
-        if (r.ok) {
-          return r.json()
-        } else {
-          return Promise.reject(r)
-        }
+        return (
+          r.ok
+            ? r.json()
+            : Promise.reject(r)
+        )
       })
       .then(d => dispatch(Create(listId, item)))
       .catch(error => console.log("ERROR", error))
@@ -55,13 +53,13 @@ const createItem = (listId, item) => {
 const deleteItem = (listId, itemId) => {
   // /lists/:list_id/items/:id
   return async dispatch => {
-    Api.deleteItem(listId, itemId)
+    api.items.destroy(listId, itemId)
       .then(r => {
-        if (r.status === 410) {
-          return r.json()
-        } else {
-          return Promise.reject(r)
-        }
+        return (
+          r.ok
+            ? r.json()
+            : Promise.reject(r)
+        )
       })
       .then(d => dispatch(Trash(listId, itemId)))
       .catch(error => console.log("ERROR", error))
@@ -69,13 +67,13 @@ const deleteItem = (listId, itemId) => {
 }
 const updateItem = (listId, item) => {
   return async dispatch => {
-    Api.updateItem(listId, item)
+    api.items.update(listId, item)
       .then(r => {
-        if (r.ok) {
-          return r.json()
-        } else {
-          return Promise.reject(r)
-        }
+        return (
+          r.ok
+            ? r.json()
+            : Promise.reject(r)
+        )
       })
       .then(d => dispatch(Edit(listId, item)))
       .catch(error => console.log("ERROR", error))
@@ -83,15 +81,13 @@ const updateItem = (listId, item) => {
 }
 const ToggleItem = (listId, itemId) => {
   return async dispatch => {
-    Api.toggleItem(listId, itemId)
+    api.items.toggle(listId, itemId)
       .then(r => {
-        if (r.ok) {
-          console.log("response ok")
-          return r.json()
-        } else {
-          console.log(r)
-          return Promise.reject(r)
-        }
+        return (
+          r.ok
+            ? r.json()
+            : Promise.reject(r)
+        )
       })
       .then(d => dispatch(Toggle(listId, itemId)))
       .catch(error => console.log("ERROR", error))
@@ -100,8 +96,14 @@ const ToggleItem = (listId, itemId) => {
 }
 const LoadItems = (listId) => {
   return async dispatch => {
-    Api.loadItems(listId)
-      .then(r => r.json())
+    api.items.load(listId)
+      .then(r => {
+        return (
+          r.ok
+            ? r.json()
+            : Promise.reject(r)
+        )
+      })
       .then(d => dispatch(Load(d)))
       .catch(error => alert('error'))
   }

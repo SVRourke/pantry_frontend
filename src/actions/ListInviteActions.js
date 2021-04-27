@@ -1,4 +1,4 @@
-import Api from '../api/Interface'
+import api from '../api/Index'
 import { Add } from './ListActions'
 
 // SEND
@@ -40,7 +40,7 @@ const Load = (invites) => {
 
 const sendInvite = (email, listId) => {
   return async dispatch => {
-    Api.sendListInvite(email, listId)
+    api.listInvites.send(email, listId)
       .then(r => {
         return (
           r.ok
@@ -70,7 +70,7 @@ const sendInvite = (email, listId) => {
 // /users/:user_id/list_invites
 const loadInvites = (userId) => {
   return dispatch => {
-    Api.loadInvites(userId)
+    api.listInvites.load(userId)
       .then(r => {
         return (
           r.ok
@@ -87,7 +87,7 @@ const loadInvites = (userId) => {
 
 const cancelInvite = (userId, inviteId) => {
   return dispatch =>
-    Api.cancelInvite(userId, inviteId)
+  api.listInvites.cancel(userId, inviteId)
       .then(r => {
         console.log("STATUS")
         return (
@@ -105,7 +105,7 @@ const cancelInvite = (userId, inviteId) => {
 
 const acceptInviteThunk = (userId, inviteId) => {
   return dispatch => {
-    Api.acceptInvite(userId, inviteId)
+    api.listInvites.accept(userId, inviteId)
       .then(r => {
         return (
           r.ok

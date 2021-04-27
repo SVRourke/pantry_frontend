@@ -1,5 +1,5 @@
-import Api from '../api/Interface'
-// LOAD
+import api from '../api/Index'
+
 const load = (requests) => {
   console.log(requests)
   return {
@@ -7,14 +7,14 @@ const load = (requests) => {
     requests
   }
 }
-// ACCEPT
+
 const accept = (id) => {
   return {
     type: 'ACCEPTREQUEST',
     id
   }
 }
-// CANCEL
+
 const cancel = (id) => {
   return {
     type: 'CANCELREQUEST',
@@ -31,7 +31,7 @@ const addFriend = friend => {
 
 const loadRequests = (id) => {
   return async dispatch => {
-    Api.loadRequests(id)
+    api.friendRequests.load(id)
       .then(r => {
         return (
           r.ok
@@ -43,10 +43,10 @@ const loadRequests = (id) => {
       .catch(error => console.log(error))
   }
 }
-// maybe also dispatch load friends
+
 const acceptRequest = (userId, id) => {
   return async dispatch => {
-    Api.acceptRequest(userId, id)
+    api.friendRequests.accept(userId, id)
       .then(r => {
         return (
           r.ok
@@ -64,7 +64,7 @@ const acceptRequest = (userId, id) => {
 
 const cancelRequest = (userId, id) => {
   return async dispatch => {
-    Api.cancelRequest(userId, id)
+    api.friendRequests.cancel(userId, id)
       .then(r => {
         return (
           r.status === 410
@@ -79,7 +79,7 @@ const cancelRequest = (userId, id) => {
 
 const sendRequest = (userId, email, cb) => {
   return async dispatch => {
-    Api.sendRequest(userId, email)
+    api.friendRequests.send(userId, email)
       .then(r => {
         return (
           r.ok
