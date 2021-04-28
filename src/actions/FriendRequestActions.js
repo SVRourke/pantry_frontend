@@ -1,7 +1,6 @@
 import api from '../api/Index'
 
 const load = (requests) => {
-  console.log(requests)
   return {
     type: 'LOADREQUESTS',
     requests
@@ -58,7 +57,7 @@ const acceptRequest = (userId, id) => {
         dispatch(accept(id))
         dispatch(addFriend(d))
       })
-      .catch(error => console.log(error))
+      .catch(error => alert(error.message))
   }
 }
 
@@ -73,7 +72,7 @@ const cancelRequest = (userId, id) => {
         )
       })
       .then(d => dispatch(cancel(id)))
-      .catch(error => console.log("ERROR", error))
+      .catch(error => alert(error.message))
   }
 }
 
@@ -88,7 +87,7 @@ const sendRequest = (userId, email, cb) => {
         )
       })
       .then(d => cb())
-      .catch(error => console.log("Error", error))
+      .catch(error => alert("That didn't work... check the email and try again"))
   }
 }
 
