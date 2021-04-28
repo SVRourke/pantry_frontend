@@ -28,7 +28,8 @@ const send = (userId, email) => {
   return baseRequest(
     `users/${userId}/friendrequests`,
     'POST',
-    true
+    true,
+    {email: email}
   )
 }
 
