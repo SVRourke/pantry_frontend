@@ -56,7 +56,7 @@ const deleteItem = (listId, itemId) => {
     api.items.destroy(listId, itemId)
       .then(r => {
         return (
-          r.ok
+          r.status === 410
             ? r.json()
             : Promise.reject(r)
         )
