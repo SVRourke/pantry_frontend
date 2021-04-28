@@ -9,9 +9,15 @@ import { GoBack } from '../../common/FormElements'
 import { Row } from '../../common/elements'
 
 
-const InvitePage = ({sendInvite}) => {
+const InvitePage = ({ sendInvite }) => {
   const { goBack } = useHistory()
   const listId = useParams().list_id
+
+  const handleSubmit = email => {
+    sendInvite(email, listId, () => {
+      goBack()
+    })
+  }
 
   return (
     <div>
@@ -19,8 +25,7 @@ const InvitePage = ({sendInvite}) => {
         <h2>invite a user</h2>
         <GoBack onClick={() => goBack()}>cancel?</GoBack>
       </Row>
-      {/* TODO: cb REDUX Action */}
-      <InviteForm cb={(email) => sendInvite(email, listId)} />
+      <InviteForm cb={handleSubmit} />
     </div>
   );
 }
@@ -32,7 +37,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    sendInvite: (email, listId) => dispatch(sendInvite(email, listId))
+    sendInvite: (email, listId, cb) => dispatch(sendInvite(email, listId, cb))
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(InvitePage)
