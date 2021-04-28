@@ -1,32 +1,16 @@
 import api from '../api/Index'
 import { Add } from './ListActions'
 
-// SEND
-const Send = (listId, email) => {
-  return {
-    type: 'SEND',
-    email: email,
-    list: listId
-  }
-}
-// ACCEPT
 const accept = (id) => {
   return {
     type: 'ACCEPT',
     id: id
   }
 }
-// DECLINE
-const Decline = (id) => {
+
+const cancel = (id) => {
   return {
-    type: 'DECLINE',
-    id: id
-  }
-}
-// CANCEL
-const Cancel = (id) => {
-  return {
-    type: 'CANCEL',
+    type: 'c',
     id: id
   }
 }
@@ -38,21 +22,17 @@ const Load = (invites) => {
   }
 }
 
-const sendInvite = (email, listId) => {
+const sendInvite = (email, listId, cb) => {
   return async dispatch => {
     api.listInvites.send(email, listId)
       .then(r => {
         return (
-          r.ok
+          r.status === 201
             ? r.json()
             : Promise.reject(r)
         )
       })
-      .then(d => {
-        console.log(d)
-
-        alert("INVITE SENT")
-      })
+      .then(d => cb())
       .catch(error => {
         switch (error.status) {
           case 404:
@@ -62,12 +42,12 @@ const sendInvite = (email, listId) => {
             alert("That user is already invited!")
             break;
           default:
-            alert(`Nothing, thats weird ${error.status}`)
+            console.log(error)
         }
       })
   }
 }
-// /users/:user_id/list_invites
+
 const loadInvites = (userId) => {
   return dispatch => {
     api.listInvites.load(userId)
@@ -87,9 +67,8 @@ const loadInvites = (userId) => {
 
 const cancelInvite = (userId, inviteId) => {
   return dispatch =>
-  api.listInvites.cancel(userId, inviteId)
+    api.listInvites.cancel(userId, inviteId)
       .then(r => {
-        console.log("STATUS")
         return (
           r.status === 410
             ? r.json()
@@ -97,8 +76,7 @@ const cancelInvite = (userId, inviteId) => {
         )
       })
       .then(d => {
-        console.log("THEN", d)
-        dispatch(Cancel(inviteId))
+        dispatch(cancel(inviteId))
       })
       .catch(error => alert("That didn't work, try again in a few minutes"))
 }
@@ -114,7 +92,6 @@ const acceptInviteThunk = (userId, inviteId) => {
         )
       })
       .then(d => {
-        console.log(d, inviteId)
         dispatch(accept(inviteId))
         dispatch(Add(d))
       })
@@ -123,9 +100,6 @@ const acceptInviteThunk = (userId, inviteId) => {
 }
 
 export {
-  Send,
-  Decline,
-  Cancel,
   sendInvite,
   loadInvites,
   cancelInvite,
