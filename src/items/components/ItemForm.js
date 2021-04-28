@@ -24,7 +24,6 @@ export default function ItemForm (props) {
   const submitHandler = (event) => {
     event.preventDefault()
     props.cb(info)
-    // TODO: REDIRECT
   }
 
   return (
