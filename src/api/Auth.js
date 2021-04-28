@@ -1,7 +1,7 @@
 import { baseRequest } from './Interface'
 
 const login = user => {
-  return baseRequest('login', 'POST', false, user)
+  return baseRequest('login', 'POST', false, { user: user})
 }
 
 const logout = () => {
