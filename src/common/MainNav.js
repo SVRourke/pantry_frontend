@@ -4,7 +4,7 @@ import { NavLink, NavLinkContainer  } from '../common/elements'
 
 const MainNav = () => {
   const { url } = useRouteMatch()
-  const [page, setPage] = useState("lists")
+  const [page, setPage] = useState(window.location.href.split('/').pop())
 
   const switchPage = (event) => {
     setPage(event.target.name)
