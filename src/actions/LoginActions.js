@@ -1,24 +1,53 @@
-import Api from '../api/Interface'
+import Cookies from 'js-cookie'
 import api from '../api/Index'
 
-export const loginSuccess = (info) => {
+const loginSuccess = (info) => {
   return {
     type: "LOGGEDIN",
     id: info.id
   }
 }
 
-export const loginFailure = (error) => {
+const loginFailure = (error) => {
   return {
     type: 'LOGINFAILURE',
     error: error
   }
 }
 
-// ADD LOGOUT
-export const handleLogin = (data) => {
+const destroy = () => {
+  return {
+    type: 'LOGOUT'
+  }
+}
+
+const logout = (cb) => {
   return dispatch => {
-  api.auth.login(data)
+    cb()
+    api.auth.logout()
+      .then(r => {
+        return (
+          r.ok
+            ? r.json()
+            : Promise.reject(r)
+        )
+      })
+      // .then(d => {
+      //   console.log("DISP DEST")
+      //   dispatch(destroy)
+      // })
+      .then(() => {
+        console.log("REMOVING COOKIE")
+      })
+      .catch(error => {
+        Cookies.remove('CSRF-TOKEN', {path: '/'})
+      })
+  }
+}
+
+const handleLogin = (data) => {
+  return dispatch => {
+    api.auth.login(data)
       .then(res => {
         return (
           res.ok
@@ -33,7 +62,7 @@ export const handleLogin = (data) => {
   }
 }
 
-export const authCheck = () => {
+const authCheck = () => {
   return dispatch => {
     api.auth.checkAuth()
       .then(res => {
@@ -47,9 +76,14 @@ export const authCheck = () => {
         dispatch(loginSuccess(d))
       })
       .catch(error => {
-        alert("Request could not be completed try again")
-        console.log("THUNK ERROR", error)
+        console.log(error)
         dispatch(loginFailure(error))
       })
   }
+}
+
+export {
+  authCheck,
+  handleLogin,
+  logout,
 }
