@@ -1,19 +1,23 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { logout } from './actions/LoginActions'
 import api from './api/Index'
-const Account = () => {
-  const logout = () => {
-    api.auth.logout()
-      .then(d => {
-        console.log(d)
-      })
-      .catch(error => {
-        console.log(error)
-        alert('Log Out Failed, try again soon...')
-      })
+
+const Account = (props) => {
+  const { logout, history } = props
+
+  const handleLogout = () => {
+    logout(() => {
+      history.push("/")
+    }) 
+     
   }
+
   return (
     <div>
-      <button onClick={logout} >Logout</button>
+      <button onClick={handleLogout} >Logout</button>
+
+      {/* <button onClick={logout(() => history.go('/'))} >Logout</button> */}
       <h2>Account</h2>
       <h2>edit info</h2>
       <h2>log out</h2>
@@ -24,4 +28,8 @@ const Account = () => {
   )
 }
 
-export default Account
+const mapDispatchToProps = dispatch => ({
+  logout: (cb) => dispatch(logout(cb))
+})
+
+export default connect(null, mapDispatchToProps)(Account)
