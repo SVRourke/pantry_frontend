@@ -11,10 +11,22 @@ const logout = () => {
 const checkAuth = () => {
   return baseRequest('auth_check', 'GET', true)
 }
+
+// GET http://localhost:3000/users/1
+const profile = (userId) => {
+  return (
+    baseRequest(
+      `users/${userId}`,
+      'GET',
+      true
+    )
+  )
+}
 const auth = {
   login,
   logout,
   checkAuth,
+  profile
 }
 
 export default auth
