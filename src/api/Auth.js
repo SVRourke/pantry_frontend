@@ -1,7 +1,7 @@
 import { baseRequest } from './Interface'
 
 const login = user => {
-  return baseRequest('login', 'POST', false, { user: user})
+  return baseRequest('login', 'POST', true, { user: user})
 }
 
 const logout = () => {
@@ -11,11 +11,10 @@ const logout = () => {
 const checkAuth = () => {
   return baseRequest('auth_check', 'GET', true)
 }
-
 const auth = {
   login,
   logout,
-  checkAuth
+  checkAuth,
 }
 
 export default auth
