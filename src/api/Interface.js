@@ -9,19 +9,23 @@ const BASEOPTIONS = {
   }
 
 }
-const AUTHEDOPTIONS = {
-  credentials: 'include',
-  headers: {
-    'Content-Type': 'application/json',
-    'X-Requested-With': 'XMLHttpRequest',
-    "X-CSRF-Token": Cookies.get("CSRF-TOKEN")
+const AUTHEDOPTIONS = token => (
+  {
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+      'Cache-Control': 'must-revalidate',
+      'X-Requested-With': 'XMLHttpRequest',
+      "X-CSRF-Token": token
+    }
   }
-}
 
-const buildOptions = (method, authed, body) => {
+) 
+
+const buildOptions = (method, authed, body, token) => {
   const options = {
     method: method,
-    ...(authed ? AUTHEDOPTIONS : BASEOPTIONS),
+    ...(authed ? AUTHEDOPTIONS(token) : BASEOPTIONS),
   }
   if (body) {
     options.body = JSON.stringify(body)
@@ -30,10 +34,11 @@ const buildOptions = (method, authed, body) => {
 }
 
 export const baseRequest = (endpoint, method, authed, body) => {
+  // console.log(`REQUESTING ${endpoint}, ${method}, ${Cookies.get("CSRF-TOKEN")}`)
   return (
     fetch(
       `${BASEURL}${endpoint}`,
-      buildOptions(method, authed, body)
+      buildOptions(method, authed, body, Cookies.get("CSRF-TOKEN"))
     )
   )
 }
