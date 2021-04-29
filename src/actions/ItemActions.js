@@ -14,10 +14,9 @@ const Toggle = (listId, itemId) => {
     itemId: itemId
   }
 }
-const Create = (listId, item) => {
+const create = (item) => {
   return {
     type: 'CREATE',
-    listId: listId,
     item: item
   }
 }
@@ -46,7 +45,7 @@ const createItem = (listId, item) => {
             : Promise.reject(r)
         )
       })
-      .then(d => dispatch(Create(listId, item)))
+      .then(d => dispatch(create(listId, item)))
       .catch(error => console.log("ERROR", error))
   }
 }
@@ -112,7 +111,7 @@ const LoadItems = (listId) => {
 export {
   Trash,
   Toggle,
-  Create,
+  create,
   Edit,
   LoadItems,
   ToggleItem,
