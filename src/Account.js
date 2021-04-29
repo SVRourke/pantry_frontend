@@ -1,23 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { logout } from './actions/LoginActions'
+import { logout, authCheck } from './actions/LoginActions'
 import api from './api/Index'
 
 const Account = (props) => {
   const { logout, history } = props
 
+  useEffect(() => {
+    authCheck()
+  })
+
   const handleLogout = () => {
-    logout(() => {
-      history.push("/")
-    }) 
-     
+    logout(() => history.push("/"))
   }
 
   return (
     <div>
       <button onClick={handleLogout} >Logout</button>
 
-      {/* <button onClick={logout(() => history.go('/'))} >Logout</button> */}
       <h2>Account</h2>
       <h2>edit info</h2>
       <h2>log out</h2>
@@ -29,7 +29,8 @@ const Account = (props) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  logout: (cb) => dispatch(logout(cb))
+  logout: (cb) => dispatch(logout(cb)),
+  authCheck: () => dispatch(authCheck()),
 })
 
 export default connect(null, mapDispatchToProps)(Account)
