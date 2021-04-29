@@ -1,6 +1,6 @@
 const DELETE = 'DELETE'
 const TOGGLE = 'TOGGLE'
-// const CREATE = 'CREATE'
+const CREATE = 'CREATE'
 const EDIT = 'EDIT'
 const LOAD = 'LOADITEMS'
 
@@ -8,6 +8,9 @@ const itemReducer = (state = [], action) => {
   switch (action.type) {
     case LOAD:
       return action.items
+    
+    case CREATE:
+      return [...state, action.item]
 
     // TOGGLE ACQUIRED
     case TOGGLE:
