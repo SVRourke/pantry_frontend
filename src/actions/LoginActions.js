@@ -21,26 +21,29 @@ const destroy = () => {
   }
 }
 
+const reset = () => {
+  return {
+    type: 'RESET'
+  }
+}
+
 const logout = (cb) => {
   return dispatch => {
-    cb()
     api.auth.logout()
       .then(r => {
         return (
-          r.ok
+          r.status === 410
             ? r.json()
             : Promise.reject(r)
         )
       })
-      // .then(d => {
-      //   console.log("DISP DEST")
-      //   dispatch(destroy)
-      // })
-      .then(() => {
-        console.log("REMOVING COOKIE")
+      .then(r => {
+        dispatch(destroy())
+        // localStorage.clear(['persist:root'])
       })
+      .then(() => cb())
       .catch(error => {
-        Cookies.remove('CSRF-TOKEN', {path: '/'})
+        alert("logout failed, try again")
       })
   }
 }
@@ -76,8 +79,7 @@ const authCheck = () => {
         dispatch(loginSuccess(d))
       })
       .catch(error => {
-        console.log(error)
-        dispatch(loginFailure(error))
+        dispatch(reset())
       })
   }
 }
