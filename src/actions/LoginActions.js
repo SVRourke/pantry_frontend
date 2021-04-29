@@ -84,8 +84,24 @@ const authCheck = () => {
   }
 }
 
+const profile = (userId) => {
+  return dispatch => {
+    api.auth.profile(userId)
+      .then(res => {
+        return (
+          res.ok
+            ? res.json()
+            : Promise.reject(res)
+        )
+      })
+      .then(d => console.log(d))
+      .catch(error => console.log("ERROR", error))
+  }
+}
+
 export {
   authCheck,
   handleLogin,
   logout,
+  profile
 }
