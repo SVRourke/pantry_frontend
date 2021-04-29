@@ -9,7 +9,7 @@ const BASEOPTIONS = {
   }
 
 }
-const AUTHEDOPTIONS = token => (
+const authOptions = token => (
   {
     credentials: 'include',
     headers: {
@@ -20,12 +20,12 @@ const AUTHEDOPTIONS = token => (
     }
   }
 
-) 
+)
 
 const buildOptions = (method, authed, body, token) => {
   const options = {
     method: method,
-    ...(authed ? AUTHEDOPTIONS(token) : BASEOPTIONS),
+    ...(authed ? authOptions(token) : BASEOPTIONS),
   }
   if (body) {
     options.body = JSON.stringify(body)
@@ -34,11 +34,15 @@ const buildOptions = (method, authed, body, token) => {
 }
 
 export const baseRequest = (endpoint, method, authed, body) => {
-  // console.log(`REQUESTING ${endpoint}, ${method}, ${Cookies.get("CSRF-TOKEN")}`)
   return (
     fetch(
       `${BASEURL}${endpoint}`,
-      buildOptions(method, authed, body, Cookies.get("CSRF-TOKEN"))
+      buildOptions(
+        method,
+        authed,
+        body,
+        Cookies.get("CSRF-TOKEN")
+      )
     )
   )
 }
