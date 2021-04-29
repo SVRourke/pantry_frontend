@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react'
 import ListCard from '../components/ListCard'
+
 import { Block } from '../../common/elements'
 
 import { connect } from 'react-redux'
@@ -10,10 +11,8 @@ const ListCardContainer = ({ records, lists, userId, loggedIn, load }) => {
   const cards = records.map(r => <ListCard key={r.id} list={r} />)
 
   useEffect(() => {
-    if (lists.length === 0) {
-      load(userId)
-    }
-  })
+    load(userId)
+  }, [])
 
   return (
     <Block>
