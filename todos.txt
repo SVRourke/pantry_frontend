@@ -1,4 +1,5 @@
 MVP
+add messages when no record available (i.e. "CREATE A LIST", "ADD AN ITEM", "ADD a FRIEND", "No REquests")
 Style scrollbars
 add create account functionality
 main nav not enboldening on login
