@@ -1,7 +1,6 @@
 Lists page add filter (acquired)
 Lists page make list items container max-height 60vh
 Lists page make invites container min-height: 40vh
-Lists page leave list option
 
 Style scrollbars
 API add logic to caps standaradize emails
@@ -11,14 +10,11 @@ FIX LIST INVITE DISPLAY SCROLL
 
 clear storage on logout
 
-ADD DELETE LIST FUNCTIONALITY
-
-
 ACCOUNT PAGE FUNCTIONS
 delete account
 
 add create account page
 add create account api action/route etc
 
-first list is not loaded after creation
+list is not loaded after creation
 main nav not enboldening on login
