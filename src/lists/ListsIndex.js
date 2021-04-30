@@ -23,7 +23,7 @@ const ListIndex = ({ lists, load, userId }) => {
   }, [])
 
   return (
-    <div>
+    <>
       <Route exact path={path} >
         <ListCardContainer records={lists} />
 
@@ -35,7 +35,7 @@ const ListIndex = ({ lists, load, userId }) => {
       </Route>
 
       <Route path={`${path}/new`} component={NewList} />
-    </div>
+    </>
   )
 }
 
