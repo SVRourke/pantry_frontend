@@ -21,9 +21,10 @@ const NewList = ({ history, userId, create }) => {
 
   const submitHandler = (event) => {
     event.preventDefault()
-    create(userId, inputValue)
+    create(userId, inputValue, (listId) =>{
+      history.push(`/lists/${listId}/items`)
+    })
     setInput("")
-    history.goBack()
   }
 
   return (
@@ -46,7 +47,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  create: (userId, list) => dispatch(CreateList(userId, list))
+  create: (userId, list, cb) => dispatch(CreateList(userId, list, cb))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewList);
