@@ -23,7 +23,7 @@ const Login = ({ userId, isLoggedIn, login }) => {
 
   return (
     <div>
-      {isLoggedIn === 'TRUE' ? <Redirect to={`/users/${userId}`} /> : false}
+      {isLoggedIn ? <Redirect to={`/users/${userId}`} /> : false}
 
       <h1>Login</h1>
       
