@@ -10,7 +10,7 @@ const accept = (id) => {
 
 const cancel = (id) => {
   return {
-    type: 'c',
+    type: 'CANCEL',
     id: id
   }
 }
