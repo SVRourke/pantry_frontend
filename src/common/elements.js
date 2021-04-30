@@ -156,8 +156,10 @@ const innerContainerStyles = {
 
 const Block = styled.div`
     width: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
 `
+
 const Acquired = styled.button`
   border-color: ${props => props.acquired ? 'var(--green-color)' : 'var(--blue-color)'};
   color: ${props => props.acquired ? '#fff' : 'var(--blue-color)'};
