@@ -27,6 +27,13 @@ const reset = () => {
   }
 }
 
+const info = (info) => {
+  return {
+    type: 'GETPROFILE',
+    info
+  }
+}
+
 const logout = (cb) => {
   return dispatch => {
     api.auth.logout()
@@ -37,14 +44,9 @@ const logout = (cb) => {
             : Promise.reject(r)
         )
       })
-      .then(r => {
-        dispatch(destroy())
-        // localStorage.clear(['persist:root'])
-      })
+      .then(r => dispatch(destroy()))
       .then(() => cb())
-      .catch(error => {
-        alert("logout failed, try again")
-      })
+      .catch(error => alert("logout failed, try again"))
   }
 }
 
@@ -58,9 +60,7 @@ const handleLogin = (data) => {
             : Promise.reject(res)
         )
       })
-      .then(d => {
-        dispatch(loginSuccess(d))
-      })
+      .then(d => dispatch(loginSuccess(d)))
       .catch(error => dispatch(loginFailure(error)))
   }
 }
@@ -75,26 +75,22 @@ const authCheck = () => {
             : Promise.reject(res)
         )
       })
-      .then(d => {
-        dispatch(loginSuccess(d))
-      })
-      .catch(error => {
-        dispatch(reset())
-      })
+      .then(d => dispatch(loginSuccess(d)))
+      .catch(error => dispatch(reset()))
   }
 }
 
 const profile = (userId) => {
   return dispatch => {
     api.auth.profile(userId)
-      .then(res => {
+      .then(response => {
         return (
-          res.ok
-            ? res.json()
-            : Promise.reject(res)
+          response.ok
+            ? response.json()
+            : Promise.reject(response)
         )
       })
-      .then(d => console.log(d))
+      .then(data => dispatch(info(data.user)))
       .catch(error => console.log("ERROR", error))
   }
 }
