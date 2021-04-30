@@ -1,20 +1,12 @@
-Lists page add filter (acquired)
-Lists page make list items container max-height 60vh
-Lists page make invites container min-height: 40vh
-
+MVP
 Style scrollbars
-API add logic to caps standaradize emails
-
-LIST INVITE VALIDATOR NEED WORK
-FIX LIST INVITE DISPLAY SCROLL
-
-clear storage on logout
-
-ACCOUNT PAGE FUNCTIONS
-delete account
-
-add create account page
-add create account api action/route etc
-
-list is not loaded after creation
+add create account functionality
 main nav not enboldening on login
+LIST INVITE VALIDATOR NEED WORK
+API add logic to caps standaradize emails
+style list leave button
+
+EXTRA
+delete account
+Lists page add filter (acquired)
+responsive card headings (or truncate)
