@@ -45,10 +45,12 @@ const ListInvitesContainer = (props) => {
   }
 
   return (
-    <Block>
+    <>
       <InvitesControls filter={filter} cb={filterChange} />
-      {cards}
-    </Block>
+      <Block style={{maxHeight: "30vh"}}>
+        {cards}
+      </Block>
+    </>
   )
 }
 
