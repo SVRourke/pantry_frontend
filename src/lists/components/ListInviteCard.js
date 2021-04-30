@@ -11,6 +11,7 @@ import {
   MemberCount
 } from '../../common/elements'
 
+import ageFormatter from '../../common/TimeFormatter'
 
 const ListInviteCard = ({record, clickHandler}) => {
   const { id, list_name, record_age, requestor_name, requestee_name, contributor_count, type } = record
@@ -33,7 +34,7 @@ const ListInviteCard = ({record, clickHandler}) => {
           </RequestCancel>
       </Row>
 
-      <TimeDisplay displayType={type}>{record_age} ago</TimeDisplay>
+      <TimeDisplay displayType={type}>{ageFormatter(record_age, 1)} ago</TimeDisplay>
       <MemberCount displayType={type}>{contributor_count} members</MemberCount>
 
       <Row>
