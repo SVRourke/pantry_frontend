@@ -1,4 +1,3 @@
-import Cookies from 'js-cookie'
 import api from '../api/Index'
 
 const loginSuccess = (info) => {

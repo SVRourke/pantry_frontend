@@ -1,4 +1,3 @@
-import Api from '../api/Interface'
 import api from '../api/Index'
 // UNFRIEND
 const removeFriend = (friendshipId) => {
