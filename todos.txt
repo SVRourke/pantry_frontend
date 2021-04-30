@@ -13,13 +13,12 @@ clear storage on logout
 
 ADD DELETE LIST FUNCTIONALITY
 
-ACCOUNT PAGE FUNCTIONS
 
-create profile endpoint for stats
-account page edit info form
+ACCOUNT PAGE FUNCTIONS
 delete account
 
 add create account page
 add create account api action/route etc
 
 first list is not loaded after creation
+main nav not enboldening on login
