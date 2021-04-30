@@ -1,9 +1,9 @@
-// ALERT: REEVALUATE REDUX
 import React, { useEffect } from 'react'
 
 import { connect } from 'react-redux'
-import {LoadLists} from '../actions/ListActions'
+import { LoadLists } from '../actions/ListActions'
 
+// ALERT: MAKE INDEXES
 import ListCardContainer from './containers/ListCardContainer'
 import ListInvitesContainer from './containers/ListInvitesContainer'
 import NewList from '../lists/pages/NewList'
@@ -15,7 +15,7 @@ import {
   useRouteMatch
 } from 'react-router-dom'
 
-const ListIndex = ({lists, load, userId}) => {
+const ListIndex = ({ lists, load, userId }) => {
   const { path, url } = useRouteMatch()
 
   useEffect(() => {
@@ -23,32 +23,29 @@ const ListIndex = ({lists, load, userId}) => {
   }, [])
 
   return (
-      <div>
-        <Route exact path={path} >
-          <ListCardContainer records={lists} />
+    <div>
+      <Route exact path={path} >
+        <ListCardContainer records={lists} />
 
-          <FancyLink>
-            <Link to={`${url}/new`}>New List Button</Link>
-          </FancyLink>
+        <FancyLink>
+          <Link to={`${url}/new`}>New List Button</Link>
+        </FancyLink>
 
-          <ListInvitesContainer />
-        </Route>
+        <ListInvitesContainer />
+      </Route>
 
-        <Route path={`${path}/new`} component={NewList} />
-      </div>
+      <Route path={`${path}/new`} component={NewList} />
+    </div>
   )
 }
 
-const mapStateToProps = state => ({
+const mstp = state => ({
   lists: state.lists,
   userId: state.profile.userId,
-  loggedIn: state.profile.isLoggedIn
 })
-const mapDispatchToProps = dispatch => {
-  return {
-    load: userId => dispatch(LoadLists(userId))
-  }
+const mdtp = dispatch => ({
+  load: userId => dispatch(LoadLists(userId))
 
-}
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListIndex)
+export default connect(mstp, mdtp)(ListIndex)

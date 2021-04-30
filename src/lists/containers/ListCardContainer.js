@@ -1,18 +1,15 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import ListCard from '../components/ListCard'
-
 import { Block } from '../../common/elements'
-
 import { connect } from 'react-redux'
-import {LoadLists} from '../../actions/ListActions'
+import { LoadLists } from '../../actions/ListActions'
 
-
-const ListCardContainer = ({ records, lists, userId, loggedIn, load }) => {
-  const cards = records.map(r => <ListCard key={r.id} list={r} />)
-
+const ListCardContainer = ({ records, lists, userId, load }) => {
   useEffect(() => {
     load(userId)
   }, [])
+
+  const cards = records.map(r => <ListCard key={r.id} list={r} />)
 
   return (
     <Block>
@@ -21,16 +18,12 @@ const ListCardContainer = ({ records, lists, userId, loggedIn, load }) => {
   )
 }
 
-const mapStateToProps = state => ({
+const mstp = state => ({
   lists: state.lists,
-  userId: state.profile.userId,
-  loggedIn: state.profile.isLoggedIn
+  userId: state.profile.userId
 })
-const mapDispatchToProps = dispatch => {
-  return {
-    load: userId => dispatch(LoadLists(userId))
-  }
+const mdtp = dispatch => ({
+  load: userId => dispatch(LoadLists(userId))
+})
 
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ListCardContainer)
+export default connect(mstp, mdtp)(ListCardContainer)
