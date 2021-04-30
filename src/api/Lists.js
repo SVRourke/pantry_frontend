@@ -29,10 +29,19 @@ const loadMembers = (listId) => {
   )
 }
 
+const leave = (listId) => {
+  return baseRequest(
+    `/lists/${listId}/leave`,
+    'DELETE',
+    true
+  )
+}
+
 const lists = {
   create,
   load,
-  loadMembers
+  loadMembers,
+  leave
 }
 
 export default lists
