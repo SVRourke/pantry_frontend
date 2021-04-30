@@ -12,7 +12,7 @@ const ListCardContainer = ({ records, lists, userId, load }) => {
   const cards = records.map(r => <ListCard key={r.id} list={r} />)
 
   return (
-    <Block>
+    <Block style={{maxHeight: '50vh'}} >
       {cards}
     </Block>
   )
