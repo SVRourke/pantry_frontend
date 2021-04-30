@@ -1,5 +1,6 @@
 const LOAD = 'LOADLISTS'
 const ADD = 'ADDLIST'
+const LEAVE = 'LEAVE'
 
 const listReducer = (state = [], action) => {
   switch (action.type) {
@@ -11,6 +12,9 @@ const listReducer = (state = [], action) => {
         ...state,
         action.list
       ]
+
+    case LEAVE:
+      return state.filter(l => l.id !== action.listId)
 
     // DEFAULT
     default:
