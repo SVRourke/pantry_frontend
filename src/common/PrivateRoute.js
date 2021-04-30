@@ -1,20 +1,22 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import { 
+  Route, 
+  Redirect 
+} from 'react-router-dom'
 import { connect } from 'react-redux'
-import { Route, Redirect } from 'react-router-dom'
-import { authCheck } from '../actions/LoginActions'
 
-const PrivateRoute = ({ component: Component, loggedIn, ...others }) => ( 
-// {
-  <Route {...others} render={(props) => (
-    loggedIn === 'TRUE'
-    ? <Component {...props} />
-    : <Redirect to='/login' />
-  )} />
+const PrivateRoute = ({ component: Component, loggedIn, ...others }) => (
+  <Route
+    {...others} // Drilling but w/e it's a good excuse to do so
+    render={(props) => (
+      loggedIn
+        ? <Component {...props} />
+        : <Redirect to='/login' />
+    )} />
 )
 
-const mapStateToProps = state => ({
-  userId: state.profile.userId,
+const mstp = state => ({ 
   loggedIn: state.profile.isLoggedIn
 })
 
-export default connect(mapStateToProps, )(PrivateRoute);
+export default connect(mstp,)(PrivateRoute);
