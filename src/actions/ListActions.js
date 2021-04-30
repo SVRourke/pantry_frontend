@@ -48,4 +48,10 @@ const LoadLists = (userId) => {
 
 }
 
-export { Load, Add, LoadLists, CreateList }
+
+export {
+  Load,
+  Add,
+  LoadLists,
+  CreateList
+}
