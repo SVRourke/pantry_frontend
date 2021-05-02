@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouteMatch } from 'react-router-dom'
 import { NavLink, NavLinkContainer  } from '../common/elements'
 
 const MainNav = () => {
   const { url } = useRouteMatch()
-  const [page, setPage] = useState(window.location.href.split('/').pop())
+  const suffix = window.location.href.split('/').pop()
+  const [page, setPage] = useState(suffix)
 
   const switchPage = (event) => {
     setPage(event.target.name)
   }
+
+  useEffect(() => {
+    setPage(suffix)
+  })
 
   const isActive = (name) => {
     return page === name ? true : false;
@@ -19,24 +24,18 @@ const MainNav = () => {
       <NavLink
         $active={isActive('lists')}
         to={`${url}/lists`}
-        onClick={switchPage}
-        name='lists'
       >lists
       </NavLink>
 
       <NavLink
         $active={isActive('friends')}
         to={`${url}/friends`}
-        onClick={switchPage}
-        name='friends'
       >friends
       </NavLink>
 
       <NavLink
         $active={isActive('account')}
         to={`${url}/account`}
-        onClick={switchPage}
-        name='account'
       >account
       </NavLink>
 
