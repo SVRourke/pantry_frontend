@@ -1,7 +1,6 @@
 MVP
 add create account functionality
 LIST INVITE VALIDATOR NEED WORK
-dispatch logout on all unauthorized responses
 item dependent delete
 
 EXTRA
