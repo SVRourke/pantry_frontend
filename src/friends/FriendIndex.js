@@ -41,7 +41,7 @@ const FriendIndex = ({ load, userId, friends, unfriend }) => {
         <div style={friendPageContainer}>
 
           <div style={{ overflowY: "scroll" }}>
-            {cards}
+            {cards.length ? cards : <h3 style={{margin: '2rem 0 3rem'}}>add a friend!</h3>}
           </div>
 
           <NewFriend to={`${url}/new`}>add friend</NewFriend>
