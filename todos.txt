@@ -1,13 +1,12 @@
 MVP
-add messages when no record available (i.e. "CREATE A LIST", "ADD AN ITEM", "ADD a FRIEND", "No REquests")
-Style scrollbars
 add create account functionality
-main nav not enboldening on login
 LIST INVITE VALIDATOR NEED WORK
-API add logic to caps standaradize emails
-style list leave button
+dispatch logout on all unauthorized responses
+item dependent delete
 
 EXTRA
 delete account
 Lists page add filter (acquired)
 responsive card headings (or truncate)
+make usre models have cascading deletes
+Style scrollbars
