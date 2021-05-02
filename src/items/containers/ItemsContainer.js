@@ -39,7 +39,7 @@ function ItemContainer(props) {
   return (
     <div style={containerStyles}>
       <div style={innerContainerStyles}>
-        {cards}
+        {cards.length ? cards : <h2 style={{margin: '2rem 0 3rem'}}>add an item!</h2>}
       </div>
 
       <AddLink to={`${url}/new`}>new</AddLink>
