@@ -107,6 +107,7 @@ const NewFriend = styled(Link)`
     color: white;
   }
 `;
+
 const NiceLink = styled(Link)`
   border: solid var(--offblack-color) 2px;
   padding: .3rem .7rem;
@@ -114,6 +115,20 @@ const NiceLink = styled(Link)`
   display: block;
   width: fit-content;
 `;
+const NiceButton = styled.button`
+  border: solid var(--offblack-color) 2px;
+  padding: .3rem .7rem;
+  border-radius: 3rem;
+  display: block;
+  width: fit-content;
+  background: none;
+  &:hover {
+    border: solid var(--red-color) 2px;
+    background: var(--red-color);
+    color: white;
+  }
+`;
+
 const Wrapper = styled.div`
     display: flex;
     margin: 1rem 0 2rem 0;
@@ -146,12 +161,13 @@ const AddLink = styled(Link)`
 
 
 const containerStyles = {
-  height: '100vh',
+  height: '100%',
   overflow: 'hidden'
 }
 const innerContainerStyles = {
-  height: '80vh',
-  overflowY: 'scroll'
+  maxHeight: '80vh',
+  overflowY: 'auto',
+  overflowX: 'hidden'
 }
 
 const Block = styled.div`
@@ -247,5 +263,6 @@ export {
   Edit,
   Trash,
   NavContainer,
-  ListNavLink
+  ListNavLink,
+  NiceButton
 }
