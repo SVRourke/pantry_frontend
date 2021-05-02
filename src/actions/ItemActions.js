@@ -45,7 +45,7 @@ const createItem = (listId, item) => {
             : Promise.reject(r)
         )
       })
-      .then(d => dispatch(create(listId, item)))
+      .then(d => dispatch(create(listId, d)))
       .catch(error => console.log("ERROR", error))
   }
 }
