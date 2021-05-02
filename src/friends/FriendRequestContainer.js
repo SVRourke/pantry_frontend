@@ -38,7 +38,7 @@ const FriendRequestContainer = ({ userId, load, accept, cancel, requests }) => {
   return (
     <Block>
       <InvitesControls filter={filter} cb={filterChange} />
-      {cards.length ? cards : <p>No requests...</p>}
+      {cards.length ? cards : <h3 style={{margin: "2rem 0 4rem"}}>No requests...</h3>}
     </Block>
   );
 }
