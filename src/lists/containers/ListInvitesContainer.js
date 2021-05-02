@@ -48,7 +48,7 @@ const ListInvitesContainer = (props) => {
     <>
       <InvitesControls filter={filter} cb={filterChange} />
       <Block style={{maxHeight: "30vh"}}>
-        {cards}
+        {cards.length ? cards : <h3 style={{margin: "2rem 0 4rem"}}>no invites yet, send one!</h3>}
       </Block>
     </>
   )
