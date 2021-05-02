@@ -9,10 +9,10 @@ const ListCardContainer = ({ records, lists, userId, load }) => {
     load(userId)
   }, [])
 
-  const cards = records.map(r => <ListCard key={r.id} list={r} />)
+  const cards = lists.length ? lists.map(r => <ListCard key={r.id} list={r} />) : <h3 style={{padding: '2rem 0 4rem'}}>create a list!</h3>
 
   return (
-    <Block style={{maxHeight: '50vh'}} >
+    <Block style={{maxHeight: '50vh'}}>
       {cards}
     </Block>
   )
