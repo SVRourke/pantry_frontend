@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { useRouteMatch, useParams, useHistory } from 'react-router-dom'
 import MemberCard from './components/MemberCard'
-import { NiceLink } from '../common/elements'
+import { Row, NiceLink, NiceButton } from '../common/elements'
 
 import {
   loadMembers,
@@ -27,8 +27,11 @@ const MembersContainer = (props) => {
   return (
     <div>
       { members.map(c => <MemberCard user={c} />) }
-      <NiceLink to={`${url}/invite`}>invite a user</NiceLink>
-      <button onClick={handleLeave} >leave</button>
+      <Row>
+        <NiceLink to={`${url}/invite`}>invite a user</NiceLink>
+        <NiceButton style={{marginLeft: '1rem'}} onClick={handleLeave} >leave</NiceButton>
+
+      </Row>
     </div>
   );
 }
