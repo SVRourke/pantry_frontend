@@ -13,7 +13,7 @@ const Load = friends => {
     friends
   }
 }
-
+// 401
 const unfriend = (userId, friendId, friendshipId) => {
   return async dispatch => {
     api.friends.unfriend(userId, friendId)
@@ -25,7 +25,12 @@ const unfriend = (userId, friendId, friendshipId) => {
         )
       })
       .then(d => dispatch(removeFriend(friendshipId)))
-      .catch(e => console.log("UNFRIEND ERROR", e))
+      .catch(error => (
+        error.status === 401
+          ? dispatch({ type: 'LOGOUT' })
+          : alert("That didn't work, try again later")
+      )
+      )
   }
 }
 
@@ -42,7 +47,12 @@ const loadFriends = userId => {
       .then(d => {
         dispatch(Load(d))
       })
-      .catch(error => console.log("LOAD FRIENDS ERROR", error))
+      .catch(error => (
+        error.status === 401
+          ? dispatch({ type: 'LOGOUT' })
+          : alert("That didn't work, try again later")
+      )
+      )
   }
 }
 

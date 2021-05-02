@@ -19,7 +19,12 @@ const loadMembers = (listId) => {
     api.lists.loadMembers(listId)
       .then(r => r.json())
       .then(d => dispatch(load(d)))
-      .catch(error => alert('error'))
+      .catch(error => (
+        error.status === 401
+          ? dispatch({ type: 'LOGOUT' })
+          : alert("That didn't work, try again later")
+        )
+      )
   }
 }
 
@@ -35,7 +40,12 @@ const leaveList = (listId, cb) => {
       })
       .then(d => cb())
       .then(() => dispatch(leave(listId)))
-      .catch(error => console.log("ERROR", error))
+      .catch(error => (
+        error.status === 401
+          ? dispatch({ type: 'LOGOUT' })
+          : alert("That didn't work, try again later")
+        )
+      )
   }
 }
 

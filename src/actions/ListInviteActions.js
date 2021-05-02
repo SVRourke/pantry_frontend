@@ -41,6 +41,9 @@ const sendInvite = (email, listId, cb) => {
           case 422:
             alert("That user is already invited!")
             break;
+          case 401:
+            dispatch({type: 'LOGOUT'})
+            break;
           default:
             console.log(error)
         }
@@ -61,7 +64,12 @@ const loadInvites = (userId) => {
       .then(d => {
         dispatch(Load(d))
       })
-      .catch(error => console.log(error))
+      .catch(error => (
+        error.status === 401
+          ? dispatch({ type: 'LOGOUT' })
+          : alert("That didn't work, try again later")
+        )
+      )
   }
 }
 
@@ -78,7 +86,12 @@ const cancelInvite = (userId, inviteId) => {
       .then(d => {
         dispatch(cancel(inviteId))
       })
-      .catch(error => alert("That didn't work, try again in a few minutes"))
+      .catch(error => (
+        error.status === 401
+          ? dispatch({ type: 'LOGOUT' })
+          : alert("That didn't work, try again later")
+        )
+      )
 }
 
 const acceptInviteThunk = (userId, inviteId) => {
@@ -95,7 +108,12 @@ const acceptInviteThunk = (userId, inviteId) => {
         dispatch(accept(inviteId))
         dispatch(Add(d))
       })
-      .catch(error => console.log("ERROR", error))
+      .catch(error => (
+        error.status === 401
+          ? dispatch({ type: 'LOGOUT' })
+          : alert("That didn't work, try again later")
+        )
+      )
   }
 }
 

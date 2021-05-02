@@ -45,7 +45,12 @@ const logout = (cb) => {
       })
       .then(r => dispatch(destroy()))
       .then(() => cb())
-      .catch(error => alert("logout failed, try again"))
+      .catch(error => (
+        error.status === 401
+          ? dispatch({ type: 'LOGOUT' })
+          : alert("That didn't work, try again later")
+      )
+      )
   }
 }
 
@@ -60,7 +65,12 @@ const handleLogin = (data) => {
         )
       })
       .then(d => dispatch(loginSuccess(d)))
-      .catch(error => dispatch(loginFailure(error)))
+      .catch(error => (
+        error.status === 401
+          ? dispatch({ type: 'LOGOUT' })
+          : alert("That didn't work, try again later")
+      )
+      )
   }
 }
 
@@ -75,7 +85,12 @@ const authCheck = () => {
         )
       })
       .then(d => dispatch(loginSuccess(d)))
-      .catch(error => dispatch(reset()))
+      .catch(error => (
+        error.status === 401
+          ? dispatch({ type: 'LOGOUT' })
+          : alert("That didn't work, try again later")
+      )
+      )
   }
 }
 
@@ -90,7 +105,12 @@ const profile = (userId) => {
         )
       })
       .then(data => dispatch(info(data.user)))
-      .catch(error => console.log("ERROR", error))
+      .catch(error => (
+        error.status === 401
+          ? dispatch({ type: 'LOGOUT' })
+          : alert("That didn't work, try again later")
+      )
+      )
   }
 }
 

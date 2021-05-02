@@ -39,7 +39,12 @@ const loadRequests = (id) => {
         )
       })
       .then(d => dispatch(load(d)))
-      .catch(error => console.log(error))
+      .catch(error => (
+        error.status === 401
+          ? dispatch({ type: 'LOGOUT' })
+          : alert("That didn't work, try again later")
+      )
+      )
   }
 }
 
@@ -57,7 +62,12 @@ const acceptRequest = (userId, id) => {
         dispatch(accept(id))
         dispatch(addFriend(d))
       })
-      .catch(error => alert(error.message))
+      .catch(error => (
+        error.status === 401
+          ? dispatch({ type: 'LOGOUT' })
+          : alert("That didn't work, try again later")
+      )
+      )
   }
 }
 
@@ -72,7 +82,12 @@ const cancelRequest = (userId, id) => {
         )
       })
       .then(d => dispatch(cancel(id)))
-      .catch(error => alert(error.message))
+      .catch(error => (
+        error.status === 401
+          ? dispatch({ type: 'LOGOUT' })
+          : alert("That didn't work, try again later")
+      )
+      )
   }
 }
 
@@ -87,7 +102,13 @@ const sendRequest = (userId, email, cb) => {
         )
       })
       .then(d => cb())
-      .catch(error => alert("That didn't work... check the email and try again"))
+      // ALERT CUSTOMIZE MORE
+      .catch(error => (
+        error.status === 401
+          ? dispatch({ type: 'LOGOUT' })
+          : alert("That didn't work, try again later")
+      )
+      )
   }
 }
 

@@ -5,7 +5,7 @@ const Load = (lists) => {
   return {
     type: 'LOADLISTS',
     lists: [...lists]
-    
+
   }
 }
 
@@ -15,7 +15,7 @@ const Add = list => {
     list: list
   }
 }
-// POST   /users/:user_id/lists(.:format)
+
 const CreateList = (userId, list, cb) => {
   return async dispatch => {
     api.lists.create(userId, list)
@@ -30,25 +30,33 @@ const CreateList = (userId, list, cb) => {
         dispatch(Add(d))
         cb(d.id)
       })
-      // .then(d => )
-      .catch(error => console.log("Error"))
+      .catch(error => (
+        error.status === 401
+          ? dispatch({ type: 'LOGOUT' })
+          : alert("That didn't work, try again later")
+      )
+      )
   }
 }
 
 const LoadLists = (userId) => {
   return async dispatch => {
     api.lists.load(userId)
-      .then(r => {
+      .then(response => {
         return (
-          r.ok
-            ? r.json()
-            : Promise.reject(r)
+          response.ok
+            ? response.json()
+            : Promise.reject(response)
         )
       })
-      .then(d => dispatch(Load(d)))
-      .catch(error => alert('error'))
+      .then(data => dispatch(Load(data)))
+      .catch(error => (
+        error.status === 401
+          ? dispatch({ type: 'LOGOUT' })
+          : alert("That didn't work, try again later")
+      )
+      )
   }
-
 }
 
 

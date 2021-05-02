@@ -46,11 +46,15 @@ const createItem = (listId, item) => {
         )
       })
       .then(d => dispatch(create(listId, d)))
-      .catch(error => console.log("ERROR", error))
+      .catch(error => (
+        error.status === 401
+          ? dispatch({ type: 'LOGOUT' })
+          : alert("That didn't work, try again later")
+      )
+      )
   }
 }
 const deleteItem = (listId, itemId) => {
-  // /lists/:list_id/items/:id
   return async dispatch => {
     api.items.destroy(listId, itemId)
       .then(r => {
@@ -61,7 +65,12 @@ const deleteItem = (listId, itemId) => {
         )
       })
       .then(d => dispatch(Trash(listId, itemId)))
-      .catch(error => console.log("ERROR", error))
+      .catch(error => (
+        error.status === 401
+          ? dispatch({ type: 'LOGOUT' })
+          : alert("That didn't work, try again later")
+      )
+      )
   }
 }
 const updateItem = (listId, item) => {
@@ -75,7 +84,12 @@ const updateItem = (listId, item) => {
         )
       })
       .then(d => dispatch(Edit(listId, item)))
-      .catch(error => console.log("ERROR", error))
+      .catch(error => (
+        error.status === 401
+          ? dispatch({ type: 'LOGOUT' })
+          : alert("That didn't work, try again later")
+      )
+      )
   }
 }
 const ToggleItem = (listId, itemId) => {
@@ -89,7 +103,12 @@ const ToggleItem = (listId, itemId) => {
         )
       })
       .then(d => dispatch(Toggle(listId, itemId)))
-      .catch(error => console.log("ERROR", error))
+      .catch(error => (
+        error.status === 401
+          ? dispatch({ type: 'LOGOUT' })
+          : alert("That didn't work, try again later")
+      )
+      )
 
   }
 }
@@ -104,7 +123,12 @@ const LoadItems = (listId) => {
         )
       })
       .then(d => dispatch(Load(d)))
-      .catch(error => alert('error'))
+      .catch(error => (
+        error.status === 401
+          ? dispatch({ type: 'LOGOUT' })
+          : alert("That didn't work, try again later")
+      )
+      )
   }
 }
 
