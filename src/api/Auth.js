@@ -40,11 +40,23 @@ const profile = (userId) => {
     )
   )
 }
+
+const signUp = (user) => {
+  return(
+    baseRequest(
+      'users',
+      'POST',
+      true,
+      { user: user }
+    )
+  )
+}
 const auth = {
   login,
   logout,
   checkAuth,
-  profile
+  profile,
+  signUp
 }
 
 export default auth
