@@ -43,7 +43,7 @@ const logout = (cb) => {
             : Promise.reject(r)
         )
       })
-      .then(r => dispatch(destroy()))
+      .then(r => dispatch(reset()))
       .then(() => cb())
       .catch(error => (
         error.status === 401
@@ -114,9 +114,28 @@ const profile = (userId) => {
   }
 }
 
+const signUp = (user) => {
+  return dispatch => {
+    api.auth.signUp(user)
+      .then(response => (
+        response.status === 201
+          ? response.json()
+          : Promise.reject(response)
+      ))
+      .then(data => {
+        alert('loginsuccess')
+        dispatch(loginSuccess(data))
+      })
+      // make flexible for error messages
+      .catch(error => console.log("SIGNUP ERROR", error))
+  }
+  // 201
+}
+
 export {
   authCheck,
   handleLogin,
   logout,
-  profile
+  profile,
+  signUp
 }
