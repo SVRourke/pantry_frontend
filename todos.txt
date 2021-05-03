@@ -2,10 +2,10 @@ MVP
 add create account functionality
 LIST INVITE VALIDATOR NEED WORK
 item dependent delete
+make sure models have cascading deletes
 
 EXTRA
 delete account
 Lists page add filter (acquired)
 responsive card headings (or truncate)
-make usre models have cascading deletes
 Style scrollbars
