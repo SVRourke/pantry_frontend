@@ -1,8 +1,5 @@
-MVP
-LIST INVITE VALIDATOR NEED WORK
-
-EXTRA
 delete account
 Lists page add filter (acquired)
 responsive card headings (or truncate)
 Style scrollbars
+style logout button
