@@ -1,13 +1,6 @@
 MVP
 LIST INVITE VALIDATOR NEED WORK
 
-make sure models have cascading deletes
-    item dependent delete list
-    contribution dependent delete lists and users
-    friendship dependent delete users
-    friend request dependent delete users
-    list invite dependent delete users and list 
-
 EXTRA
 delete account
 Lists page add filter (acquired)
