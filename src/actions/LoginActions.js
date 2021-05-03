@@ -93,7 +93,7 @@ const authCheck = () => {
       )
   }
 }
-
+// ALERT: SHOULD ALL BE CHANGED tO MULTI CONDITION TERNARY?
 const profile = (userId) => {
   return dispatch => {
     api.auth.profile(userId)
@@ -101,16 +101,13 @@ const profile = (userId) => {
         return (
           response.ok
             ? response.json()
-            : Promise.reject(response)
+            : response.status === 401
+              ? dispatch({ type: 'LOGOUT' })
+              : Promise.reject(response)
         )
       })
       .then(data => dispatch(info(data.user)))
-      .catch(error => (
-        error.status === 401
-          ? dispatch({ type: 'LOGOUT' })
-          : alert("That didn't work, try again later")
-      )
-      )
+      .catch(error => alert("That didn't work, try again later"))
   }
 }
 
