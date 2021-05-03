@@ -17,7 +17,8 @@ import {
 
 import {
   persistStore,
-  persistReducer
+  persistReducer,
+  purgeStoredState
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
@@ -27,7 +28,7 @@ const persistConfig = {
   storage
 }
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
   lists: listReducer,
   items: itemReducer,
   friends: FriendsReducer,
@@ -36,6 +37,14 @@ const rootReducer = combineReducers({
   friendRequests: FriendRequestReducer,
   profile: LoginReducer
 })
+
+const rootReducer = ( state, action ) => {
+  if (action.type === 'RESET') {
+    // state = undefined
+    purgeStoredState(persistConfig)
+  }
+  return appReducer(state, action)
+}
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
