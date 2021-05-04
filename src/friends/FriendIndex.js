@@ -40,7 +40,7 @@ const FriendIndex = ({ load, userId, friends, unfriend }) => {
       <Route exact path={path}>
         <div style={friendPageContainer}>
 
-          <div style={{ overflowY: "scroll" }}>
+          <div style={{ overflowY: "auto" }}>
             {cards.length ? cards : <h3 style={{margin: '2rem 0 3rem'}}>add a friend!</h3>}
           </div>
 
