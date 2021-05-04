@@ -60,10 +60,6 @@ const CardBody = styled.div`
   color: ${(props) => (props.typeStyle === "sent" ? "#cacaca" : "var(--off-black-color)") || "var(--off-black-color)"};
 `;
 
-
-
-
-
 const SubHeading = styled.p``;
 
 const NavLinkContainer = styled.div`
@@ -145,8 +141,6 @@ const CancelButton = styled.button`
         color: var(--red-color)
     }
 `;
-
-
 const AddLink = styled(Link)`
     border: solid black 2px;
     background-color: white;
@@ -156,9 +150,6 @@ const AddLink = styled(Link)`
     display: block;
     width: fit-content;
 `
-
-
-
 
 const containerStyles = {
   height: '100%',
