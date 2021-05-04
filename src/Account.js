@@ -1,14 +1,19 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { logout, profile } from './actions/LoginActions'
+import { logout, profile, closeAccount } from './actions/LoginActions'
 
-const Account = ({ logout, history, getProfile, profile }) => {
+const Account = ({ logout, history, getProfile, profile, closeAccount }) => {
   useEffect(() => {
     getProfile(profile.userId)
   }, [])
 
   const handleLogout = () => {
     logout(() => history.push('/login'))
+  }
+
+  const handleDelete = () => {
+    closeAccount(profile.userId)
+    history.push('/')
   }
 
   return (
@@ -24,14 +29,16 @@ const Account = ({ logout, history, getProfile, profile }) => {
       <h3>list invites</h3>
       <p>sent: {profile.sent_invites} received: {profile.received_invites}</p>
       <h2>delete account</h2>
-      <button onClick={handleLogout} >Logout</button>
+      <button onClick={handleLogout} >logout</button>
+      <button onClick={handleDelete} >delete account</button>
     </div>
   )
 }
 
 const mapDispatchToProps = dispatch => ({
-  logout: (cb) => dispatch(logout(cb)),
-  getProfile: (userId) => dispatch(profile(userId))
+  logout: cb => dispatch(logout(cb)),
+  getProfile: userId => dispatch(profile(userId)),
+  closeAccount: userId => dispatch(closeAccount(userId))
 })
 const mapStateToProps = state => ({
   profile: state.profile
