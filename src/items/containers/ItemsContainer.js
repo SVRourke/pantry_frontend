@@ -1,4 +1,8 @@
-import React, { useEffect } from 'react'
+import React, {
+  useEffect,
+  useState
+} from 'react'
+
 import {
   useRouteMatch,
   useParams
@@ -9,19 +13,27 @@ import ItemCard from '../components/ItemCard'
 import {
   AddLink,
   containerStyles,
-  innerContainerStyles
+  innerContainerStyles,
+  FilterButton,
+  Row
 } from '../../common/elements'
 
 import { connect } from 'react-redux'
 import { ToggleItem, LoadItems, deleteItem } from '../../actions/ItemActions'
 
-// Attach To REDUX
+
 function ItemContainer(props) {
   const { items, toggleAction, load, deleteItem } = props
   const { url } = useRouteMatch()
   const listId = parseInt(useParams().list_id)
 
-  const cards = items.sort((a, b) => a.id > b.id).map((record) => {
+  const [filtered, setFiltered] = useState(false)
+
+
+
+  const filteredItems = filtered ? items.filter((item) => !item.acquired) : items
+
+  const cards = filteredItems.sort((a, b) => a.id > b.id).map((record) => {
     return (
       <ItemCard
         key={record.id}
@@ -36,13 +48,18 @@ function ItemContainer(props) {
     load(listId)
   }, [])
 
+  const handleFilter = () => (setFiltered(!filtered))
+
   return (
     <div style={containerStyles}>
       <div style={innerContainerStyles}>
         {cards.length ? cards : <h2 style={{margin: '2rem 0 3rem'}}>add an item!</h2>}
       </div>
 
-      <AddLink to={`${url}/new`}>new</AddLink>
+      <Row style={{paddingTop: '1rem'}}>
+        <AddLink to={`${url}/new`}>new</AddLink>
+        <FilterButton filtered={filtered} onClick={handleFilter}>filter acquired</FilterButton>
+      </Row>
     </div>
   )
 }
