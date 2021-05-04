@@ -93,7 +93,7 @@ const authCheck = () => {
       )
   }
 }
-// ALERT: SHOULD ALL BE CHANGED tO MULTI CONDITION TERNARY?
+// ALERT: SHOULD ALL BE CHANGED TO MULTI CONDITION TERNARY?
 const profile = (userId) => {
   return dispatch => {
     api.auth.profile(userId)
@@ -120,13 +120,24 @@ const signUp = (user) => {
           : Promise.reject(response)
       ))
       .then(data => {
-        alert('loginsuccess')
         dispatch(loginSuccess(data))
       })
       // make flexible for error messages
       .catch(error => console.log("SIGNUP ERROR", error))
   }
-  // 201
+}
+
+const closeAccount = userId => {
+  return dispatch => {
+    api.auth.deleteAccount(userId)
+      .then(response => (
+        response.status === 410
+          ? response.json()
+          : Promise.reject(response)
+      ))
+      .then(data => dispatch(reset()))
+      .catch(error => console.log("DELETE ACCOUNT ERROR", error))
+  }
 }
 
 export {
@@ -134,5 +145,6 @@ export {
   handleLogin,
   logout,
   profile,
-  signUp
+  signUp,
+  closeAccount
 }
