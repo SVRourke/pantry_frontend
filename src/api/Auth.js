@@ -31,7 +31,7 @@ const checkAuth = () => {
   )
 }
 
-const profile = (userId) => {
+const profile = userId => {
   return (
     baseRequest(
       `users/${userId}`,
@@ -41,8 +41,8 @@ const profile = (userId) => {
   )
 }
 
-const signUp = (user) => {
-  return(
+const signUp = user => {
+  return (
     baseRequest(
       'users',
       'POST',
@@ -51,12 +51,24 @@ const signUp = (user) => {
     )
   )
 }
+
+const deleteAccount = userId => {
+  return (
+    baseRequest(
+      `users/${userId}`,
+      'DELETE',
+      true
+    )
+  )
+}
+
 const auth = {
   login,
   logout,
   checkAuth,
   profile,
-  signUp
+  signUp,
+  deleteAccount
 }
 
 export default auth
