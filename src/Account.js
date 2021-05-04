@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { logout, profile, closeAccount } from './actions/LoginActions'
+import { NiceButton, Row } from './common/elements'
 
 const Account = ({ logout, history, getProfile, profile, closeAccount }) => {
   useEffect(() => {
@@ -29,8 +30,10 @@ const Account = ({ logout, history, getProfile, profile, closeAccount }) => {
       <h3>list invites</h3>
       <p>sent: {profile.sent_invites} received: {profile.received_invites}</p>
       <h2>delete account</h2>
-      <button onClick={handleLogout} >logout</button>
-      <button onClick={handleDelete} >delete account</button>
+      <Row>
+        <NiceButton onClick={handleLogout} >logout</NiceButton>
+        <NiceButton onClick={handleDelete} >delete account</NiceButton>
+      </Row>
     </div>
   )
 }
