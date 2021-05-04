@@ -4,21 +4,20 @@ import {
   CardBody,
   CardHeading,
   MemberCount,
-} from "../../common/elements"
+} from '../../common/elements'
 
-const ListCard = ({ 
+const ListCard = ({
   list: {
-    id, 
-    name, 
-    item_count, 
+    id,
+    name,
+    item_count,
     contributor_count
-  } 
+  }
 }) => {
-
   return (
-    <Link to={`/lists/${id}`} >
-      <CardBody>
-        <CardHeading>{name}</CardHeading>
+    <Link to={`/lists/${id}`}>
+      <CardBody >
+        <CardHeading className={"truncate"}>{name}</CardHeading>
         <p>{item_count} items</p>
         <MemberCount>{contributor_count} members</MemberCount>
       </CardBody>
