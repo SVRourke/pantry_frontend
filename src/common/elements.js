@@ -235,7 +235,17 @@ const ListNavLink = styled(Link)`
   margin-right: 1rem;
   font-weight: ${props => props.active ? '600' : '400'};
 `;
-
+const FilterButton = styled.button`
+    margin-left: 1rem;
+    padding: .5rem 2rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    display: block;
+    width: fit-content;
+    background-color: ${props => props.filtered ? 'var(--green-color)' : 'white'};
+    color: ${props => props.filtered ? 'white' : 'var(--offblack-color)'};
+    border: ${props => props.filtered ? 'var(--green-color)' : 'solid black 2px'};
+`;
 
 export {
   CardBody,
@@ -264,5 +274,6 @@ export {
   Trash,
   NavContainer,
   ListNavLink,
-  NiceButton
+  NiceButton,
+  FilterButton
 }
