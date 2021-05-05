@@ -7,19 +7,6 @@ const loginSuccess = (info) => {
   }
 }
 
-const loginFailure = (error) => {
-  return {
-    type: 'LOGINFAILURE',
-    error: error
-  }
-}
-
-const destroy = () => {
-  return {
-    type: 'LOGOUT'
-  }
-}
-
 const reset = () => {
   return {
     type: 'RESET'
@@ -43,7 +30,10 @@ const logout = (cb) => {
             : Promise.reject(r)
         )
       })
-      .then(r => dispatch(reset()))
+      .then(r => {
+        dispatch(reset())
+        localStorage.clear()
+      })
       .then(() => cb())
       .catch(error => (
         error.status === 401
@@ -64,7 +54,10 @@ const handleLogin = (data) => {
             : Promise.reject(res)
         )
       })
-      .then(d => dispatch(loginSuccess(d)))
+      .then(d => {
+        dispatch(loginSuccess(d))
+        localStorage.setItem('token', d.jwt)
+      })
       .catch(error => (
         error.status === 401
           ? dispatch({ type: 'LOGOUT' })
@@ -84,7 +77,7 @@ const authCheck = () => {
             : Promise.reject(res)
         )
       })
-      .then(d => dispatch(loginSuccess(d)))
+      .then(d => dispatch(loginSuccess(d.user)))
       .catch(error => (
         error.status === 401
           ? dispatch({ type: 'LOGOUT' })
@@ -121,6 +114,7 @@ const signUp = (user) => {
       ))
       .then(data => {
         dispatch(loginSuccess(data))
+        localStorage.setItem('token', data.jwt)
       })
       // make flexible for error messages
       .catch(error => console.log("SIGNUP ERROR", error))
