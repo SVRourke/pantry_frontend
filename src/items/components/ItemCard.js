@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, useRouteMatch } from 'react-router-dom'
+import { useRouteMatch } from 'react-router-dom'
 import {
   CardHeading,
   MemberCount,
@@ -11,7 +11,7 @@ import {
 
 
 export default function ItemCard({ record, toggle, trash }) {
-  const { path, url } = useRouteMatch()
+  const { url } = useRouteMatch()
   return (
     <div style={{ margin: '0 0 2rem 0' }}>
       <CardHeading>{record.name}</CardHeading>

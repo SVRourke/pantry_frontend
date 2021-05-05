@@ -1,5 +1,4 @@
 import api from '../api/Index'
-import { CardBody } from '../common/elements'
 
 const Load = (lists) => {
   return {

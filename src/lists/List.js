@@ -16,7 +16,6 @@ import {
 const List = (props) => {
   const { path, url } = useRouteMatch()
 
-  // REPLACED BY REDUX
   const listId = useParams().list_id
   const list = props.lists.find(l => l.id === parseInt(listId))
   const userId = props.profile.userId
