@@ -1,5 +1,4 @@
-import Cookies from 'js-cookie'
-
+// TODO: MAKE ENV VAR
 const BASEURL = "http://localhost:3000/"
 
 const BASEOPTIONS = {
@@ -16,7 +15,7 @@ const authOptions = token => (
       'Content-Type': 'application/json',
       'Cache-Control': 'must-revalidate',
       'X-Requested-With': 'XMLHttpRequest',
-      "X-CSRF-Token": token
+      "Authorization": token
     }
   }
 
@@ -41,7 +40,7 @@ export const baseRequest = (endpoint, method, authed, body) => {
         method,
         authed,
         body,
-        Cookies.get("CSRF-TOKEN")
+        localStorage.getItem("token")
       )
     )
   )
