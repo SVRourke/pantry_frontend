@@ -7,10 +7,6 @@ const MainNav = () => {
   const suffix = window.location.href.split('/').pop()
   const [page, setPage] = useState(suffix)
 
-  const switchPage = (event) => {
-    setPage(event.target.name)
-  }
-
   useEffect(() => {
     setPage(suffix)
   })
