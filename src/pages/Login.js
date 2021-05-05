@@ -26,22 +26,22 @@ const Login = ({ userId, isLoggedIn, login }) => {
       {isLoggedIn ? <Redirect to={`/users/${userId}`} /> : false}
 
       <h1>Login</h1>
-      
+
       <form onSubmit={event => submitHandler(event)} >
-        <input 
-          name="email" 
-          type="email" 
-          value={input['email']} 
+        <input
+          name="email"
+          type="email"
+          value={input['email']}
           onChange={event => changeHandler(event)} />
 
-        <input 
-          name="password" 
-          type="password" 
-          value={input['password']} 
+        <input
+          name="password"
+          type="password"
+          value={input['password']}
           onChange={event => changeHandler(event)} />
 
-        <input 
-          type="submit" 
+        <input
+          type="submit"
           value="login" />
       </form>
 

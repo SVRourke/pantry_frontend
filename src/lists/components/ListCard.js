@@ -17,9 +17,17 @@ const ListCard = ({
   return (
     <Link to={`/lists/${id}`}>
       <CardBody >
-        <CardHeading className={"truncate"}>{name}</CardHeading>
+        <CardHeading
+          className={"truncate"}>
+          {name}
+        </CardHeading>
+
         <p>{item_count} items</p>
-        <MemberCount>{contributor_count} members</MemberCount>
+
+        <MemberCount>
+          {contributor_count} members
+        </MemberCount>
+
       </CardBody>
     </Link>
   )

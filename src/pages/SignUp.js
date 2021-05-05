@@ -14,7 +14,6 @@ const SignUp = ({ userId, isLoggedIn, signUp }) => {
 
   const submitHandler = event => {
     event.preventDefault()
-    console.log(input)
     signUp(input)
     setInput(initialState)
   }
@@ -31,22 +30,22 @@ const SignUp = ({ userId, isLoggedIn, signUp }) => {
       {isLoggedIn ? <Redirect to={`/users/${userId}`} /> : false}
 
       <h1>sign up</h1>
-      <form style={{display: 'flex', flexDirection: 'column'}} onSubmit={submitHandler} >
-      <label for={'name'} >name:</label>
+      <form style={{ display: 'flex', flexDirection: 'column' }} onSubmit={submitHandler} >
+        <label for={'name'} >name:</label>
         <input
           name="name"
           type="test"
           value={input['name']}
           onChange={changeHandler} />
-      
-      <label for={'email'} >email:</label>
+
+        <label for={'email'} >email:</label>
         <input
           name="email"
           type="email"
           value={input['email']}
           onChange={changeHandler} />
-      
-      <label for={'password'} >password:</label>
+
+        <label for={'password'} >password:</label>
         <input
           name="password"
           type="password"

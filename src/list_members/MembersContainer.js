@@ -11,10 +11,9 @@ import {
 
 const MembersContainer = (props) => {
   const { members, userId, load, leave } = props
-  const {  url } = useRouteMatch()
-  const {list_id} = useParams()
+  const { url } = useRouteMatch()
+  const { list_id } = useParams()
   const history = useHistory()
-  
 
   useEffect(() => {
     load(list_id)
@@ -26,10 +25,18 @@ const MembersContainer = (props) => {
 
   return (
     <div>
-      { members.map(c => <MemberCard user={c} />) }
+      { members.map(c => <MemberCard user={c} />)}
       <Row>
-        <NiceLink to={`${url}/invite`}>invite a user</NiceLink>
-        <NiceButton style={{marginLeft: '1rem'}} onClick={handleLeave} >leave</NiceButton>
+        <NiceLink
+          to={`${url}/invite`}>
+          invite a user
+        </NiceLink>
+
+        <NiceButton
+          style={{ marginLeft: '1rem' }}
+          onClick={handleLeave}>
+          leave
+        </NiceButton>
 
       </Row>
     </div>

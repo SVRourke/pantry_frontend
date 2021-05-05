@@ -22,14 +22,11 @@ import { connect } from 'react-redux'
 import { ToggleItem, LoadItems, deleteItem } from '../../actions/ItemActions'
 
 
-function ItemContainer(props) {
-  const { items, toggleAction, load, deleteItem } = props
+function ItemContainer({ items, toggleAction, load, deleteItem }) {
   const { url } = useRouteMatch()
   const listId = parseInt(useParams().list_id)
 
   const [filtered, setFiltered] = useState(false)
-
-
 
   const filteredItems = filtered ? items.filter((item) => !item.acquired) : items
 

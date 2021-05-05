@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavContainer, ListNavLink } from '../../common/elements'
 
-const ListNav = ({id, url }) => {
+const ListNav = ({ id, url }) => {
   const currentPage = window.location.href.split('/').pop()
 
   const isActive = (name) => {
@@ -9,9 +9,23 @@ const ListNav = ({id, url }) => {
   }
   return (
     <NavContainer>
-      <ListNavLink active={isActive('items')} to={`${url}/items`}>items</ListNavLink>
-      <ListNavLink active={isActive('members')} to={`${url}/members`}>members</ListNavLink>
-      <ListNavLink to={`/users/${id}`}>home</ListNavLink>
+      <ListNavLink
+        active={isActive('items')}
+        to={`${url}/items`}>
+        items
+      </ListNavLink>
+
+      <ListNavLink
+        active={isActive('members')}
+        to={`${url}/members`}>
+        members
+      </ListNavLink>
+
+      <ListNavLink
+        to={`/users/${id}`}>
+        home
+      </ListNavLink>
+
     </NavContainer>
   );
 }
