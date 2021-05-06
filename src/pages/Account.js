@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { logout, profile, closeAccount } from './actions/LoginActions'
-import { NiceButton, Row } from './common/elements'
+import { logout, profile, closeAccount } from '../actions/LoginActions'
+import { NiceButton, Row } from '../common/elements'
 
 const Account = ({ logout, history, getProfile, profile, closeAccount }) => {
   useEffect(() => {
