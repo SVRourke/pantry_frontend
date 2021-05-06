@@ -8,6 +8,7 @@ const Welcome = () => {
       <Link to='/login'>login</Link><br/>
       <Link to='/sign-up'>sign up</Link>
     </div>
+    {process.env['REACT_APP_API_DOMAIN']}
   )
 }
 
