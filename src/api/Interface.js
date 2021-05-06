@@ -1,5 +1,4 @@
-// TODO: MAKE ENV VAR
-const BASEURL = "https://whispering-plains-35440.herokuapp.com/"
+const BASEURL = process.env.API_DOMAIN
 
 const BASEOPTIONS = {
   credentials: 'include',
