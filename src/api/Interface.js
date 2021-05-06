@@ -1,4 +1,5 @@
-const BASEURL = process.env.API_DOMAIN
+const { API_DOMAIN } = process.env
+const BASEURL = API_DOMAIN
 
 const BASEOPTIONS = {
   credentials: 'include',
