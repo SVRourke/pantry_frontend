@@ -1,5 +1,4 @@
-const { API_DOMAIN } = process.env
-const BASEURL = API_DOMAIN
+const BASEURL = process.env.REACT_APP_API_DOMAIN
 
 const BASEOPTIONS = {
   credentials: 'include',
