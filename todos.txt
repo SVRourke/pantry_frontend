@@ -1,2 +1,0 @@
-style delete account button
-style scrollbars for chrome
