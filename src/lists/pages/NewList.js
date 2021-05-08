@@ -35,7 +35,7 @@ const NewList = ({ history, userId, create }) => {
       <NiceForm onSubmit={submitHandler}>
         <NiceLabel for="List Name">list name</NiceLabel>
         <EmailInput type="text" name="list name" value={inputValue} onChange={inputHandler} />
-        <SubmitButton type="submit" value="send request" />
+        <SubmitButton type="submit" value="create" />
       </NiceForm>
     </div>
   );
