@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useRouteMatch } from 'react-router-dom'
-import { NavLink, NavLinkContainer } from '../common/elements'
-
+import { Link, useRouteMatch } from 'react-router-dom'
+import '../sass/MainNav.scss'
 const MainNav = () => {
   const { url } = useRouteMatch()
   const suffix = window.location.href.split('/').pop()
@@ -16,26 +15,27 @@ const MainNav = () => {
   }
 
   return (
-    <NavLinkContainer>
-      <NavLink
+    <div className={'main-nav'}>
+      <Link
+        className={isActive('lists') ? 'active' : ''}
         $active={isActive('lists')}
         to={`${url}/lists`}
       >lists
-      </NavLink>
+      </Link>
 
-      <NavLink
-        $active={isActive('friends')}
+      <Link
+        className={isActive('friends') ? 'active' : ''}
         to={`${url}/friends`}
       >friends
-      </NavLink>
+      </Link>
 
-      <NavLink
-        $active={isActive('account')}
+      <Link
+        className={isActive('account') ? 'active' : ''}
         to={`${url}/account`}
       >account
-      </NavLink>
+      </Link>
 
-    </NavLinkContainer>
+    </div>
   );
 }
 
