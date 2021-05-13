@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { signUp } from '../actions/LoginActions'
 import { Redirect } from 'react-router-dom'
+import './signup.scss'
 
 const initialState = {
   email: '',
@@ -26,11 +27,11 @@ const SignUp = ({ userId, isLoggedIn, signUp }) => {
   }
 
   return (
-    <div>
+    <div className={'signup'}>
       {isLoggedIn ? <Redirect to={`/users/${userId}`} /> : false}
 
       <h1>sign up</h1>
-      <form style={{ display: 'flex', flexDirection: 'column' }} onSubmit={submitHandler} >
+      <form onSubmit={submitHandler} >
         <label for={'name'} >name:</label>
         <input
           name="name"

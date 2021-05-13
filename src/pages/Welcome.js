@@ -4,9 +4,13 @@ import './welcome.scss'
 const Welcome = () => {
   return (
     <div className={'welcome'}>
-      <h1>Welcome</h1>
-      <Link to='/login'>login</Link><br/>
-      <Link to='/sign-up'>sign up</Link>
+      <h1>Pantry</h1>
+      <p></p>
+
+      <div className={'welcome_buttons'}>
+        <Link to='/login'>login</Link><br/>
+        <Link to='/sign-up'>sign up</Link>
+      </div>
 
 
     </div>
