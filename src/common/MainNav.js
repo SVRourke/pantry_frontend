@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouteMatch } from 'react-router-dom'
-import { NavLink, NavLinkContainer  } from '../common/elements'
+import { NavLink, NavLinkContainer } from '../common/elements'
 
 const MainNav = () => {
   const { url } = useRouteMatch()

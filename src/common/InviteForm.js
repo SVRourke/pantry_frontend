@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
   NiceForm,
   EmailInput,
@@ -6,8 +6,8 @@ import {
   NiceLabel
 } from '../common/FormElements'
 
-const InviteForm = ({cb}) => {
-  const [ email, setEmail] = useState("")
+const InviteForm = ({ cb }) => {
+  const [email, setEmail] = useState('')
 
   const handleChange = (event) => {
     setEmail(event.target.value)
@@ -16,12 +16,12 @@ const InviteForm = ({cb}) => {
   const submitHandler = (event) => {
     event.preventDefault()
     cb(email)
-    setEmail("")
+    setEmail('')
   }
 
   return (
     <div style={{
-      margin: "1rem 0"
+      margin: '1rem 0'
     }}>
       <NiceForm onSubmit={submitHandler}>
         <NiceLabel for="email">email</NiceLabel>
