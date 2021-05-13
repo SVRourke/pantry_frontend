@@ -1,0 +1,49 @@
+.signup {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h1 {
+        font-size: 4rem;
+        text-align: center;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+
+        label {
+            font-weight: 500;
+            font-size: 1.5rem;
+        }
+
+        input {
+            padding-left: 1rem;
+            margin-bottom: .8rem;
+            height: 3rem;
+            border: solid black 2px;
+            border-radius: .5rem;
+            font-size: 1.3rem;
+
+            &:focus {
+                border: solid rgb(80, 133, 182) 2px;
+            }
+
+            &[type=submit] {
+                background: none;
+                margin-top: 1rem;
+                height: auto;
+                padding: .7rem .7rem .7rem .7rem;
+
+                &:hover {
+                    background-color: black;
+                    color: white;
+                    transition: 200ms;
+                }
+            }
+        }
+    }
+
+
+}
