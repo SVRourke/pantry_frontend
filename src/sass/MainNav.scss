@@ -1,0 +1,27 @@
+.main-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    // border-bottom: solid black 4px;
+    margin-bottom: .5rem;
+
+    a {
+        font-size: 2rem;
+        font-weight: 400;
+
+        &:not(:last-of-type) {
+            margin-right: 1rem;
+        }
+
+        &.active {
+            font-weight: 600;
+            text-decoration: underline;
+            text-decoration-thickness: 4px;
+            &::after {
+                content: ':';
+                
+            }
+        }
+    }
+
+}
