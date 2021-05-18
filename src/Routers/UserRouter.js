@@ -9,7 +9,7 @@ import {
 import PrivateRoute from '../common/PrivateRoute'
 import ListsIndex from '../lists/ListsIndex'
 import Friends from '../friends/FriendIndex'
-import Account from '../Account'
+import Account from '../pages/Account'
 import MainNav from '../common/MainNav'
 
 const UserRouter = (props) => {
