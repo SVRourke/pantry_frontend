@@ -36,7 +36,6 @@ const Load = (items) => {
 }
 
 const clearItems = () => {
-  alert("clearing")
   return {
     type: 'RESETITEMS'
   }

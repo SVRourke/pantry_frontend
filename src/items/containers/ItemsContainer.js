@@ -45,7 +45,6 @@ function ItemContainer({ items, toggleAction, load, clear, deleteItem }) {
     load(listId)
     
     return () => {
-      alert("Cleanup!")
       clear()
     }
   }, [])
