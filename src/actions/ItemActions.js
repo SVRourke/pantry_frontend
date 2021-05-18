@@ -35,6 +35,13 @@ const Load = (items) => {
   }
 }
 
+const clearItems = () => {
+  alert("clearing")
+  return {
+    type: 'RESETITEMS'
+  }
+}
+
 const createItem = (listId, item) => {
   return async dispatch => {
     api.items.create(listId, item)
@@ -137,6 +144,7 @@ export {
   Toggle,
   create,
   Edit,
+  clearItems,
   LoadItems,
   ToggleItem,
   updateItem,
