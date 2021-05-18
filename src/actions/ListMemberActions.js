@@ -13,7 +13,11 @@ const leave = (listId) => {
     listId
   }
 }
-
+const clearMembers = () => {
+  return {
+    type: 'CLEARMEMBERS'
+  }
+}
 const loadMembers = (listId) => {
   return dispatch => {
     api.lists.loadMembers(listId)
@@ -51,5 +55,6 @@ const leaveList = (listId, cb) => {
 
 export {
   loadMembers,
-  leaveList
+  leaveList,
+  clearMembers
 }
