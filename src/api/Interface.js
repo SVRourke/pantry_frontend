@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie'
 
 // TODO: MAKE ENV VAR
-const BASEURL = "http://localhost:3000/"
+const BASEURL = "http://api.pantry.svrourke.com"
 
 const BASEOPTIONS = {
   credentials: 'include',
