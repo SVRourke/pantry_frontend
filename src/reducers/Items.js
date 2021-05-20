@@ -3,6 +3,7 @@ const TOGGLE = 'TOGGLE'
 const CREATE = 'CREATE'
 const EDIT = 'EDIT'
 const LOAD = 'LOADITEMS'
+const CLEAR = 'RESETITEMS'
 
 const itemReducer = (state = [], action) => {
   switch (action.type) {
@@ -32,6 +33,9 @@ const itemReducer = (state = [], action) => {
     // DELETE
     case DELETE:
       return state.filter(i => i.id !== action.itemId)
+
+    case CLEAR:
+      return []
 
     // DEFAULT
     default:

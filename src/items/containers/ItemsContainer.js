@@ -19,10 +19,10 @@ import {
 } from '../../common/elements'
 
 import { connect } from 'react-redux'
-import { ToggleItem, LoadItems, deleteItem } from '../../actions/ItemActions'
+import { ToggleItem, LoadItems, deleteItem, clearItems } from '../../actions/ItemActions'
 
 
-function ItemContainer({ items, toggleAction, load, deleteItem }) {
+function ItemContainer({ items, toggleAction, load, clear, deleteItem }) {
   const { url } = useRouteMatch()
   const listId = parseInt(useParams().list_id)
 
@@ -43,6 +43,10 @@ function ItemContainer({ items, toggleAction, load, deleteItem }) {
 
   useEffect(() => {
     load(listId)
+    
+    return () => {
+      clear()
+    }
   }, [])
 
   const handleFilter = () => (setFiltered(!filtered))
@@ -68,6 +72,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   load: (listId) => dispatch(LoadItems(listId)),
   toggleAction: (listId, itemId) => dispatch(ToggleItem(listId, itemId)),
-  deleteItem: (listId, itemId) => dispatch(deleteItem(listId, itemId))
+  deleteItem: (listId, itemId) => dispatch(deleteItem(listId, itemId)),
+  clear: () => dispatch(clearItems())
 })
 export default connect(mapStateToProps, mapDispatchToProps)(ItemContainer)

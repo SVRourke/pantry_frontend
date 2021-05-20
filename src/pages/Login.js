@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { handleLogin } from '../actions/LoginActions'
 import { Redirect } from 'react-router-dom'
+import './login.scss'
 
 const Login = ({ userId, isLoggedIn, login }) => {
   const [input, setInput] = useState({
@@ -22,7 +23,7 @@ const Login = ({ userId, isLoggedIn, login }) => {
   }
 
   return (
-    <div>
+    <div className={'login'}>
       {isLoggedIn ? <Redirect to={`/users/${userId}`} /> : false}
 
       <h1>Login</h1>

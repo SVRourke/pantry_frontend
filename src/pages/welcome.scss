@@ -1,0 +1,35 @@
+.welcome {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    &_buttons {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    h1 {
+        font-size: 5.5rem;
+    }
+    p {
+        font-size: 1.5rem;
+    }
+    a {
+        border-radius: 2rem;
+        border: solid black 2px;
+        padding: .5rem .2rem;
+        width: 8rem;
+        text-align: center;
+
+        &:first-of-type {
+            margin-right: 1.2rem;
+        }
+        &:hover {
+            background-color: black;
+            color: white;
+            transition: 200ms;
+        }
+    }
+}

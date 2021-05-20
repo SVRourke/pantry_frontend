@@ -6,17 +6,20 @@ import { Row, NiceLink, NiceButton } from '../common/elements'
 
 import {
   loadMembers,
-  leaveList
+  leaveList,
+  clearMembers
 } from '../actions/ListMemberActions'
 
-const MembersContainer = (props) => {
-  const { members, userId, load, leave } = props
+const MembersContainer = ({ members, userId, load, leave, clear }) => {
   const { url } = useRouteMatch()
   const { list_id } = useParams()
   const history = useHistory()
 
   useEffect(() => {
     load(list_id)
+    return () => {
+      clear()
+    }
   }, [])
 
   const handleLeave = () => {
@@ -49,6 +52,7 @@ const mapStateToProps = state => ({
 })
 const mapDispatchToProps = dispatch => ({
   load: (list_id) => dispatch(loadMembers(list_id)),
-  leave: (list_id, cb) => dispatch(leaveList(list_id, cb))
+  leave: (list_id, cb) => dispatch(leaveList(list_id, cb)),
+  clear: () => dispatch(clearMembers())
 })
 export default connect(mapStateToProps, mapDispatchToProps)(MembersContainer)
