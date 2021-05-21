@@ -42,7 +42,8 @@ export const baseRequest = (endpoint, method, authed, body) => {
         method,
         authed,
         body,
-        document.cookie.slice(11,)
+        Cookies.get('CSRF-TOKEN')
+        // document.cookie.slice(11,)
       )
     )
   )
