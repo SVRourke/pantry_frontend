@@ -34,7 +34,7 @@ const buildOptions = (method, authed, body, token) => {
 }
 
 export const baseRequest = (endpoint, method, authed, body) => {
-  console.log('testo cookie', document.cookie.replace(/(?:(?:^|.*;\s*)CSRF-TOKEN\s*\=\s*([^;]*).*$)|^.*$/, "$1");  )
+  console.log('testo cookie', Cookies.get(), document.cookie)
   return (
     fetch(
       `${BASEURL}${endpoint}`,
