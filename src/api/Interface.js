@@ -43,7 +43,7 @@ export const baseRequest = (endpoint, method, authed, body) => {
         authed,
         body,
         Cookies.get('CSRF-TOKEN')
-
+      )
     )
   )
 }
