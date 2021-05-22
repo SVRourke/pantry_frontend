@@ -1,7 +1,6 @@
 import Cookies from 'js-cookie'
 
-// TODO: MAKE ENV VAR
-const BASEURL = "http://api.pantry.svrourke.com"
+const BASEURL = process.env.REACT_APP_API_DOMAIN
 
 const BASEOPTIONS = {
   credentials: 'include',
