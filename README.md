@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# **Pantry Frontend**
+[Pantry](https://pantry.svrourke.com) is an app I created to solve a problem for myself, with grocery lists spread out between my phone, my partner's phone and several texts throughout the week I invariably missed items or got redundant items when I went to the store. Pantry allows users to create shared grocery lists with as many members as they need with features that help when shopping like: marking items as acquired and filtering them from the list display.
+   
+This is the repo for the frontend client made with [react.js](https://reactjs.org/) [react-redux](https://react-redux.js.org/) and [redux-thunk](https://github.com/reduxjs/redux-thunk).
+<br>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Getting Started
+___
 
-## Available Scripts
+> If you would like to spin up your own copy of pantry clone this repo and the [backend repo](https://github.com/SVRourke/pantry_backend) and follow the instructions below for the frontend setup, and the instructions on the backend repo for the front end setup.
 
-In the project directory, you can run:
+Clone this repository and run yarn install
+```
+$ git clone git@github.com:SVRourke/pantry_backend.git
 
-### `yarn start`
+$ cd pantry_frontend
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+$ yarn install
+```
+Next before you start the app set the environment variable
+```
+$ export REACT_APP_API_DOMAIN=localhost:3000/
+``` 
+The app relies on REACT_APP_API_DOMAIN to make requests to the api so for running locally use localhost:3000/, now you're ready to start the app
+```
+$ yarn start
+```
+   
+> # IMAGE
+   
+   
+## Deployment
+___   
+I deployed this react app to [Netlify](https://www.netlify.com) using their cli. The whole thing was very easy and I followed [these instructions](https://www.netlify.com/blog/2016/07/22/deploy-react-apps-in-less-than-30-seconds/)
+   
+   
+Though I don't want to transpose the tutorial into this readme it is a basic tutorial and there are a few things to address beyond it's scope. [here](https://create-react-app.dev/docs/deployment/#netlify) is a good example of deploying a create-react-app project to netlify. You must redirect all requests to /index.html as this is a one page application using react-router so if you refresh on lists/2/item/3/edit the server will look for a file named edit 3 non-existent directories deep.   
+   
+To redirect all requests back to the react app create a file called netlify.toml in the project directory and add the following:
+```
+[[redirects]]
+    from = "/*"
+    to = "/index.html"
+    status = 200
+```
+**Environment Variables**   
+Environment variables in Netlify are easy to set through the deploy tab on the Netlify site and I suggest doing so there, make sure to set the REACT_APP_API_DOMAIN variable to the url of the api wherever it's hosted.    
+   
+   
+## Built With
+___
+   
+This is a react.js app using the [create-react-app](https://reactjs.org/docs/create-a-new-react-app.html) tool-chain. For application state management I used [react-redux](https://react-redux.js.org/). For async redux updates like making a request to an api and adding the returned data to the store I used [redux-thunk](https://github.com/reduxjs/redux-thunk)
+<br>   
+# Status
