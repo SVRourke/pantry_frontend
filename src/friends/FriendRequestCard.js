@@ -1,37 +1,29 @@
-import React from 'react';
+import React from "react";
 import {
   CardBody,
-  CardHeading,
   TimeDisplay,
   RequestCancel,
   AcceptButton,
   DeclineButton,
-  Row
-} from '../common/elements'
+} from "../common/elements";
 
-import ageFormatter from '../common/TimeFormatter'
+import ageFormatter from "../common/TimeFormatter";
 
 const FriendRequestCard = ({
-  record: {
-    requestor_name,
-    requestee_name,
-    record_age,
-    type,
-    id
-  },
-  clickHandler
+  record: { requestor_name, requestee_name, record_age, type, id },
+  clickHandler,
 }) => {
-  const style = { color: type === 'sent' ? '#ccc' : 'var(--offblack-color)'}
-  const heading = type === 'sent' ? requestee_name : requestor_name
+  const style = { color: type === "sent" ? "#ccc" : "var(--offblack-color)" };
+  const heading = type === "sent" ? requestee_name : requestor_name;
 
   return (
     <CardBody typeStyle={type}>
-      <CardHeading style={style}>{heading}</CardHeading>
+      <h3 className="card-heading" style={style}>
+        {heading}
+      </h3>
 
-      <Row>
-        <TimeDisplay>
-          {ageFormatter(record_age, 2)} ago
-        </TimeDisplay>
+      <div className="row">
+        <TimeDisplay>{ageFormatter(record_age, 2)} ago</TimeDisplay>
 
         <RequestCancel
           displayType={type}
@@ -39,9 +31,9 @@ const FriendRequestCard = ({
         >
           cancel?
         </RequestCancel>
-      </Row>
+      </div>
 
-      <Row>
+      <div className="row">
         <AcceptButton
           onClick={() => clickHandler(id, "ACCEPT")}
           displayType={type}
@@ -55,10 +47,9 @@ const FriendRequestCard = ({
         >
           decline
         </DeclineButton>
-      </Row>
-
+      </div>
     </CardBody>
-  )
-}
+  );
+};
 
 export default FriendRequestCard;

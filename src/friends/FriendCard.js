@@ -1,47 +1,28 @@
-import React from 'react';
-import {
-  CardBody,
-  CardHeading,
-  TimeDisplay,
-  SubHeading,
-  Row,
-  UnFriend
-} from "../common/elements";
-import ageFormatter from '../common/TimeFormatter'
+import React from "react";
+import { CardBody, TimeDisplay } from "../common/elements";
+import ageFormatter from "../common/TimeFormatter";
 
 const FriendCard = ({
-  record: {
-    mutual_list_count,
-    friend_name,
-    record_age,
-    friend_id,
-    id,
-  },
+  record: { mutual_list_count, friend_name, record_age, friend_id, id },
   cb,
 }) => {
-  const callBackHandler = (event) => cb(friend_id, id)
+  const callBackHandler = (event) => cb(friend_id, id);
 
   return (
     <CardBody>
-      <CardHeading>
-        {friend_name}
-      </CardHeading>
+      <h3 className="card-heading">{friend_name}</h3>
 
-      <Row>
-        <TimeDisplay>
-          since {ageFormatter(record_age, 1)} ago
-        </TimeDisplay>
+      <div className="row">
+        <TimeDisplay>since {ageFormatter(record_age, 1)} ago</TimeDisplay>
 
-        <UnFriend onClick={callBackHandler}>
+        <button className="unfriend-button" onClick={callBackHandler}>
           unfriend?
-        </UnFriend>
-      </Row>
+        </button>
+      </div>
 
-      <SubHeading>
-        {mutual_list_count} shared lists
-      </SubHeading>
+      <p>{mutual_list_count} shared lists</p>
     </CardBody>
   );
-}
+};
 
 export default FriendCard;

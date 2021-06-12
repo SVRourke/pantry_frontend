@@ -18,16 +18,15 @@
 body {
   width: 100%;
   height: 100vh;
-
 }
 #app-container {
-    width: 500px;
-    margin: 0 auto;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden;
+  width: 500px;
+  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
 }
 a {
   text-decoration: none;
@@ -43,3 +42,134 @@ a {
   scrollbar-color: rgb(245, 245, 245) white;
 }
 /* ALERT STYLE SCROLLBAR FOR OTHER BROWSERS */
+
+.add-link {
+  border: solid black 2px;
+  background-color: white;
+  padding: 0.5rem 2rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  display: block;
+  width: fit-content;
+}
+
+.container-styles {
+  height: 100%;
+  overflow: hidden;
+
+  &-inner {
+    max-height: 80vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: baseline;
+  color: inherit;
+}
+
+.edit {
+  border: solid var(--gray-color) 2px;
+  color: var(--gray-color);
+  padding: 0.5rem 0.7rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  margin: 1rem 0.6rem 1rem 0;
+  transition: 10 ease-in;
+
+  &:hover {
+    color: white;
+    background-color: var(--gray-color);
+  }
+}
+
+.nav-container {
+  width: 100%;
+  display: flex;
+  padding: 0.7rem 0;
+}
+
+.new-friend-link {
+  border: solid var(--offblack-color) 2px;
+  padding: 0.3rem 0.7rem;
+  border-radius: 3rem;
+  width: 11ch;
+  margin: 1rem 0;
+  &:hover {
+    background: var(--offblack-color);
+    color: white;
+  }
+}
+
+.nice-link {
+  border: solid var(--offblack-color) 2px;
+  padding: 0.3rem 0.7rem;
+  border-radius: 3rem;
+  display: block;
+  width: fit-content;
+}
+.trash-button {
+  background: none;
+  padding: 0.5rem 0.7rem;
+  border-radius: 2rem;
+  border-style: solid;
+  border-color: var(--red-color);
+  color: var(--red-color);
+  font-weight: 600;
+  margin: 1rem 0.6rem 1rem 0;
+
+  &:hover {
+    color: white;
+    background-color: var(--red-color);
+  }
+}
+.unfriend-button {
+  background: none;
+  border: none;
+  margin: 0 1rem;
+  color: var(--red-color);
+  &:hover {
+    font-weight: 600;
+  }
+}
+.nice-button {
+  border: solid var(--offblack-color) 2px;
+  padding: 0.3rem 0.7rem;
+  border-radius: 3rem;
+  display: block;
+  width: fit-content;
+  background: none;
+  &:hover {
+    border: solid var(--red-color) 2px;
+    background: var(--red-color);
+    color: white;
+  }
+}
+.wrapper {
+  display: flex;
+  margin: 1rem 0 2rem 0;
+}
+.block {
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.cancel-button {
+  background: none;
+  border: none;
+  padding-left: 1rem;
+  font-size: 1.2rem;
+
+  &:hover {
+    color: var(--red-color);
+  }
+}
+.card-heading {
+  font-size: 2.7rem;
+  font-weight: 600;
+  color: inherit;
+}

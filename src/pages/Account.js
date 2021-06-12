@@ -1,33 +1,32 @@
-import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
-import { logout, profile, closeAccount } from '../actions/LoginActions'
-import { NiceButton, Row } from '../common/elements'
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { logout, profile, closeAccount } from "../actions/LoginActions";
 
-import './Account.scss'
+import "./Account.scss";
 
 const Account = ({ logout, history, getProfile, profile, closeAccount }) => {
   useEffect(() => {
-    getProfile(profile.userId)
-  }, [])
+    getProfile(profile.userId);
+  }, []);
 
   const handleLogout = () => {
-    logout(() => history.push('/login'))
-  }
+    logout(() => history.push("/login"));
+  };
 
   const handleDelete = () => {
-    closeAccount(profile.userId)
-    history.push('/')
-  }
+    closeAccount(profile.userId);
+    history.push("/");
+  };
 
   return (
-    <div className='account'>
+    <div className="account">
       <section>
         <h1>hi {profile.name}!</h1>
         <p>email: {profile.email}</p>
-        <button onClick={handleLogout} >logout</button>
+        <button onClick={handleLogout}>logout</button>
       </section>
 
-      <div className='small-block'>
+      <div className="small-block">
         <section>
           <h3>lists: {profile.list_count}</h3>
         </section>
@@ -38,28 +37,32 @@ const Account = ({ logout, history, getProfile, profile, closeAccount }) => {
 
       <section>
         <h3>Friend Requests</h3>
-        <p>sent: {profile.sent_requests} received: {profile.received_requests}</p>
+        <p>
+          sent: {profile.sent_requests} received: {profile.received_requests}
+        </p>
       </section>
 
       <section>
         <h3>list invites</h3>
-        <p>sent: {profile.sent_invites} received: {profile.received_invites}</p>
+        <p>
+          sent: {profile.sent_invites} received: {profile.received_invites}
+        </p>
       </section>
 
-      <section className='danger' >
+      <section className="danger">
         <h3>Danger Zone!</h3>
-        <button onClick={handleDelete} >delete account</button>
+        <button onClick={handleDelete}>delete account</button>
       </section>
     </div>
-  )
-}
+  );
+};
 
-const mapDispatchToProps = dispatch => ({
-  logout: cb => dispatch(logout(cb)),
-  getProfile: userId => dispatch(profile(userId)),
-  closeAccount: userId => dispatch(closeAccount(userId))
-})
-const mapStateToProps = state => ({
-  profile: state.profile
-})
-export default connect(mapStateToProps, mapDispatchToProps)(Account)
+const mapDispatchToProps = (dispatch) => ({
+  logout: (cb) => dispatch(logout(cb)),
+  getProfile: (userId) => dispatch(profile(userId)),
+  closeAccount: (userId) => dispatch(closeAccount(userId)),
+});
+const mapStateToProps = (state) => ({
+  profile: state.profile,
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Account);
