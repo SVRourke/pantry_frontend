@@ -39,7 +39,7 @@ const NewList = ({ history, userId, create }) => {
           value={inputValue}
           onChange={inputHandler}
         />
-        <SubmitButton type="submit" value="send request" />
+        <SubmitButton type="submit" value="create" />
       </NiceForm>
     </div>
   );
