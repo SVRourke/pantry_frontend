@@ -27,7 +27,6 @@ const Login = ({ userId, isLoggedIn, login }) => {
       {isLoggedIn ? <Redirect to={`/users/${userId}`} /> : false}
 
       <h1>Login</h1>
-      <p>test text</p>
 
       <form onSubmit={(event) => submitHandler(event)}>
         <input
