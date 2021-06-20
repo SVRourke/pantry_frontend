@@ -33,11 +33,13 @@ const Login = ({ userId, isLoggedIn, login }) => {
           name="email"
           type="email"
           value={input['email']}
+          placeholder='email'
           onChange={event => changeHandler(event)} />
 
         <input
           name="password"
           type="password"
+          placeholder='password'
           value={input['password']}
           onChange={event => changeHandler(event)} />
 
