@@ -1,40 +1,47 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from "react";
 
 import {
   NiceForm,
   NiceLabel,
   TextField,
   TextArea,
-  SubmitButton
-} from '../../common/FormElements'
+  SubmitButton,
+} from "../../common/FormElements";
 
-export default function ItemForm (props) {
-  const [info, setInfo] = useState(props.record || {
-    name: '',
-    amount: ''
-  })
+export default function ItemForm({ record, cb }) {
+  const [info, setInfo] = useState(
+    record || {
+      name: "",
+      amount: "",
+    }
+  );
 
   const changeHandler = (event) => {
     setInfo({
       ...info,
-      [event.target.name]: event.target.value
-    })
-  }
+      [event.target.name]: event.target.value,
+    });
+  };
 
   const submitHandler = (event) => {
-    event.preventDefault()
-    props.cb(info)
-  }
+    event.preventDefault();
+    cb(info);
+  };
 
   return (
     <div>
       <NiceForm onSubmit={submitHandler}>
-        <NiceLabel for='name'>item</NiceLabel>
-        <TextField onChange={changeHandler} type='text' name='name' value={info.name} />
-        <NiceLabel for='amount'>amount</NiceLabel>
-        <TextArea onChange={changeHandler} name='amount' value={info.amount} />
-        <SubmitButton type='submit' value='submit' />
+        <NiceLabel for="name">item</NiceLabel>
+        <TextField
+          onChange={changeHandler}
+          type="text"
+          name="name"
+          value={info.name}
+        />
+        <NiceLabel for="amount">amount</NiceLabel>
+        <TextArea onChange={changeHandler} name="amount" value={info.amount} />
+        <SubmitButton type="submit" value="submit" />
       </NiceForm>
     </div>
-  )
+  );
 }
