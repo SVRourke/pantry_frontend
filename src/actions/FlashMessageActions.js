@@ -2,16 +2,18 @@ const ADD = "ADDMESSAGE";
 const REMOVE = "REMOVEMESSAGE";
 const CLEAR = "CLEARMESSAGES";
 
-const addMessage = (msg) => ({
+const addMessage = (message) => ({
   type: ADD,
-  msg,
+  message,
 });
 
-const removeMessage = (msg) => ({
+const removeMessage = (message) => ({
   type: REMOVE,
-  msg,
+  message,
 });
 
 const clearMessages = () => ({
   type: CLEAR,
 });
+
+export { addMessage, removeMessage, clearMessages };
