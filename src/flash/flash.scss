@@ -1,0 +1,30 @@
+#flashContainer {
+  position: fixed;
+  z-index: 100;
+  right: 4rem;
+  top: 4rem;
+
+  .messageCard {
+    background-color: white;
+    width: 30rem;
+    display: flex;
+    justify-content: space-between;
+
+    margin: 1rem 0 0 0;
+    border: solid var(--offblack-color) 1px;
+    border-radius: 0.3rem;
+
+    padding: 0;
+    box-shadow: 0 8px 10px rgba(146, 146, 146, 0.459);
+
+    p {
+      max-width: 80%;
+      padding: 1rem;
+    }
+
+    button {
+      height: 100%;
+      width: 2rem;
+    }
+  }
+}
