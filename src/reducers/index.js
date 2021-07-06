@@ -1,10 +1,11 @@
-import listReducer from './Lists'
-import itemReducer from "./Items"
-import listInviteReducer from './ListInvites'
-import LoginReducer from './Login'
-import MemberReducer from './ListMembers'
-import FriendRequestReducer from './friendRequests'
-import FriendsReducer from "./Friends"
+import listReducer from "./Lists";
+import itemReducer from "./Items";
+import listInviteReducer from "./ListInvites";
+import LoginReducer from "./Login";
+import MemberReducer from "./ListMembers";
+import FriendRequestReducer from "./friendRequests";
+import FriendsReducer from "./Friends";
+import FlashMessagesReducer from "./flashMessages";
 
 export {
   listReducer,
@@ -13,5 +14,6 @@ export {
   LoginReducer,
   MemberReducer,
   FriendRequestReducer,
-  FriendsReducer
-}
+  FriendsReducer,
+  FlashMessagesReducer,
+};
