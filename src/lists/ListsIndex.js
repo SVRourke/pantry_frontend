@@ -1,19 +1,13 @@
-import React from 'react'
-// ALERT: MAYBE UNNECESSARY
-// ALERT: MAKE INDEXES
-import ListCardContainer from './containers/ListCardContainer'
-import ListInvitesContainer from './containers/ListInvitesContainer'
-import NewList from '../lists/pages/NewList'
-import { FancyLink } from '../common/GlobalElements'
+import React from "react";
+import ListCardContainer from "./containers/ListCardContainer";
+import ListInvitesContainer from "./containers/ListInvitesContainer";
+import NewList from "../lists/pages/NewList";
+import { FancyLink } from "../common/elements";
 
-import {
-  Route,
-  Link,
-  useRouteMatch
-} from 'react-router-dom'
+import { Route, Link, useRouteMatch } from "react-router-dom";
 
 const ListIndex = () => {
-  const { path, url } = useRouteMatch()
+  const { path, url } = useRouteMatch();
 
   return (
     <>
@@ -29,7 +23,7 @@ const ListIndex = () => {
 
       <Route path={`${path}/new`} component={NewList} />
     </>
-  )
-}
+  );
+};
 
-export default ListIndex
+export default ListIndex;
