@@ -7,7 +7,7 @@ const FlashMessagesReducer = (state = [], action) => {
     case ADD:
       return [...state, action.message];
     case REMOVE:
-      return state.filter((r) => r.id !== action.id);
+      return state.filter((r) => r !== action.message);
     case CLEAR:
       return [];
     default:
