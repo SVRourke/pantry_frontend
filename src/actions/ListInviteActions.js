@@ -1,125 +1,99 @@
-import api from '../api/Index'
-import { Add } from './ListActions'
+import api from "../api/Index";
+import { Add } from "./ListActions";
 
-const accept = (id) => {
-  return {
-    type: 'ACCEPT',
-    id: id
-  }
-}
+const accept = (id) => ({
+  type: "ACCEPT",
+  id: id,
+});
 
-const cancel = (id) => {
-  return {
-    type: 'CANCEL',
-    id: id
-  }
-}
+const cancel = (id) => ({
+  type: "CANCEL",
+  id: id,
+});
 
-const Load = (invites) => {
-  return {
-    type: 'LOADINVITES',
-    invites: invites
-  }
-}
+const Load = (invites) => ({
+  type: "LOADINVITES",
+  invites: invites,
+});
 
 const sendInvite = (email, listId, cb) => {
-  return async dispatch => {
-    api.listInvites.send(email, listId)
-      .then(r => {
-        return (
-          r.status === 201
-            ? r.json()
-            : Promise.reject(r)
-        )
+  return async (dispatch) => {
+    api.listInvites
+      .send(email, listId)
+      .then((r) => {
+        return r.status === 201 ? r.json() : Promise.reject(r);
       })
-      .then(d => cb())
-      .catch(error => {
+      .then((d) => cb())
+      .catch((error) => {
         switch (error.status) {
           case 404:
-            alert(`No user with email: ${email}`)
+            alert(`No user with email: ${email}`);
             break;
           case 422:
-            alert("That user is already invited!")
+            alert("That user is already invited!");
             break;
           case 401:
-            dispatch({type: 'LOGOUT'})
+            dispatch({ type: "LOGOUT" });
             break;
           default:
-            console.log(error)
+            console.log(error);
         }
-      })
-  }
-}
+      });
+  };
+};
 
 const loadInvites = (userId) => {
-  return dispatch => {
-    api.listInvites.load(userId)
-      .then(r => {
-        return (
-          r.ok
-            ? r.json()
-            : Promise.reject(r)
-        )
+  return (dispatch) => {
+    api.listInvites
+      .load(userId)
+      .then((r) => {
+        return r.ok ? r.json() : Promise.reject(r);
       })
-      .then(d => {
-        dispatch(Load(d))
+      .then((d) => {
+        dispatch(Load(d));
       })
-      .catch(error => (
+      .catch((error) =>
         error.status === 401
-          ? dispatch({ type: 'LOGOUT' })
+          ? dispatch({ type: "LOGOUT" })
           : alert("That didn't work, try again later")
-        )
-      )
-  }
-}
+      );
+  };
+};
 
 const cancelInvite = (userId, inviteId) => {
-  return dispatch =>
-    api.listInvites.cancel(userId, inviteId)
-      .then(r => {
-        return (
-          r.status === 410
-            ? r.json()
-            : Promise.reject(r)
-        )
+  return (dispatch) =>
+    api.listInvites
+      .cancel(userId, inviteId)
+      .then((r) => {
+        return r.status === 410 ? r.json() : Promise.reject(r);
       })
-      .then(d => {
-        dispatch(cancel(inviteId))
+      .then((d) => {
+        dispatch(cancel(inviteId));
       })
-      .catch(error => (
+      .catch((error) =>
         error.status === 401
-          ? dispatch({ type: 'LOGOUT' })
+          ? dispatch({ type: "LOGOUT" })
           : alert("That didn't work, try again later")
-        )
-      )
-}
+      );
+};
 
 const acceptInviteThunk = (userId, inviteId) => {
-  return dispatch => {
-    api.listInvites.accept(userId, inviteId)
-      .then(r => {
-        return (
-          r.ok
-            ? r.json()
-            : Promise.reject(r)
-        )
+  return (dispatch) => {
+    api.listInvites
+      .accept(userId, inviteId)
+      .then((r) => {
+        return r.ok ? r.json() : Promise.reject(r);
       })
-      .then(d => {
-        dispatch(accept(inviteId))
-        dispatch(Add(d))
+      .then((d) => {
+        dispatch(accept(inviteId));
+        dispatch(Add(d));
       })
-      .catch(error => (
+      .catch((error) =>
         error.status === 401
-          ? dispatch({ type: 'LOGOUT' })
+          ? dispatch({ type: "LOGOUT" })
           : alert("That didn't work, try again later")
-        )
-      )
-  }
-}
+      );
+  };
+};
 
-export {
-  sendInvite,
-  loadInvites,
-  cancelInvite,
-  acceptInviteThunk
-}
+export { sendInvite, loadInvites, cancelInvite, acceptInviteThunk };
