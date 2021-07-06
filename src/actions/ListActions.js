@@ -1,4 +1,5 @@
 import api from "../api/Index";
+import { addMessage } from "./FlashMessageActions";
 
 const Load = (lists) => ({
   type: "LOADLISTS",
@@ -24,7 +25,7 @@ const CreateList = (userId, list, cb) => {
       .catch((error) =>
         error.status === 401
           ? dispatch({ type: "LOGOUT" })
-          : alert("That didn't work, try again later")
+          : dispatch(addMessage("That didn't work, try again later"))
       );
   };
 };
@@ -36,11 +37,14 @@ const LoadLists = (userId) => {
       .then((response) => {
         return response.ok ? response.json() : Promise.reject(response);
       })
-      .then((data) => dispatch(Load(data)))
+      .then((data) => {
+        dispatch(addMessage("Lists Loaded!"));
+        dispatch(Load(data));
+      })
       .catch((error) =>
         error.status === 401
           ? dispatch({ type: "LOGOUT" })
-          : alert("That didn't work, try again later")
+          : dispatch(addMessage("That didn't work, try again later"))
       );
   };
 };

@@ -1,4 +1,5 @@
 import api from "../api/Index";
+import { addMessage } from "./FlashMessageActions";
 
 const loginSuccess = (info) => ({
   type: "LOGGEDIN",
@@ -29,7 +30,7 @@ const logout = (cb) => {
       .catch((error) =>
         error.status === 401
           ? dispatch({ type: "LOGOUT" })
-          : alert("That didn't work, try again later")
+          : dispatch(addMessage("That didn't work, try again later"))
       );
   };
 };
@@ -47,7 +48,7 @@ const handleLogin = (data) => {
       .catch((error) =>
         error.status === 401
           ? dispatch({ type: "LOGOUT" })
-          : alert("That didn't work, try again later")
+          : dispatch(addMessage("That didn't work, try again later"))
       );
   };
 };
@@ -63,11 +64,10 @@ const authCheck = () => {
       .catch((error) =>
         error.status === 401
           ? dispatch({ type: "LOGOUT" })
-          : alert("That didn't work, try again later")
+          : dispatch(addMessage("That didn't work, try again later"))
       );
   };
 };
-// ALERT: SHOULD ALL BE CHANGED TO MULTI CONDITION TERNARY?
 const profile = (userId) => {
   return (dispatch) => {
     api.auth
@@ -80,7 +80,9 @@ const profile = (userId) => {
           : Promise.reject(response);
       })
       .then((data) => dispatch(info(data.user)))
-      .catch((error) => alert("That didn't work, try again later"));
+      .catch((error) =>
+        dispatch(addMessage("Could not fetch info, try again later"))
+      );
   };
 };
 
@@ -94,8 +96,7 @@ const signUp = (user) => {
       .then((data) => {
         dispatch(loginSuccess(data));
       })
-      // make flexible for error messages
-      .catch((error) => console.log("SIGNUP ERROR", error));
+      .catch((error) => dispatch(addMessage(error)));
   };
 };
 
@@ -107,7 +108,9 @@ const closeAccount = (userId) => {
         response.status === 410 ? response.json() : Promise.reject(response)
       )
       .then((data) => dispatch(reset()))
-      .catch((error) => console.log("DELETE ACCOUNT ERROR", error));
+      .catch((error) =>
+        dispatch(addMessage("Could not delete account, try later"))
+      );
   };
 };
 

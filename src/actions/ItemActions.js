@@ -1,4 +1,5 @@
 import api from "../api/Index";
+import { addMessage } from "./FlashMessageActions";
 
 const Trash = (listId, itemId) => ({
   type: "DELETE",
@@ -43,7 +44,7 @@ const createItem = (listId, item) => {
       .catch((error) =>
         error.status === 401
           ? dispatch({ type: "LOGOUT" })
-          : alert("That didn't work, try again later")
+          : dispatch(addMessage("That didn't work, try again later"))
       );
   };
 };
@@ -58,7 +59,7 @@ const deleteItem = (listId, itemId) => {
       .catch((error) =>
         error.status === 401
           ? dispatch({ type: "LOGOUT" })
-          : alert("That didn't work, try again later")
+          : dispatch(addMessage("That didn't work, try again later"))
       );
   };
 };
@@ -73,7 +74,7 @@ const updateItem = (listId, item) => {
       .catch((error) =>
         error.status === 401
           ? dispatch({ type: "LOGOUT" })
-          : alert("That didn't work, try again later")
+          : dispatch(addMessage("That didn't work, try again later"))
       );
   };
 };
@@ -88,7 +89,7 @@ const ToggleItem = (listId, itemId) => {
       .catch((error) =>
         error.status === 401
           ? dispatch({ type: "LOGOUT" })
-          : alert("That didn't work, try again later")
+          : dispatch(addMessage("That didn't work, try again later"))
       );
   };
 };

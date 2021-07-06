@@ -1,5 +1,6 @@
 import api from "../api/Index";
 import { Add } from "./ListActions";
+import { addMessage } from "./FlashMessageActions";
 
 const accept = (id) => ({
   type: "ACCEPT",
@@ -27,16 +28,15 @@ const sendInvite = (email, listId, cb) => {
       .catch((error) => {
         switch (error.status) {
           case 404:
-            alert(`No user with email: ${email}`);
+            dispatch(addMessage(`No user with email: ${email}`));
             break;
           case 422:
-            alert("That user is already invited!");
+            dispatch(addMessage("That user is already invited!"));
             break;
           case 401:
             dispatch({ type: "LOGOUT" });
             break;
           default:
-            console.log(error);
         }
       });
   };
@@ -55,7 +55,7 @@ const loadInvites = (userId) => {
       .catch((error) =>
         error.status === 401
           ? dispatch({ type: "LOGOUT" })
-          : alert("That didn't work, try again later")
+          : dispatch(addMessage("Couldn't load invites, try again later"))
       );
   };
 };
@@ -73,7 +73,7 @@ const cancelInvite = (userId, inviteId) => {
       .catch((error) =>
         error.status === 401
           ? dispatch({ type: "LOGOUT" })
-          : alert("That didn't work, try again later")
+          : dispatch(addMessage("That didn't work, try again later"))
       );
 };
 
@@ -91,7 +91,7 @@ const acceptInviteThunk = (userId, inviteId) => {
       .catch((error) =>
         error.status === 401
           ? dispatch({ type: "LOGOUT" })
-          : alert("That didn't work, try again later")
+          : dispatch(addMessage("That didn't work, try again later"))
       );
   };
 };

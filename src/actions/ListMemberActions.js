@@ -1,4 +1,5 @@
 import api from "../api/Index";
+import { addMessage } from "./FlashMessageActions";
 
 const load = (members) => ({
   type: "LOADMEMBERS",
@@ -23,7 +24,7 @@ const loadMembers = (listId) => {
       .catch((error) =>
         error.status === 401
           ? dispatch({ type: "LOGOUT" })
-          : alert("That didn't work, try again later")
+          : dispatch(addMessage("Could not load contributors"))
       );
   };
 };
@@ -42,7 +43,7 @@ const leaveList = (listId, cb) => {
       .catch((error) =>
         error.status === 401
           ? dispatch({ type: "LOGOUT" })
-          : alert("That didn't work, try again later")
+          : dispatch(addMessage("Request did not work, try again later"))
       );
   };
 };

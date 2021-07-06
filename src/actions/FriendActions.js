@@ -1,4 +1,5 @@
 import api from "../api/Index";
+import { addMessage } from "./FlashMessageActions";
 
 const removeFriend = (friendshipId) => ({
   type: "UNFRIEND",
@@ -21,7 +22,7 @@ const unfriend = (userId, friendId, friendshipId) => {
       .catch((error) =>
         error.status === 401
           ? dispatch({ type: "LOGOUT" })
-          : alert("That didn't work, try again later")
+          : dispatch(addMessage("Could not unfriend, try again later"))
       );
   };
 };
@@ -33,13 +34,11 @@ const loadFriends = (userId) => {
       .then((r) => {
         return r.ok ? r.json() : Promise.reject(r);
       })
-      .then((d) => {
-        dispatch(Load(d));
-      })
+      .then((d) => dispatch(Load(d)))
       .catch((error) =>
         error.status === 401
           ? dispatch({ type: "LOGOUT" })
-          : alert("That didn't work, try again later")
+          : dispatch(addMessage("Could not load friends, try again later"))
       );
   };
 };

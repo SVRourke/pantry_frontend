@@ -1,4 +1,5 @@
 import api from "../api/Index";
+import { addMessage } from "./FlashMessageActions";
 
 const load = (requests) => ({
   type: "LOADREQUESTS",
@@ -31,7 +32,7 @@ const loadRequests = (id) => {
       .catch((error) =>
         error.status === 401
           ? dispatch({ type: "LOGOUT" })
-          : alert("That didn't work, try again later")
+          : dispatch(addMessage("Couldn't load requests, try again later"))
       );
   };
 };
@@ -50,7 +51,7 @@ const acceptRequest = (userId, id) => {
       .catch((error) =>
         error.status === 401
           ? dispatch({ type: "LOGOUT" })
-          : alert("That didn't work, try again later")
+          : dispatch(addMessage("Couldn't accept request, try again later"))
       );
   };
 };
@@ -66,7 +67,7 @@ const cancelRequest = (userId, id) => {
       .catch((error) =>
         error.status === 401
           ? dispatch({ type: "LOGOUT" })
-          : alert("That didn't work, try again later")
+          : dispatch(addMessage("That didn't work, try again later"))
       );
   };
 };
@@ -83,7 +84,7 @@ const sendRequest = (userId, email, cb) => {
       .catch((error) =>
         error.status === 401
           ? dispatch({ type: "LOGOUT" })
-          : alert("That didn't work, try again later")
+          : dispatch(addMessage("That didn't work, try again later"))
       );
   };
 };
