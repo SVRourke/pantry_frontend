@@ -1,4 +1,4 @@
-import thunk from 'redux-thunk'
+import thunk from "redux-thunk";
 import {
   listReducer,
   itemReducer,
@@ -6,27 +6,20 @@ import {
   LoginReducer,
   MemberReducer,
   FriendRequestReducer,
-  FriendsReducer
-} from "./reducers"
+  FriendsReducer,
+  FlashMessagesReducer,
+} from "./reducers";
 
-import {
-  combineReducers,
-  createStore,
-  applyMiddleware
-} from 'redux'
+import { combineReducers, createStore, applyMiddleware } from "redux";
 
-import {
-  persistStore,
-  persistReducer,
-  purgeStoredState
-} from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
+import { persistStore, persistReducer, purgeStoredState } from "redux-persist";
 
+import storage from "redux-persist/lib/storage";
 
 const persistConfig = {
-  key: 'root',
-  storage
-}
+  key: "root",
+  storage,
+};
 
 const appReducer = combineReducers({
   lists: listReducer,
@@ -35,19 +28,21 @@ const appReducer = combineReducers({
   members: MemberReducer,
   listInvites: listInviteReducer,
   friendRequests: FriendRequestReducer,
-  profile: LoginReducer
-})
+  profile: LoginReducer,
+  flash: FlashMessagesReducer,
+});
 
-const rootReducer = ( state, action ) => {
-  if (action.type === 'RESET') {
-    // state = undefined
-    purgeStoredState(persistConfig)
+const rootReducer = (state, action) => {
+  if (action.type === "RESET") {
+    purgeStoredState(persistConfig);
   }
-  return appReducer(state, action)
-}
+  return appReducer(state, action);
+};
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const store = createStore(persistedReducer, applyMiddleware(thunk))
-const persistor = persistStore(store)
+const store = createStore(persistedReducer, applyMiddleware(thunk));
+
+const persistor = persistStore(store);
+
 export { store, persistor };
