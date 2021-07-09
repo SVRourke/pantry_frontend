@@ -7,7 +7,7 @@ const FlashCard = ({ msg, cb }) => {
   useEffect(() => {
     setTimeout(() => {
       cb(msg);
-    }, 10000);
+    }, 3000);
   }, []);
 
   return (
