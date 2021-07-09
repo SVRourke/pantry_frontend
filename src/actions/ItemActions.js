@@ -40,7 +40,10 @@ const createItem = (listId, item) => {
       .then((r) => {
         return r.ok ? r.json() : Promise.reject(r);
       })
-      .then((d) => dispatch(create(listId, d)))
+      .then((d) => {
+        dispatch(create(listId, d));
+        dispatch(addMessage("Item added"));
+      })
       .catch((error) =>
         error.status === 401
           ? dispatch({ type: "LOGOUT" })
@@ -55,7 +58,10 @@ const deleteItem = (listId, itemId) => {
       .then((r) => {
         return r.status === 410 ? r.json() : Promise.reject(r);
       })
-      .then((d) => dispatch(Trash(listId, itemId)))
+      .then((d) => {
+        dispatch(Trash(listId, itemId));
+        dispatch(addMessage("Item Deleted"));
+      })
       .catch((error) =>
         error.status === 401
           ? dispatch({ type: "LOGOUT" })
@@ -78,7 +84,7 @@ const updateItem = (listId, item) => {
       );
   };
 };
-const ToggleItem = (listId, itemId) => {
+const toggleItem = (listId, itemId) => {
   return async (dispatch) => {
     api.items
       .toggle(listId, itemId)
@@ -93,7 +99,7 @@ const ToggleItem = (listId, itemId) => {
       );
   };
 };
-const LoadItems = (listId) => {
+const loadItems = (listId) => {
   return async (dispatch) => {
     api.items
       .load(listId)
@@ -104,19 +110,15 @@ const LoadItems = (listId) => {
       .catch((error) =>
         error.status === 401
           ? dispatch({ type: "LOGOUT" })
-          : alert("That didn't work, try again later")
+          : dispatch(addMessage("That didn't work, try again later"))
       );
   };
 };
 
 export {
-  Trash,
-  Toggle,
-  create,
-  Edit,
   clearItems,
-  LoadItems,
-  ToggleItem,
+  loadItems,
+  toggleItem,
   updateItem,
   deleteItem,
   createItem,

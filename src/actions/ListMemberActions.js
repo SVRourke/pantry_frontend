@@ -39,7 +39,10 @@ const leaveList = (listId, cb) => {
           : Promise.reject(response);
       })
       .then((d) => cb())
-      .then(() => dispatch(leave(listId)))
+      .then(() => {
+        dispatch(leave(listId));
+        dispatch(addMessage("Left list..."));
+      })
       .catch((error) =>
         error.status === 401
           ? dispatch({ type: "LOGOUT" })

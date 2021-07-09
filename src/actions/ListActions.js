@@ -20,6 +20,7 @@ const CreateList = (userId, list, cb) => {
       })
       .then((d) => {
         dispatch(Add(d));
+        dispatch(addMessage(`${list} Created`));
         cb(d.id);
       })
       .catch((error) =>
@@ -38,15 +39,14 @@ const LoadLists = (userId) => {
         return response.ok ? response.json() : Promise.reject(response);
       })
       .then((data) => {
-        dispatch(addMessage("Lists Loaded!"));
         dispatch(Load(data));
       })
       .catch((error) =>
         error.status === 401
           ? dispatch({ type: "LOGOUT" })
-          : dispatch(addMessage("That didn't work, try again later"))
+          : dispatch(addMessage("Could not load lists, try again later"))
       );
   };
 };
 
-export { Load, Add, LoadLists, CreateList };
+export { Add, LoadLists, CreateList };

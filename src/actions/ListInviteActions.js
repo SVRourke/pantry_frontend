@@ -12,7 +12,7 @@ const cancel = (id) => ({
   id: id,
 });
 
-const Load = (invites) => ({
+const load = (invites) => ({
   type: "LOADINVITES",
   invites: invites,
 });
@@ -50,7 +50,7 @@ const loadInvites = (userId) => {
         return r.ok ? r.json() : Promise.reject(r);
       })
       .then((d) => {
-        dispatch(Load(d));
+        dispatch(load(d));
       })
       .catch((error) =>
         error.status === 401
@@ -69,6 +69,7 @@ const cancelInvite = (userId, inviteId) => {
       })
       .then((d) => {
         dispatch(cancel(inviteId));
+        dispatch(addMessage("Deleting Invite"));
       })
       .catch((error) =>
         error.status === 401
@@ -86,6 +87,7 @@ const acceptInviteThunk = (userId, inviteId) => {
       })
       .then((d) => {
         dispatch(accept(inviteId));
+        dispatch(addMessage("Invite Accepted!"));
         dispatch(Add(d));
       })
       .catch((error) =>

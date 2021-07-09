@@ -44,6 +44,7 @@ const handleLogin = (data) => {
       })
       .then((d) => {
         dispatch(loginSuccess(d));
+        dispatch(addMessage("Welcome!"));
       })
       .catch((error) =>
         error.status === 401
@@ -53,21 +54,6 @@ const handleLogin = (data) => {
   };
 };
 
-const authCheck = () => {
-  return (dispatch) => {
-    api.auth
-      .checkAuth()
-      .then((res) => {
-        return res.ok ? res.json() : Promise.reject(res);
-      })
-      .then((d) => dispatch(loginSuccess(d.user)))
-      .catch((error) =>
-        error.status === 401
-          ? dispatch({ type: "LOGOUT" })
-          : dispatch(addMessage("That didn't work, try again later"))
-      );
-  };
-};
 const profile = (userId) => {
   return (dispatch) => {
     api.auth
@@ -94,6 +80,7 @@ const signUp = (user) => {
         response.status === 201 ? response.json() : Promise.reject(response)
       )
       .then((data) => {
+        dispatch(addMessage("Welcome To Pantry!"));
         dispatch(loginSuccess(data));
       })
       .catch((error) => dispatch(addMessage(error)));
@@ -114,4 +101,4 @@ const closeAccount = (userId) => {
   };
 };
 
-export { authCheck, handleLogin, logout, profile, signUp, closeAccount };
+export { handleLogin, logout, profile, signUp, closeAccount };
