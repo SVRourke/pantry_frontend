@@ -7,8 +7,8 @@ import ItemCard from "../components/ItemCard";
 
 import { connect } from "react-redux";
 import {
-  ToggleItem,
-  LoadItems,
+  toggleItem,
+  loadItems,
   deleteItem,
   clearItems,
 } from "../../actions/ItemActions";
@@ -87,8 +87,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  load: (listId) => dispatch(LoadItems(listId)),
-  toggleAction: (listId, itemId) => dispatch(ToggleItem(listId, itemId)),
+  load: (listId) => dispatch(loadItems(listId)),
+  toggleAction: (listId, itemId) => dispatch(toggleItem(listId, itemId)),
   deleteItem: (listId, itemId) => dispatch(deleteItem(listId, itemId)),
   clear: () => dispatch(clearItems()),
 });

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useHistory, useParams, useRouteMatch } from "react-router-dom";
 import ItemForm from "../components/ItemForm";
-import { updateItem, LoadItems, clearItems } from "../../actions/ItemActions";
+import { updateItem, loadItems, clearItems } from "../../actions/ItemActions";
 
 const EditItem = ({ items, editAction, load, clear }) => {
   const history = useHistory();
@@ -48,7 +48,7 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
   editAction: (listId, item) => dispatch(updateItem(listId, item)),
-  load: (listId) => dispatch(LoadItems(listId)),
+  load: (listId) => dispatch(loadItems(listId)),
   clear: () => dispatch(clearItems()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(EditItem);
