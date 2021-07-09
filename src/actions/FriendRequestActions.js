@@ -80,7 +80,6 @@ const sendRequest = (userId, email, cb) => {
         return r.ok ? r.json() : Promise.reject(r);
       })
       .then((d) => cb())
-      // ALERT CUSTOMIZE MORE
       .catch((error) =>
         error.status === 401
           ? dispatch({ type: "LOGOUT" })
